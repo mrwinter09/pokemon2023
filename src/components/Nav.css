@@ -1,0 +1,14 @@
+.hidden{
+  display: none;
+}
+
+.not-hidden {
+  display: block
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

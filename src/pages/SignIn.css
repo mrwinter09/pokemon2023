@@ -1,0 +1,7 @@
+.hidden {
+  display: hidden;
+}
+
+.not-hidden {
+  display: block;
+}
