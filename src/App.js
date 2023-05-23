@@ -1,13 +1,15 @@
-import logo from './logo.svg';
+import logo from './assets/Pikachu-01.svg';
+import logobanner from './assets/pokemon.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <img src={logobanner} alt="logo" />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          By Ivan Winter
         </p>
         <a
           className="App-link"
