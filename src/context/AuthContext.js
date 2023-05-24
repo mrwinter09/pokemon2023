@@ -60,7 +60,9 @@ function AuthContextComponent({children}) {
           status: 'done',
         });
       }
-    }, [])
+    }, 
+    // eslint-disable-next-line 
+    [])
 
   function signIn(jwtToken) {
     localStorage.setItem('token', jwtToken);
