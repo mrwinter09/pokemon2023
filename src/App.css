@@ -14,8 +14,7 @@
 }
 
 .App-header {
-  background-color: #617cb2;
-  min-height: 100vh;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,6 +107,7 @@ nav a,
 nav a:visited,
 nav a:active {
   color: white;
+  text-decoration-line: none;
 }
 
 .user {
@@ -124,7 +124,7 @@ nav a:active {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 150px;
+  width: 100%;
 }
 
 .logo-container img {

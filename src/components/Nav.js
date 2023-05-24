@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import logo from '../assets/pokemon.svg';
+import logo from '../assets/Poké_Ball_icon.svg.png';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import './Nav.css'
@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom/";
 function Nav() {
   const { signOutFunction, isAuthMan} = useContext(AuthContext);
   const history = useHistory();
+  const {username} = useContext(AuthContext)
 
   function signinOut() {
     signOutFunction()
@@ -15,17 +16,17 @@ function Nav() {
   }
 
   return (
-    <nav>
+    <nav className='nav-display-mobile'>
         <Link to="/">
           <span className="logo-container">
             <img src={logo} alt="logo"/>
             <h3>
-              Pokemon
+            welcome {username}
             </h3>
           </span>
         </Link>
 
-      <div>
+      <div className='nav-mobile'>
         {isAuthMan ?
         <button
           type="button"

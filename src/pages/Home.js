@@ -1,30 +1,14 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
-import logo from '../assets/Pikachu-01.svg';
 import logobanner from '../assets/pokemon.svg';
 
 function Home() {
-  const {username} = useContext(AuthContext)
-
   return (
     <>
-      <h1>Homepagina welcome {username}</h1>
+      <h1>Home</h1>
       <div className="App">
       <header className="App-header">
         <img src={logobanner} alt="logo" />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          By Ivan Winter
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
       <section>

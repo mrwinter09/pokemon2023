@@ -12,3 +12,19 @@
   align-items: center;
   flex-direction: row;
 }
+
+h3{
+  text-decoration-line: none;
+}
+
+@media (max-width: 400px) {
+  .nav-display-mobile{
+    padding: 0 4px;
+
+    .nav-mobile{
+      display: flex;
+      padding: 4px 8px;
+    }
+
+  }
+}
