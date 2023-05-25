@@ -142,8 +142,8 @@ function AuthContextComponent({children}) {
 
   return (
     <AuthContext.Provider value={data}>
-      {/* {auth.status === 'done' ? children : <p>Loading...</p>} */}
-      {children}
+      {auth.status === 'done' ? children : <p>Loading...</p>}
+      {/* {children} */}
       </AuthContext.Provider>
   )
 }
