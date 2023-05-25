@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logobanner from '../assets/pokemon.svg';
 import SearchIcon from '../components/SearchIcon';
 import SearchResults from '../components/SearchResult';
+import PokemonContainer from '../components/PokemonContainer';
 import axios from 'axios';
 import './Home.css'
 
@@ -12,6 +13,9 @@ function Home() {
   const [pokemon, setPokemon] = useState("")
   const [pokemonResult, setPokemonResult] = useState("")
   const [pokemonResultImage, setPokemonResultImage] = useState("")
+  const [pokemonType, setPokemonType] = useState("")
+
+  
 
   useEffect(()=> {
     const fetchData = (value) => {
@@ -23,6 +27,7 @@ function Home() {
             return value && user && user.name && user.name.toLowerCase().includes(value.toLowerCase())
           })
           setResults(results);
+          console.log(results)
         })
     }
 
@@ -38,8 +43,10 @@ function Home() {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
         console.log(response.data);
         setPokemonResult(response.data)
-        setPokemonResultImage(response.data.sprites.front_default)
-        console.log(response.data.sprites.front_default);
+        setPokemonResultImage(response.data.sprites.other['official-artwork'].front_default)
+        setPokemonType(response.data.types['0'].type.name)
+        console.log(response.data.sprites.other['official-artwork'].front_default);
+        console.log(response.data.types['0'].type.names);
       } catch (e) {
         console.error(e);
       }
@@ -57,7 +64,7 @@ function Home() {
         <img src={logobanner} alt="logo" />
       </header>
     </div>
-    <div className='pokemon'><img src={pokemonResultImage} alt={pokemonResult.name}></img></div>
+    <PokemonContainer pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
       <section>
         <p>Which Pokemon do you want to catch...</p>
         <SearchIcon pokemon={pokemon} setPokemon={setPokemon} />

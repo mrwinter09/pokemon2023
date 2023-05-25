@@ -5,11 +5,7 @@ function SearchResultCard({results, setPokemon, pokemon}) {
 
   return (
     <>
-   <div className='search-result' onClick={() => setPokemon(results.name)}>{results.name}</div>
-   <div className={inactive ? 'search-result' : 'search-result hidden'}>{results.email}</div>
-   <div className={inactive ? 'search-result' : 'search-result hidden'}>{results.phone}</div>
-   <div className={inactive ? 'search-result' : 'search-result hidden'}>{results.username}</div>
-   <div className={inactive ? 'search-result' : 'search-result hidden'}>{results.website}</div>
+   <div className={!inactive ? 'search-result' : 'search-result hidden'} onClick={() => setPokemon(results.name)}>{results.name}</div>
     </>
   );
 }
