@@ -14,28 +14,29 @@ function Home() {
   const [pokemonResult, setPokemonResult] = useState("")
   const [pokemonResultImage, setPokemonResultImage] = useState("")
   const [pokemonType, setPokemonType] = useState("")
+  const [pokeNames, setPokeNames] = useState([])
 
-  
+  useEffect(() => {
+    function callPokemon(value) {
+      const results = pokeNames.filter((user)=> {
+        return value && user && user.name && user.name.toLowerCase().includes(value.toLowerCase())
+      })
+      setResults(results);
+      console.log(results)
+    }
+    callPokemon(pokemon)
+  }, [pokemon])
 
   useEffect(()=> {
-    const fetchData = (value) => {
+    const fetchData = () => {
       fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
         .then(response => response.json())
         .then((json) => {
-          console.log(json.results)
-          const results = json.results.filter((user)=> {
-            return value && user && user.name && user.name.toLowerCase().includes(value.toLowerCase())
-          })
-          setResults(results);
-          console.log(results)
+          setPokeNames(json.results)
         })
     }
-
-    console.log(pokemon)
-    if(pokemon){
-      fetchData(pokemon)
-    }
-  },[pokemon]);
+      fetchData()
+  },[]);
 
   useEffect(() => {
     async function fetchDataPokemon() {
