@@ -15,6 +15,10 @@ function Home() {
   const [pokemonResultImage, setPokemonResultImage] = useState("")
   const [pokemonType, setPokemonType] = useState("")
   const [pokeNames, setPokeNames] = useState([])
+  const [pokemonHp, setPokemonHp] = useState("")
+  const [pokemonWeight, setPokemonWeight] = useState("")
+  const [pokemonHeight, setPokemonHeight] = useState("")
+  const [pokemonStats, setPokemonStats] = useState("")
 
   useEffect(() => {
     function callPokemon(value) {
@@ -46,6 +50,10 @@ function Home() {
         setPokemonResult(response.data)
         setPokemonResultImage(response.data.sprites.other['official-artwork'].front_default)
         setPokemonType(response.data.types['0'].type.name)
+        setPokemonHp(response.data.stats['0'].stat.name)
+        setPokemonWeight(response.data.weight)
+        setPokemonHeight(response.data.height)
+        setPokemonStats(response.data.stats['0'].base_stat)
         console.log(response.data.sprites.other['official-artwork'].front_default);
       } catch (e) {
         console.error(e);
@@ -64,7 +72,7 @@ function Home() {
         <img src={logobanner} alt="logo" />
       </header>
     </div>
-    <PokemonContainer pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
+    <PokemonContainer pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
       <section>
         <p>Which Pokemon do you want to catch...</p>
         <SearchIcon pokemon={pokemon} setPokemon={setPokemon} />
