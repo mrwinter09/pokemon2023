@@ -46,7 +46,6 @@ function Home() {
         setPokemonResultImage(response.data.sprites.other['official-artwork'].front_default)
         setPokemonType(response.data.types['0'].type.name)
         console.log(response.data.sprites.other['official-artwork'].front_default);
-        console.log(response.data.types['0'].type.names);
       } catch (e) {
         console.error(e);
       }
