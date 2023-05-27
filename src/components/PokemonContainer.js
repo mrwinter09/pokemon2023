@@ -1,25 +1,28 @@
 import './PokemonContainer.css'
-import fire from '../assets/icons/fire.png'
-import grass from '../assets/icons/grass.png'
-import electric from '../assets/icons/electric.png'
-import water from '../assets/icons/water.png'
-import ground from '../assets/icons/ground.png'
-import rock from '../assets/icons/rock.png'
-import fairy from '../assets/icons/fairy.png'
-import poison from '../assets/icons/poison.png'
 import bug from '../assets/icons/bug.png'
+import dark from '../assets/icons/dark.png'
 import dragon from '../assets/icons/dragon.png'
-import psychic from '../assets/icons/psychic.png'
-import flying from '../assets/icons/flying.png'
+import electric from '../assets/icons/electric.png'
+import fairy from '../assets/icons/fairy.png'
 import fighting from '../assets/icons/fighting.png'
+import fire from '../assets/icons/fire.png'
+import flying from '../assets/icons/flying.png'
+import ghost from '../assets/icons/ghost.png'
+import grass from '../assets/icons/grass.png'
+import ground from '../assets/icons/ground.png'
+import ice from '../assets/icons/ice.png'
 import normal from '../assets/icons/normal.png'
-
+import poison from '../assets/icons/poison.png'
+import psychic from '../assets/icons/psychic.png'
+import rock from '../assets/icons/rock.png'
+import steel from '../assets/icons/steel.png'
+import water from '../assets/icons/water.png'
 
 function PokemonContainer({pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
 const inactive = pokemon === pokemonResult.name
 
 const colors = {
-  fire:'#ffd0d0',
+  fire:'#ffdec1',
   grass:'#c8ffcc',
   electric:'#fff5c4',
   water:'#c5edff',
@@ -32,7 +35,11 @@ const colors = {
   psychic:'#e5e97b',
   flying:'#e4c0c0',
   fighting:'#d9c499',
-  normal:'F5F5F5',
+  normal:'#ecf0f1',
+  dark:'#7dd78f',
+  ghost:'#f6dbc1',
+  ice:'#d9c499',
+  steel:'#c8ffcc',
 }
 
 const icon = {
@@ -50,6 +57,10 @@ const icon = {
   flying: flying,
   fighting: fighting,
   normal: normal,
+  dark: dark,
+  ghost: ghost,
+  ice: ice,
+  steel: steel,
   }
 
 const symbols =icon[pokemonType]

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700|Nunito:600');
+
 .pokemonCardContainer {
   height: 100%;
   display: flex;
@@ -36,8 +38,8 @@
 }
 
 .pokemonCardContainer .card-content .column .symbol {
-  width: 40px;
-    height: 40px;
+  width: 25px;
+    height: 25px;
     filter: drop-shadow(0px 1px 9px black);
     border-radius: 55%;
     margin-bottom: 2px;
@@ -52,18 +54,22 @@
 }
 
 .pokemonCardContainer .card-content .title {
-  letter-spacing: 3px;
+  font-family: Cinzel;
+  letter-spacing: -2px;
   margin-bottom: 1px;
   font-size: 1.7rem;
   font-weight: bold;
   margin-left: 2px;
+  text-transform: uppercase;
 }
 
 .pokemonCardContainer .hp {
+  font-family: Cinzel;
   position: relative;
   font-weight: lighter;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-top: 1px;
+  text-transform: uppercase;
 }
 
 .pokemonCardContainer hr {
@@ -107,7 +113,7 @@
 }
 
 .pokemonCardContainer .card-content .nudge {
- margin-bottom: 25px;
+ margin-bottom: 10px;
 }
 
 .pokemonCardContainer .card-content .stats .tag {
