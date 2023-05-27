@@ -15,7 +15,6 @@ function Home() {
   const [pokemonResultImage, setPokemonResultImage] = useState("")
   const [pokemonType, setPokemonType] = useState("")
   const [pokeNames, setPokeNames] = useState([])
-  // console.log(pokeNames)
   const [pokemonHp, setPokemonHp] = useState("")
   const [pokemonWeight, setPokemonWeight] = useState("")
   const [pokemonHeight, setPokemonHeight] = useState("")
@@ -49,6 +48,7 @@ function Home() {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
         console.log(response.data);
         setPokemonResult(response.data)
+        
         setPokemonResultImage(response.data.sprites.other['official-artwork'].front_default)
         setPokemonType(response.data.types['0'].type.name)
         setPokemonHp(response.data.stats['0'].stat.name)

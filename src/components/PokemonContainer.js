@@ -13,7 +13,7 @@ import psychic from '../assets/icons/psychic.png'
 import flying from '../assets/icons/flying.png'
 import fighting from '../assets/icons/fighting.png'
 import normal from '../assets/icons/normal.png'
-import { useState } from 'react';
+
 
 function PokemonContainer({pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
 const inactive = pokemon === pokemonResult.name
@@ -81,10 +81,10 @@ const color = colors[pokemonType]
             <span style={{backgroundColor: color}} className="tag is-warning">Type</span>
           </div>
 
-          <div className="column center-column">{pokemonWeight}lbs
+          <div className="column center-column">{pokemonWeight} lbs
             <span style={{backgroundColor: color}} className="tag is-warning">Weight</span>
           </div>
-          <div className="column">{pokemonHeight}m
+          <div className="column">{pokemonHeight} m
             <span style={{backgroundColor: color}} className="tag is-warning">Height</span>
           </div>
         </div>
