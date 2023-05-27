@@ -72,7 +72,7 @@ function Home() {
         <img src={logobanner} alt="logo" />
       </header>
     </div>
-    <PokemonContainer pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
+    <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
       <section>
         <p>Which Pokemon do you want to catch...</p>
         <SearchIcon pokemon={pokemon} setPokemon={setPokemon} />

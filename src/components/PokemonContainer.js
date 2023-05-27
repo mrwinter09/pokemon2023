@@ -15,8 +15,8 @@ import fighting from '../assets/icons/fighting.png'
 import normal from '../assets/icons/normal.png'
 import { useState } from 'react';
 
-function PokemonContainer({pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
-const [inactive, setinactive] = useState(false)
+function PokemonContainer({pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
+const inactive = pokemon === pokemonResult.name
 
 const colors = {
   fire:'#ffd0d0',
@@ -58,7 +58,7 @@ const color = colors[pokemonType]
 
   return (
     <>
-<div className={!inactive ? 'pokemonCardContainer' : 'pokemonCardContainer hidden'}>
+<div className={inactive ? 'pokemonCardContainer' : 'pokemonCardContainer hidden'}>
     <div style={{border: '5px solid'+ color}} className="card card--charizard">
       
       <div className="card-image">
