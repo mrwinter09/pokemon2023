@@ -7,6 +7,7 @@ import SearchResults from '../components/SearchResult';
 import PokemonContainer from '../components/PokemonContainer';
 import axios from 'axios';
 import './Home.css'
+import HomeText from '../components/HomeText';
 
 function Home() {
 
@@ -89,8 +90,6 @@ function Home() {
     }
   },[pokemon]);
 
-  console.log(abilityDescription)
-
   return (
     <>
       <div className="App">
@@ -98,11 +97,12 @@ function Home() {
         <img src={logobanner} alt="logo" />
       </header>
     </div>
+    <div className='wrapper'>    
     <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
+    <HomeText abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
+</div>
       <section>
-        <p>Which Pokemon do you want to catch...</p>
-        <p>{abilityDescription}</p>
-        <SearchIcon pokemon={pokemon} setPokemon={setPokemon} />
+        <SearchIcon pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
         <SearchResults results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
     </>

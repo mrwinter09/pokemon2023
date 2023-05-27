@@ -16,3 +16,8 @@
   width: 325px;
   height: 160px;
 }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
