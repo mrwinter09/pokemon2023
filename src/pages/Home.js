@@ -16,6 +16,11 @@ function Home() {
   const [pokemonResultImage, setPokemonResultImage] = useState("")
   const [pokemonType, setPokemonType] = useState("")
   const [pokeNames, setPokeNames] = useState([])
+
+  const [pokeAbility, setpokeAbility] = useState([])
+  const [abilityDescription, setAbilityDescription] = useState("")
+
+  const [pokeAbilityName, setpokeAbilityName] = useState("")
   const [pokemonHp, setPokemonHp] = useState("")
   const [pokemonWeight, setPokemonWeight] = useState("")
   const [pokemonHeight, setPokemonHeight] = useState("")
@@ -27,7 +32,7 @@ function Home() {
         return value && user && user.name && user.name.toLowerCase().includes(value.toLowerCase())
       })
       setResults(results);
-      console.log(results)
+      // console.log(results)
     }
     callPokemon(pokemon)
   }, 
@@ -46,6 +51,23 @@ function Home() {
   },[]);
 
   useEffect(() => {
+    async function fetchDataPokemonAbility() {
+      try {
+        const response = await axios.get(`https://pokeapi.co/api/v2/ability/${pokeAbilityName}`);
+        console.log(response.data);
+        setpokeAbility(response.data)
+        setAbilityDescription(response.data.effect_entries['1'].effect)
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    if(pokeAbilityName){
+      fetchDataPokemonAbility()
+    }
+  },[pokeAbilityName]);
+
+
+  useEffect(() => {
     async function fetchDataPokemon() {
       try {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
@@ -57,7 +79,7 @@ function Home() {
         setPokemonWeight(response.data.weight)
         setPokemonHeight(response.data.height)
         setPokemonStats(response.data.stats['0'].base_stat)
-        console.log(response.data.sprites.other['official-artwork'].front_default);
+        setpokeAbilityName(response.data.abilities['0'].ability.name)
       } catch (e) {
         console.error(e);
       }
@@ -67,6 +89,7 @@ function Home() {
     }
   },[pokemon]);
 
+  console.log(abilityDescription)
 
   return (
     <>
@@ -77,8 +100,8 @@ function Home() {
     </div>
     <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
       <section>
-        {/* <p>Which Pokemon do you want to catch...</p> */}
-        <p>Pikachu is an Electric-type Pokémon introduced in Generation I. It evolves from Pichu when leveled up with high friendship and evolves into Raichu when exposed to a Thunder Stone. In Alola, Pikachu will evolve into Alolan Raichu when exposed to a Thunder Stone. Pikachu can Gigantamax into Gigantamax Pikachu if it has the Gigantamax Factor for its Gigantamax form. Pikachu with the Gigantamax Factor cannot evolve. In Pokémon Yellow, the starter Pikachu will refuse to evolve into Raichu unless it is traded and evolved on another save file. In Pokémon: Let's Go, Pikachu!, the player's partner Pikachu will also not evolve, and cannot be traded to become a Raichu. Pikachu is popularly known as the mascot of the Pokémon franchise and one of Nintendo's major mascots. It is also the game mascot and starter Pokémon of Pokémon Yellow and Let's Go, Pikachu!. It has made numerous appearances on the boxes of spin-off titles. Pikachu is also the starter Pokémon of Pokémon Rumble Blast and Pokémon Rumble World.</p>
+        <p>Which Pokemon do you want to catch...</p>
+        <p>{abilityDescription}</p>
         <SearchIcon pokemon={pokemon} setPokemon={setPokemon} />
         <SearchResults results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
