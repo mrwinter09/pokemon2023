@@ -11,3 +11,8 @@
 .hidden{
   display: none;
 }
+
+.App-header img{
+  width: 325px;
+  height: 160px;
+}

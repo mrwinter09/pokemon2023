@@ -15,6 +15,7 @@ function Home() {
   const [pokemonResultImage, setPokemonResultImage] = useState("")
   const [pokemonType, setPokemonType] = useState("")
   const [pokeNames, setPokeNames] = useState([])
+  // console.log(pokeNames)
   const [pokemonHp, setPokemonHp] = useState("")
   const [pokemonWeight, setPokemonWeight] = useState("")
   const [pokemonHeight, setPokemonHeight] = useState("")
