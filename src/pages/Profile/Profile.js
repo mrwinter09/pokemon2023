@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import './BattlePage.css'
 
 
-function BattlePage() {
+function Profile() {
   const {valueTestEmail, valueTestName, valueTestPassword} = useContext(AuthContext);
   const [password, setPassword] = useState(true)
 
@@ -15,7 +14,7 @@ function BattlePage() {
 
   return (
     <>
-      <h1 className='battle'>Battle Page</h1>
+      <h1>Profielpagina</h1>
       <section>
         <h2>Gegevens</h2>
         <p><strong>Gebruikersnaam:</strong> {valueTestName}</p>
@@ -32,4 +31,4 @@ function BattlePage() {
   );
 }
 
-export default BattlePage;
+export default Profile;
