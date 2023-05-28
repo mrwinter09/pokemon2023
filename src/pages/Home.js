@@ -8,6 +8,7 @@ import PokemonContainer from '../components/PokemonContainer';
 import axios from 'axios';
 import './Home.css'
 import HomeText from '../components/HomeText';
+import HomeFooter from '../components/HomeFooter';
 
 function Home() {
 
@@ -124,10 +125,7 @@ function Home() {
     <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
     <HomeText pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
   </div>
-  <footer className="App-footer">
-        <p>Stress test this pokemon to a other Pokemon</p>
-        <button>Bench Mark</button>
-  </footer>
+  <HomeFooter pokemonResult={pokemonResult} pokemon={pokemon} />
     </>
   );
 }
