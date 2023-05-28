@@ -2,10 +2,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Nav from './components/Navigation/Nav';
-import Profile from './pages/Profile';
-import Home from './pages/Home';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import BattlePage from './pages/BattlePage/BattlePage';
+import Home from './pages/Home/Home';
+import SignIn from './pages/Signin/SignIn';
+import SignUp from './pages/SignUp/SignUp';
 import './App.css';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/profile">
-          <Profile />
+          <BattlePage />
         </Route>
         <Route exact path="/signin">
           <SignIn />

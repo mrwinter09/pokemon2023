@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 // eslint-disable-next-line
 import { Link } from 'react-router-dom';
-import logobanner from '../assets/pokemon.svg';
-import SearchIcon from '../components/SearchIcon';
-import SearchResults from '../components/SearchResult';
-import PokemonContainer from '../components/PokemonContainer/PokemonContainer';
-import PokemonDescription from '../components/PokemonDescription/PokemonDescription'
+import logobanner from '../../assets/pokemon.svg';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import SearchResults from '../../components/SearchResult/SearchResult';
+import PokemonContainer from '../../components/PokemonContainer/PokemonContainer';
+import PokemonDescription from '../../components/PokemonDescription/PokemonDescription'
 import axios from 'axios';
 import './Home.css'
-import HomeFooter from '../components/HomeFooter/HomeFooter';
+import HomeFooter from '../../components/HomeFooter/HomeFooter';
 
 
 function Home() {
@@ -119,7 +119,7 @@ function Home() {
       </header>
     </div>
     <section>
-        <SearchIcon setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
+        <SearchBar setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
         <SearchResults setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
     <div className='wrapper'>

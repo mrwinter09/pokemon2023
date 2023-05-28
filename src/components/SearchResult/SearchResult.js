@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchResult.css'
-import SearchResultCard from './SearchResultCard';
+import SearchResultCard from '../SearchResultCard/SearchResultCard';
 
 
 

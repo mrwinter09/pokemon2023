@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import './SearchIcon.css'
+import './SearchBar.css'
 
-function SearchIcon({ pokemon, setPokemon, pokemonResult, setActive, active }) {
+function SearchBar({ pokemon, setPokemon, pokemonResult, setActive, active }) {
   const inactive = pokemon === pokemonResult.name
 
   return (
@@ -16,4 +16,4 @@ function SearchIcon({ pokemon, setPokemon, pokemonResult, setActive, active }) {
   )
 }
 
-export default SearchIcon;
+export default SearchBar;
