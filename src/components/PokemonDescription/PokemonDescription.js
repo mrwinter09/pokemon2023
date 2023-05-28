@@ -1,4 +1,4 @@
-import './HomeText.css'
+import './PokemonDescription.css'
 function HomeText({abilityDescription, pokemonResult, pokemon, pokemonSpecies}) {
   const inactive = pokemon === pokemonResult.name
  

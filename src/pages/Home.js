@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import logobanner from '../assets/pokemon.svg';
 import SearchIcon from '../components/SearchIcon';
 import SearchResults from '../components/SearchResult';
-import PokemonContainer from '../components/PokemonContainer';
+import PokemonContainer from '../components/PokemonContainer/PokemonContainer';
+import PokemonDescription from '../components/PokemonDescription/PokemonDescription'
 import axios from 'axios';
 import './Home.css'
-import HomeText from '../components/HomeText';
-import HomeFooter from '../components/HomeFooter';
+import HomeFooter from '../components/HomeFooter/HomeFooter';
+
 
 function Home() {
 
@@ -122,10 +123,10 @@ function Home() {
         <SearchResults setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
     <div className='wrapper'>
-    <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
-    <HomeText pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
-  </div>
-  <HomeFooter pokemonResult={pokemonResult} pokemon={pokemon} />
+        <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
+        <PokemonDescription pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
+    </div>
+        <HomeFooter pokemonResult={pokemonResult} pokemon={pokemon} />
     </>
   );
 }
