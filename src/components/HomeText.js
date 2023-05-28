@@ -1,5 +1,5 @@
 import './HomeText.css'
-function HomeText({abilityDescription, pokemonResult, pokemon}) {
+function HomeText({abilityDescription, pokemonResult, pokemon, pokemonSpecies}) {
   const inactive = pokemon === pokemonResult.name
  
 
@@ -7,7 +7,10 @@ function HomeText({abilityDescription, pokemonResult, pokemon}) {
   return (
     <>
     <div className='homeTextContainer'>
-    <p className={inactive ? '' : ' hidden'} >{abilityDescription}</p>
+    <div className='homeTextContainerContent'>
+    {/* <p className={inactive ? '' : ' hidden'} >{abilityDescription}</p> */}
+    <p className={inactive ? '' : ' hidden'} >{pokemonSpecies}</p>
+    </div>
     </div>
     
     </>

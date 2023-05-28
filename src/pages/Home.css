@@ -21,3 +21,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.App-footer img{
+  width: 325px;
+  height: 160px;
+}

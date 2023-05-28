@@ -3,3 +3,43 @@
 .homeTextContainer {
   margin: 0px 10px
 }
+
+.homeTextContainer{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+  text-align: start;
+    font-size: larger;
+    font-weight: 200;
+}
+
+.homeTextContainerContent{
+  max-width: 270px;
+  border-radius: 20px;
+  padding-bottom: 0.5rem;
+  background: none;
+}
+
+@media (max-width: 390px) {
+
+  .homeTextContainer{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0px 10px 0px 5px;
+    text-align: start;
+    font-size: larger;
+    font-weight: 200;
+  }
+
+  /* .homeTextContainerContent{
+    display: flex;
+    max-width: 235px;
+    border-radius: 20px;
+    padding-bottom: 0.5rem;
+    background: none;
+  } */
+}

@@ -26,6 +26,8 @@ function Home() {
   const [pokemonWeight, setPokemonWeight] = useState("")
   const [pokemonHeight, setPokemonHeight] = useState("")
   const [pokemonStats, setPokemonStats] = useState("")
+  const [pokemonSpecies, setPokemonSpecies] = useState([])
+  console.log(pokemonSpecies)
 
   const [active, setActive] = useState(false)
 
@@ -92,9 +94,24 @@ function Home() {
     }
   },[pokemon]);
 
+  useEffect(() => {
+    async function fetchDataPokemon() {
+      try {
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
+        console.log(response.data);
+        setPokemonSpecies(response.data.flavor_text_entries['6'].flavor_text)
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    if(pokemon){
+      fetchDataPokemon()
+    }
+  },[pokemon]);
+
   return (
     <>
-      <div className="App">
+  <div className="App">
       <header className="App-header">
         <img src={logobanner} alt="logo" />
       </header>
@@ -103,11 +120,14 @@ function Home() {
         <SearchIcon setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
         <SearchResults setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
-    <div className='wrapper'>    
+    <div className='wrapper'>
     <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
-    <HomeText abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
-</div>
-      
+    <HomeText pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
+  </div>
+  <footer className="App-footer">
+        <p>Stress test this pokemon to a other Pokemon</p>
+        <button>Bench Mark</button>
+  </footer>
     </>
   );
 }
