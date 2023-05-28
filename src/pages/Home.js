@@ -97,14 +97,15 @@ function Home() {
         <img src={logobanner} alt="logo" />
       </header>
     </div>
+    <section>
+        <SearchIcon pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
+        <SearchResults results={results} setPokemon={setPokemon} pokemon={pokemon}/>
+      </section>
     <div className='wrapper'>    
     <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
     <HomeText abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
 </div>
-      <section>
-        <SearchIcon pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
-        <SearchResults results={results} setPokemon={setPokemon} pokemon={pokemon}/>
-      </section>
+      
     </>
   );
 }

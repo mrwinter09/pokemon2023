@@ -39,7 +39,7 @@
   width: 200px;
 }
 .search.active .btn{
-  transform: translateX(130px);
+  transform: translateX(100px);
 }
 
 .btn-style{
