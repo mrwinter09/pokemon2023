@@ -27,13 +27,22 @@ function Nav() {
         </Link>
 
       <div className='nav-mobile'>
+        
         {isAuthMan ?
+        <>
         <button
           type="button"
           onClick={signinOut}
         >
           Uitlog
         </button>
+        <button
+         type="button"
+         onClick={() => history.push('/profile')}
+       >
+         Profile
+       </button>
+        </>
         :
         <>
         <button
