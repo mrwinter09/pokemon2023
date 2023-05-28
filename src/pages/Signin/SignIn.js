@@ -18,7 +18,7 @@ function SignIn() {
       e.preventDefault();
       console.log(loginEmail)
       console.log(loginPassword)
-      return navigate.push('/profile')
+      return navigate.push('/')
      } else {
       setWarning(true)
       console.log(loginEmail)

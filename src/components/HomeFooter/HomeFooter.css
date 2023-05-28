@@ -1,5 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+
 p{
   margin-top: 30px;
+
+  &.bottom{
+    margin-bottom: 0px;
+  }
+
+  &.top{
+    margin-top: 0px
+  }
+
+  &.battle{
+    font-family: Alfa Slab One;
+    letter-spacing: -1px;
+    margin-bottom: 1px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-left: 2px;
+    text-transform: uppercase;
+    transform-origin: 0 0;
+    transform: rotate(354deg);
+    -webkit-text-stroke-width: 1px;
+    text-shadow: 5px 10px 2px #FF0000, 10px 15px 11px #2a75bb;
+    -webkit-text-stroke-color: #2a75bb;
+    color: #ffcb05;
+  }
 }
 
 footer  {
@@ -7,4 +34,25 @@ footer  {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 390px) {
+  p{
+    &.battle{
+      max-width: 90%;
+      font-family: Alfa Slab One;
+      letter-spacing: -1px;
+      margin-bottom: 1px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-left: 2px;
+      text-transform: uppercase;
+      transform-origin: 0 0;
+      transform: rotate(354deg);
+      -webkit-text-stroke-width: 1px;
+      text-shadow: 5px 10px 2px #FF0000, 10px 15px 11px #2a75bb;
+      -webkit-text-stroke-color: #2a75bb;
+      color: #ffcb05;
+    }
+  }
 }

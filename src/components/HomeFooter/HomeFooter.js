@@ -1,15 +1,43 @@
+import React, { useContext } from 'react';
 import './HomeFooter.css'
+import { useHistory } from "react-router-dom/";
+import { AuthContext } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
+
 
 function HomeFooter({pokemonResult, pokemon,}) {
+  const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === pokemonResult.name
+  const history = useHistory();
  
 
 
   return (
     <>
     <footer className={inactive ? 'App-footer' : ' hidden'} >
-      <p>Stress test this pokemon to a other Pokemon</p>
-      <button type='button'>Bench Mark</button>
+      {isAuthMan ?
+      <>
+      <p className='battle'>Let's battle with {pokemon}</p>
+        <button
+        type="button"
+        onClick={() => history.push('/battlepage')}
+        >
+          Battle
+        </button>
+        </>
+        :
+        <>
+       
+       <p className='bottom'>Wanna see {pokemon} in a battle</p>
+       <p className='top'><Link to="/signin">Log in</Link> ore register </p>
+       <button
+         type="button"
+         onClick={() => history.push('/signup')}
+       >
+         Registreren
+       </button>
+       </>
+        }
     </footer>
     </>
   );
