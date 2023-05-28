@@ -27,6 +27,8 @@ function Home() {
   const [pokemonHeight, setPokemonHeight] = useState("")
   const [pokemonStats, setPokemonStats] = useState("")
 
+  const [active, setActive] = useState(false)
+
   useEffect(() => {
     function callPokemon(value) {
       const results = pokeNames.filter((user)=> {
@@ -98,8 +100,8 @@ function Home() {
       </header>
     </div>
     <section>
-        <SearchIcon pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
-        <SearchResults results={results} setPokemon={setPokemon} pokemon={pokemon}/>
+        <SearchIcon setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
+        <SearchResults setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
     <div className='wrapper'>    
     <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>

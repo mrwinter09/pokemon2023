@@ -3,8 +3,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import './SearchIcon.css'
 import { useState } from 'react';
 
-function SearchIcon({ pokemon, setPokemon, pokemonResult}) {
-  const [active, setActive] = useState(false)
+function SearchIcon({ pokemon, setPokemon, pokemonResult, setActive, active }) {
   const inactive = pokemon === pokemonResult.name
 
   return (

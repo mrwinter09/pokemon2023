@@ -4,14 +4,14 @@ import SearchResultCard from './SearchResultCard';
 
 
 
-function SearchResults({results, setPokemon, pokemon}) {
+function SearchResults({results, setPokemon, pokemon, setActive }) {
   const inactive = pokemon === '';
   return (
     <>
         <div className={!inactive ? 'result' : 'result hidden'}>
      {
       results.map((result, id) => {
-        return <SearchResultCard results={result} key={id} setPokemon={setPokemon} pokemon={pokemon}/>
+        return <SearchResultCard setActive={setActive} results={result} key={id} setPokemon={setPokemon} pokemon={pokemon}/>
       })
      }
     </div>
