@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './HomeFooter.css'
 import { useHistory } from "react-router-dom/";
 import { AuthContext } from '../../context/AuthContext';
@@ -21,6 +21,7 @@ function HomeFooter({pokemonResult, pokemon,}) {
         <button
         type="button"
         onClick={() => history.push('/battlepage')}
+        className='start-btn'
         >
           Battle
         </button>
@@ -32,6 +33,7 @@ function HomeFooter({pokemonResult, pokemon,}) {
        <button
          type="button"
          onClick={() => history.push('/signup')}
+         className='registration'
        >
          Registreren
        </button>

@@ -21,8 +21,6 @@ import './BattlePage.css'
 
 
 function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
-  console.log(abilityDescription);
-  console.log(pokemonResultImage);
   const totalProgressBars = 1;
   const progressStatusArray = [1, 2, 3, 4, 5, 6];
   const progressStatusArrayLength = progressStatusArray.length;
@@ -31,6 +29,9 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
   const [battleStatsA, setBattleStatsA] = useState(6)
   const [battleStatsB, setBattleStatsB] = useState(6)
   const gameover = battleStatsA === 0 || battleStatsB === 0;
+
+  const winnerA = battleStatsB === 0
+  const winnerB = battleStatsA === 0
 
   function reset(){
     setStartButton(false)
@@ -106,7 +107,7 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
       </header>
       <div className="split-bar">
        <div>
-        <p className='titleNameA'>{pokemonHp} {battleStatsA}<img src={pokemonBattleIcon}></img>{pokemonSpeciesName}</p>
+        <p className='titleNameA'>{pokemonHp} {battleStatsA}<img src={pokemonBattleIcon} alt=''></img><span className={winnerA ? '' : 'hidden'}>{pokemonSpeciesName}</span></p>
        <div className='energyBar'>
           {progressStatusArray.map((item, index) => {
             return (
@@ -122,7 +123,7 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
         </div>
        </div>
        <div>
-       <p className='titleNameB'>{pokemonSpeciesName}<img src={pokemonBattleIcon}></img>{pokemonHp} {battleStatsB}</p>
+       <p className='titleNameB'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={pokemonBattleIcon} alt=''></img>{pokemonHp}{battleStatsB}</p>
         <div
           className='energyBar'
         >
