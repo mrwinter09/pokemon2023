@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700|Nunito:600');
 
+.App .split-bar{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .energyBar{
+    display: flex;
+    flex: 1; 
+    justify-content:space-evenly;
+    margin: 10px 10px 50px 10px;
+  }
+}
+
+.App .title-margin {
+  margin: 5px;
+}
+
 .abilityDescriptionText{
   max-width: 270px;
     border-radius: 20px;
@@ -37,6 +53,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-left: 50px;
 }
 
 .pokemonCardContainerBattlePage .center {
@@ -51,6 +68,7 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-right: 50px;
 }
 
 .pokemonCardContainerBattlePage .card .card-image {
@@ -135,8 +153,6 @@
   justify-content: space-between;
   align-items: center;
   width: 37%;
-  /* margin: 0 auto; */
-  /* margin-top: 20px; */
   font-size: 20px;
 }
 
@@ -146,8 +162,6 @@
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  /* margin: 0 auto; */
-  /* margin-top: 20px; */
   font-size: 14px;
 }
 
@@ -173,12 +187,56 @@
   display: none;
 }
 
+.App .video-game-button {
+	text-shadow: 1px 1px pink, -1px -1px maroon;
+	line-height: 1.5em;
+	text-align: center;
+	display: inline-block;
+	width: 9.5em;
+	-webkit-border-radius: .75em;
+	-moz-border-radius: .75em;
+	-o-border-radius: .75em;
+		border-radius: .75em;
+	-webkit-box-shadow:  0 .2em maroon;
+	-moz-box-shadow:  0 .2em maroon;
+	-o-box-shadow:  0 .2em maroon;
+	box-shadow:  0 .2em maroon;
+	color: #ffcb05;
+	margin: 10px;
+	background-color: red;
+	cursor: pointer;
+  padding-left: 5px;
+}
+.App .start-btn{
+    text-align: center;
+	display: inline-block;
+	margin:5px;
+  width: 9.5em;
+    font-weight: bold;
+    padding: 10px 0 10px 10px ;
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
+
+}
+.App .video-game-button:active, .start-btn:active {
+	box-shadow: none;
+	position: relative;
+	top: .2em;
+}
+
 h1{
   &.battle{
     font-family: Alfa Slab One;
     letter-spacing: -1px;
     margin-bottom: 1px;
-    font-size: 1.3rem;
+    font-size: 3rem;
     font-weight: bold;
     margin-left: 2px;
     text-transform: uppercase;

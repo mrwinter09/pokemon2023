@@ -23,13 +23,24 @@ import './BattlePage.css'
 function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
   console.log(abilityDescription);
   console.log(pokemonResultImage);
+  const totalProgressBars = 1;
+  const progressStatusArray = [2, 3, 4, 5, 6, 7];
+  const progressStatusArrayLength = progressStatusArray.length;
 
-  const [password, setPassword] = useState(true)
+  const [startButton, setStartButton] = useState(false)
 
-
-  function setPas(){
-    setPassword(!password)
-  }
+  const ProgressDivs = ({ backgroundColorStyle, flexValue }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        backgroundColor: backgroundColorStyle,
+        flex: flexValue,
+        padding: "1.5%"
+      }}
+    />
+  );
+};
 
   const colors = {
     fire:'#ffdec1',
@@ -81,6 +92,48 @@ function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonRes
       <header className="App-header">
         <h1 className='battle'>Battle Page</h1>
       </header>
+      <div className="split-bar">
+       <div>
+        {pokemon}
+       <div className='energyBar'>
+          {progressStatusArray.map((item, index) => {
+            return (
+              <ProgressDivs
+                key={item}
+                backgroundColorStyle={index < 6 ? "red" : "black"}
+                flexValue={
+                  totalProgressBars / progressStatusArrayLength - 0.005
+                }
+              />
+            );
+          })}
+        </div>
+       </div>
+       <div>
+        {pokemon}
+        <div
+          className='energyBar'
+        >
+          {progressStatusArray.map((item, index) => {
+            return (
+              <ProgressDivs
+                key={item}
+                backgroundColorStyle={index < 6 ? "red" : "black"}
+                flexValue={
+                  totalProgressBars / progressStatusArrayLength - 0.005
+                }
+              />
+            );
+          })}
+        </div>
+       </div>
+
+      </div>
+    <div>
+      <div className="pokemon-left"></div>
+      <div className="pokemon-right"></div>
+    </div>
+
         <div className='pokemonCardContainerBattlePage'>
 
         <div className="split">
@@ -113,19 +166,17 @@ function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonRes
            </div>
         </div>
           </div>
-          {/* <p className="abilityDescriptionText">{abilityDescription}</p> */}
+          <p className="abilityDescriptionText">{abilityDescription}</p>
             </div>
 
           <div className="center">
-
           <header className="App-header">
           <h1 className='battle vs'>VS</h1>
           </header>
-
           </div>
-          
+
             <div className="split">
-              {/* <p className="abilityDescriptionText">{abilityDescription}</p> */}
+              <p className="abilityDescriptionText">{abilityDescription}</p>
               <div className="right">
           <div style={{border: '5px solid'+ color}} className="card card--charizard">
            <div className="card-image">
@@ -157,13 +208,18 @@ function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonRes
           </div>
           
             </div>
-    </div>
+          </div>
+
       <section>
-        <h2>Gegevens</h2>
-        <p><strong>{pokemon}</strong> </p>
-        <p><strong>Email: </strong>{}</p>
-        <p><strong>Wachtwoord: </strong><span className={password === true ? 'hidden' : 'no-hidden'}>{}</span></p>
-        <button type='button' onClick={setPas}>Show wachtwoord</button>
+        <div className={!startButton ? 'button-start' : 'button-start hidden'}>
+           <h2 className='title-margin'>Press Start</h2>
+           <button onClick={() => setStartButton(!startButton)} type='button' className='start-btn'>START</button>
+        </div>
+        <div className={startButton ? 'button-ab' : 'button-ab hidden'}>
+          <h2 className='title-margin'>Game Over</h2>
+           <button type='button' class='video-game-button'>A</button>
+           <button type='button' class='video-game-button'>B</button>  
+           </div>
       </section>
       </div>
     </>

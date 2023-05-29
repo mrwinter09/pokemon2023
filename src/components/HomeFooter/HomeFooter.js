@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './HomeFooter.css'
 import { useHistory } from "react-router-dom/";
 import { AuthContext } from '../../context/AuthContext';
@@ -27,7 +27,6 @@ function HomeFooter({pokemonResult, pokemon,}) {
         </>
         :
         <>
-       
        <p className='bottom'>Wanna see {pokemon} in a battle</p>
        <p className='top'><Link to="/signin">Log in</Link> ore register </p>
        <button
