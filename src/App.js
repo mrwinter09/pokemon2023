@@ -17,6 +17,7 @@ function App() {
   const [pokemon, setPokemon] = useState("")
   const [pokemonResult, setPokemonResult] = useState("")
   const [pokemonResultImage, setPokemonResultImage] = useState("")
+  const [pokemonBattleIcon, setPokemonBattleIcon] = useState("")
   const [pokemonType, setPokemonType] = useState("")
   const [pokeNames, setPokeNames] = useState([])
 
@@ -30,6 +31,7 @@ function App() {
   const [pokemonHeight, setPokemonHeight] = useState("")
   const [pokemonStats, setPokemonStats] = useState("")
   const [pokemonSpecies, setPokemonSpecies] = useState([])
+  const [pokemonSpeciesName, setPokemonSpeciesName] = useState('')
 
   const [active, setActive] = useState(false)
 
@@ -78,6 +80,8 @@ function App() {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
         setPokemonResult(response.data)
         setPokemonResultImage(response.data.sprites.other['official-artwork'].front_default)
+        setPokemonBattleIcon(response.data.sprites.versions['generation-vii'].icons.front_default)
+        console.log(response.data.sprites.versions['generation-vii'].icons)
         setPokemonType(response.data.types['0'].type.name)
         setPokemonHp(response.data.stats['0'].stat.name)
         setPokemonWeight(response.data.weight)
@@ -98,6 +102,8 @@ function App() {
       try {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
         setPokemonSpecies(response.data.flavor_text_entries['6'].flavor_text)
+        setPokemonSpeciesName(response.data.names['0'].name)
+        console.log(response.data)
       } catch (e) {
         console.error(e);
       }
@@ -122,7 +128,7 @@ function App() {
         {isAuthMan ? <Profile /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
-        {isAuthMan ? <BattlePage abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
+        {isAuthMan ? <BattlePage pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/signin">
           <SignIn />

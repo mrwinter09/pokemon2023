@@ -20,14 +20,26 @@ import water from '../../assets/icons/water.png'
 import './BattlePage.css'
 
 
-function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
+function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
   console.log(abilityDescription);
   console.log(pokemonResultImage);
   const totalProgressBars = 1;
-  const progressStatusArray = [2, 3, 4, 5, 6, 7];
+  const progressStatusArray = [1, 2, 3, 4, 5, 6];
   const progressStatusArrayLength = progressStatusArray.length;
 
   const [startButton, setStartButton] = useState(false)
+  const [battleStatsA, setBattleStatsA] = useState(6)
+  const [battleStatsB, setBattleStatsB] = useState(6)
+  const gameover = battleStatsA === 0 || battleStatsB === 0;
+
+  function reset(){
+    setStartButton(false)
+    setBattleStatsA(6)
+    setBattleStatsB(6)
+  }
+  
+  let numberA = battleStatsA;
+  let numberB = battleStatsB;
 
   const ProgressDivs = ({ backgroundColorStyle, flexValue }) => {
   return (
@@ -94,13 +106,13 @@ function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonRes
       </header>
       <div className="split-bar">
        <div>
-        {pokemon}
+        <p className='titleNameA'>{pokemonHp} {battleStatsA}<img src={pokemonBattleIcon}></img>{pokemonSpeciesName}</p>
        <div className='energyBar'>
           {progressStatusArray.map((item, index) => {
             return (
               <ProgressDivs
                 key={item}
-                backgroundColorStyle={index < 6 ? "red" : "black"}
+                backgroundColorStyle={index < numberA ? "red" : "black"}
                 flexValue={
                   totalProgressBars / progressStatusArrayLength - 0.005
                 }
@@ -110,7 +122,7 @@ function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonRes
         </div>
        </div>
        <div>
-        {pokemon}
+       <p className='titleNameB'>{pokemonSpeciesName}<img src={pokemonBattleIcon}></img>{pokemonHp} {battleStatsB}</p>
         <div
           className='energyBar'
         >
@@ -118,7 +130,7 @@ function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonRes
             return (
               <ProgressDivs
                 key={item}
-                backgroundColorStyle={index < 6 ? "red" : "black"}
+                backgroundColorStyle={index < numberB ? "red" : "black"}
                 flexValue={
                   totalProgressBars / progressStatusArrayLength - 0.005
                 }
@@ -129,11 +141,6 @@ function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonRes
        </div>
 
       </div>
-    <div>
-      <div className="pokemon-left"></div>
-      <div className="pokemon-right"></div>
-    </div>
-
         <div className='pokemonCardContainerBattlePage'>
 
         <div className="split">
@@ -211,15 +218,27 @@ function BattlePage({abilityDescription, pokemon, pokemonResultImage, pokemonRes
           </div>
 
       <section>
+
+
+
         <div className={!startButton ? 'button-start' : 'button-start hidden'}>
            <h2 className='title-margin'>Press Start</h2>
            <button onClick={() => setStartButton(!startButton)} type='button' className='start-btn'>START</button>
         </div>
+
+
         <div className={startButton ? 'button-ab' : 'button-ab hidden'}>
-          <h2 className='title-margin'>Game Over</h2>
-           <button type='button' class='video-game-button'>A</button>
-           <button type='button' class='video-game-button'>B</button>  
-           </div>
+          <h2 className={gameover ? 'title-margin' : 'title-margin hidden'}>Game Over</h2>
+          <button onClick={() => reset()} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
+          
+          <div className={gameover ? 'hidden' : ''}>
+          <button onClick={() => {setBattleStatsB(battleStatsB - 1)}} type='button' class='video-game-button'>A</button>
+           <button onClick={() => {setBattleStatsA(battleStatsA - 1)}} type='button' class='video-game-button'>B</button>
+          </div>
+        </div>
+
+
+
       </section>
       </div>
     </>

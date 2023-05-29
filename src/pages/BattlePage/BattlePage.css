@@ -10,6 +10,20 @@
     justify-content:space-evenly;
     margin: 10px 10px 50px 10px;
   }
+
+  .titleNameA{
+    justify-content: flex-end;
+    display: flex;
+    margin: 0px 15px 0px 0px;
+    font-size: larger;
+  }
+
+  .titleNameB{
+    justify-content: flex-start;
+    display: flex;
+    margin: 0px 0px 0px 15px;
+    font-size: larger;
+  }
 }
 
 .App .title-margin {
