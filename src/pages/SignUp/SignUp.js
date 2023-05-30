@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import './SignUp.css'
 
 
 function SignUp() {
@@ -32,12 +33,12 @@ function SignUp() {
 
   return (
     <>
-      <h1>Registreren</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur atque consectetur, dolore eaque eligendi
-        harum, numquam, placeat quisquam repellat rerum suscipit ullam vitae. A ab ad assumenda, consequuntur deserunt
-        doloremque ea eveniet facere fuga illum in numquam quia reiciendis rem sequi tenetur veniam?</p>
+     <header className="App-header">
+        <h1 className='signin'>Register</h1>
+        <p className='signin'>to Battle</p>
+      </header>
+      <div className='signup-form'>
       <form onSubmit={onSubmit}>
-        <p>*Invoervelden*</p>
         <label>Username:
         <input type="text"
             name="name"
@@ -56,9 +57,13 @@ function SignUp() {
             id="details-password"
             onChange={(e) => valueInputPassword(e.target.value)}></input>
         </label>
-        <button type="submit" onClick={signUserUp}>Register</button>
+        <button type="submit" className='submit-button' onClick={signUserUp}>Register</button>
       </form>
+      </div>
+      <div className='footer'> 
       <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
+    </div>
+      
     </>
   );
 }

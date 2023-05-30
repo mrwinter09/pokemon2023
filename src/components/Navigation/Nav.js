@@ -5,10 +5,9 @@ import { AuthContext } from '../../context/AuthContext';
 import './Nav.css'
 import { useHistory } from "react-router-dom/";
 
-function Nav() {
+function Nav({setPokemon}) {
   const { signOutFunction, isAuthMan} = useContext(AuthContext);
   const history = useHistory();
-  const {username} = useContext(AuthContext)
 
   function signinOut() {
     signOutFunction()
@@ -18,27 +17,27 @@ function Nav() {
   return (
     <nav className='nav-display-mobile'>
         <Link to="/">
-          <span className="logo-container">
+          <span onClick={() => setPokemon('')} className="logo-container">
             <img src={logo} alt="logo"/>
             <h3>
-            welcome {username}
+            welcome
             </h3>
           </span>
         </Link>
-
       <div className='nav-mobile'>
-        
         {isAuthMan ?
         <>
         <button
           type="button"
           onClick={signinOut}
+          className='loggOff'
         >
           Uitlog
         </button>
         <button
          type="button"
          onClick={() => history.push('/profile')}
+         className='profile'
        >
          Profile
        </button>
@@ -48,14 +47,9 @@ function Nav() {
         <button
          type="button"
          onClick={() => history.push('/signin')}
+         className='registration'
        >
          Log in
-       </button>
-       <button
-         type="button"
-         onClick={() => history.push('/signup')}
-       >
-         Registreren
        </button>
        </>
         }

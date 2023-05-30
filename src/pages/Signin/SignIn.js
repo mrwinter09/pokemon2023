@@ -41,11 +41,13 @@ function SignIn() {
   
   return (
     <>
-      <h1>Inloggen</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
-
-      <form onSubmit={handleSubmit}>
-        <p>*invoervelden*</p>
+    <div>
+    <header className="App-header">
+        <h1 className='signin'>Log in</h1>
+        <p className='signin'>Ready to Battle</p>
+      </header>
+      <div className='singin-form'>
+        <form onSubmit={handleSubmit}>
         <label>Email:
         <input type="text"
             name="name"
@@ -60,10 +62,14 @@ function SignIn() {
             onChange={(e) => setLoginPassword(e.target.value)}
             ></input>
         </label>
-        <button type='submit' onClick={signUserip}>Inloggen</button>
+        <button type='submit' className='submit-button' onClick={signUserip}>Inloggen</button>
       </form>
-
-      <p className={warning ? 'not-hidden' : 'hidden'}>U heeft geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>
+    </div>
+    <div className='footer'> 
+    <p>Heeft u nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>
+    </div>
+    
+    </div>
     </>
   );
 }

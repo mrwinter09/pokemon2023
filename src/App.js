@@ -118,14 +118,14 @@ function App() {
   const { isAuthMan } = useContext(AuthContext);
   return (
     <>
-    <Nav />
+    <Nav setPokemon={setPokemon} />
     <div className="content">
       <Switch>
         <Route exact path="/">
           <Home setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} results={results} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonType={pokemonType} pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} />
         </Route>
         <Route path="/profile">
-        {isAuthMan ? <Profile /> : <Redirect to="/" />}
+        {isAuthMan ? <Profile pokemonBattleIcon={pokemonBattleIcon} /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
         {isAuthMan ? <BattlePage pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}

@@ -233,8 +233,8 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
           <button onClick={() => reset()} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
           
           <div className={gameover ? 'hidden' : ''}>
-          <button onClick={() => {setBattleStatsB(battleStatsB - 1)}} type='button' class='video-game-button'>A</button>
-           <button onClick={() => {setBattleStatsA(battleStatsA - 1)}} type='button' class='video-game-button'>B</button>
+          <button onClick={() => {setBattleStatsB(battleStatsB - 1)}} type='button' className='video-game-button'>A</button>
+           <button onClick={() => {setBattleStatsA(battleStatsA - 1)}} type='button' className='video-game-button'>B</button>
           </div>
         </div>
 

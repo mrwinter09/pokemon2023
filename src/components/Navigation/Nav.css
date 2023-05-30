@@ -13,11 +13,110 @@
   flex-direction: row;
 }
 
+.loggOff {
+	line-height: 1.5em;
+	text-align: center;
+	display: inline-block;
+	width: 9.5em;
+	-webkit-border-radius: .75em;
+	-moz-border-radius: .75em;
+	-o-border-radius: .75em;
+		border-radius: .75em;
+	-webkit-box-shadow:  0 .2em maroon;
+	-moz-box-shadow:  0 .2em maroon;
+	-o-box-shadow:  0 .2em maroon;
+	box-shadow:  0 .2em maroon;
+	margin: 10px;
+	background-color: red;
+	cursor: pointer;
+  padding-left: 5px;
+  
+}
+
+.loggOff:active {
+  box-shadow: none;
+	position: relative;
+	top: .2em;
+}
+
+.profile{
+  line-height: 1.5em;
+  text-align: center;
+  display: inline-block;
+  width: 9em;
+  border-radius: 0.75em;
+  -o-box-shadow: 0 .2em maroon;
+  box-shadow: 0 .2em gray; 
+  margin: 10px;
+  background-color: lightgray;
+  cursor: pointer;
+  padding-left: 5px;
+  color: gray;
+  text-shadow: -1px -1px black, 1px 1px white;
+
+}
+
+.profile:active {
+box-shadow: none;
+position: relative;
+top: .2em;
+}
+
+
 h3{
   text-decoration-line: none;
 }
 
 @media (max-width: 400px) {
+  .loggOff {
+    line-height: 1.5em;
+    text-align: center;
+    display: inline-block;
+    width: 6.5em;
+    -webkit-border-radius: .75em;
+    -moz-border-radius: .75em;
+    -o-border-radius: .75em;
+      border-radius: .75em;
+    -webkit-box-shadow:  0 .2em maroon;
+    -moz-box-shadow:  0 .2em maroon;
+    -o-box-shadow:  0 .2em maroon;
+    box-shadow:  0 .2em maroon;
+    margin: 10px;
+    background-color: red;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .loggOff:active {
+    box-shadow: none;
+    position: relative;
+    top: .2em;
+  }
+  
+  .profile{
+    line-height: 1.5em;
+  text-align: center;
+  display: inline-block;
+  width: 6.5em;
+  border-radius: 0.75em;
+  -o-box-shadow: 0 .2em maroon;
+  box-shadow: 0 .2em gray; 
+  margin: 10px;
+  background-color: lightgray;
+  cursor: pointer;
+  padding-left: 5px;
+  color: gray;
+  text-shadow: -1px -1px black, 1px 1px white;
+  padding-right: 5px;
+  }
+  
+  .profile:active {
+  box-shadow: none;
+  position: relative;
+  top: .2em;
+  }
+
   .nav-display-mobile{
     padding: 0 4px;
 
