@@ -266,14 +266,13 @@ h1{
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 1200px) {
   h1{
     &.battle{
       max-width: 90%;
       font-family: Alfa Slab One;
       letter-spacing: -1px;
       margin-bottom: 1px;
-      font-size: 1.3rem;
       font-weight: bold;
       margin-left: 2px;
       text-transform: uppercase;
@@ -284,18 +283,23 @@ h1{
       -webkit-text-stroke-color: #2a75bb;
       color: #ffcb05;
     }
+
+    &.vs{
+      font-size: 75px;
+    }
   }
+  
 }
 
 
-@media (max-width: 390px) {
+@media (max-width: 900px) {
   h1{
     &.battle{
       max-width: 90%;
       font-family: Alfa Slab One;
       letter-spacing: -1px;
       margin-bottom: 1px;
-      font-size: 1.3rem;
+      font-size: 3rem;
       font-weight: bold;
       margin-left: 2px;
       text-transform: uppercase;
@@ -306,5 +310,196 @@ h1{
       -webkit-text-stroke-color: #2a75bb;
       color: #ffcb05;
     }
+    &.vs{
+      font-size: 40px;
+    }
   }
 }
+
+@media screen and (max-width: 900px) and (min-width: 300px) {
+
+  .App .split-bar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  
+    .energyBar{
+      display: flex;
+      flex: 1; 
+      justify-content:space-evenly;
+      margin: 10px 10px 10px 10px;
+    }
+  }
+
+  h1{
+    &.vs{
+      font-size: 55px;
+    }
+  }
+
+.abilityDescriptionText{
+  align-items: baseline;
+    display: flex;
+    margin: 0px 0px 0px 10px;
+    text-align: start;
+    font-weight: 100;
+    display: none;
+  }
+
+.pokemonCardContainerBattlePage {
+  display: grid;
+    grid-template-columns: 4fr 1fr 4fr;
+    height: 400px;
+}
+
+.pokemonCardContainerBattlePage .card {
+  max-width: 200px;
+  border-radius: 20px;
+  padding-bottom: 0.5rem;
+  background: none;
+  width: 130px;
+}
+
+.pokemonCardContainerBattlePage .split {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px
+}
+
+.pokemonCardContainerBattlePage .split .left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 50px 0px 0px 10px;
+  width: 130px;
+}
+
+.pokemonCardContainerBattlePage .center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+}
+
+.pokemonCardContainerBattlePage .right {
+  display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 50px 10px 0px 0px;
+}
+
+.pokemonCardContainerBattlePage .card .card-image {
+  margin-bottom: 0px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 150px;
+}
+
+.pokemonCardContainerBattlePage .card--charizard .card-image-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 150px;
+}
+
+.pokemonCardContainerBattlePage .card--charizard .card-image-container img{
+  width: 120px;
+}
+
+.pokemonCardContainerBattlePage .card-content .column .symbol {
+  width: 25px;
+    height: 25px;
+    filter: drop-shadow(0px 1px 9px black);
+    border-radius: 55%;
+    margin-bottom: 2px;
+}
+
+.pokemonCardContainerBattlePage .card-content .main {
+  padding: 0px 30px 0px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemonCardContainerBattlePage .card-content .title {
+  font-family: Cinzel;
+  letter-spacing: -2px;
+  margin-bottom: 1px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 2px;
+  text-transform: uppercase;
+}
+
+.pokemonCardContainerBattlePage .hp {
+  font-family: Cinzel;
+  position: relative;
+  font-weight: lighter;
+  font-size: 1.2rem;
+  margin-top: 1px;
+  text-transform: uppercase;
+}
+
+.pokemonCardContainerBattlePage hr {
+  height: 6px;
+    width: 119px;
+    border: none;
+    border-radius: 10px;
+    margin: 0px;
+}
+
+.pokemonCardContainerBattlePage .hp::before {
+  position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 400%;
+    height: 5px;
+    border-radius: 3px;
+    content: ' ';
+    transform: translateX(-50%);
+}
+
+.pokemonCardContainerBattlePage .card-content .stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 37%;
+  font-size: 20px;
+}
+
+.pokemonCardContainerBattlePage .card-content .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  font-size: 9px;
+}
+
+.pokemonCardContainerBattlePage .card-content .nudge {
+ margin-bottom: 17px;
+}
+
+.pokemonCardContainerBattlePage .card-content .stats .tag {
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 10px;
+    border-radius: 60px;
+    font-size: 0.9em;
+    width: 90%;
+
+}
+}
+
+
