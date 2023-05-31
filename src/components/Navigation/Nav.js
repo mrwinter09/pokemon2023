@@ -33,7 +33,7 @@ function Nav({setPokemon}) {
           onClick={signinOut}
           className='loggOff'
         >
-          Uitlog
+          Log out
         </button>
         <button
          type="button"

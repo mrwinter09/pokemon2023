@@ -11,9 +11,6 @@ function SignUp() {
  const navigate = useHistory();
 
  function onSubmit(){
-  console.log(valueTestName)
-  console.log(valueTestEmail)
-  console.log(valueTestPassword)
   navigate.push('/signin')
 
  }
@@ -57,11 +54,11 @@ function SignUp() {
             id="details-password"
             onChange={(e) => valueInputPassword(e.target.value)}></input>
         </label>
-        <button type="submit" className='submit-button' onClick={signUserUp}>Register</button>
+        <button type="submit" className='submit-button' onClick={signUserUp}>Sign up</button>
       </form>
       </div>
       <div className='footer'> 
-      <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
+      <p>Already have an account? <Link to="/signin">Login</Link></p>
     </div>
       
     </>

@@ -28,6 +28,7 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
   const [startButton, setStartButton] = useState(false)
   const [battleStatsA, setBattleStatsA] = useState(6)
   const [battleStatsB, setBattleStatsB] = useState(6)
+  const [totalScore, setTotalScore] = useState(0)
   const gameover = battleStatsA === 0 || battleStatsB === 0;
 
   const winnerA = battleStatsB === 0
@@ -39,6 +40,13 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
     setBattleStatsB(6)
   }
   
+  function scoreCount() {
+    if (battleStatsB === 0) {
+      return setTotalScore(totalScore + 1)
+    }
+  }
+
+
   let numberA = battleStatsA;
   let numberB = battleStatsB;
 
@@ -230,7 +238,7 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
 
         <div className={startButton ? 'button-ab' : 'button-ab hidden'}>
           <h2 className={gameover ? 'title-margin' : 'title-margin hidden'}>Game Over</h2>
-          <button onClick={() => reset()} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
+          <button onClick={() => {reset(); scoreCount()}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
           
           <div className={gameover ? 'hidden' : ''}>
           <button onClick={() => {setBattleStatsB(battleStatsB - 1)}} type='button' className='video-game-button'>A</button>

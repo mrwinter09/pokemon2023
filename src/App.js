@@ -53,6 +53,7 @@ function App() {
         .then(response => response.json())
         .then((json) => {
           setPokeNames(json.results)
+          console.log(pokeNames)
         })
     }
       fetchData()

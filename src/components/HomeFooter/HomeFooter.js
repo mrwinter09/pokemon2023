@@ -9,6 +9,9 @@ function HomeFooter({pokemonResult, pokemon,}) {
   const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === pokemonResult.name
   const history = useHistory();
+
+  // Trigger de math random
+
  
 
 

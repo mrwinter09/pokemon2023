@@ -63,11 +63,11 @@ function SignIn() {
             onChange={(e) => setLoginPassword(e.target.value)}
             ></input>
         </label>
-        <button type='submit' className='submit-button' onClick={signUserip}>Inloggen</button>
+        <button type='submit' className='submit-button' onClick={signUserip}>Log in</button>
       </form>
     </div>
     <div className='footer'> 
-    <p>Heeft u nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>
+    <p>Don't have an account yet? <Link to="/signup">Sign</Link> up here.</p>
     </div>
     
     </div>
