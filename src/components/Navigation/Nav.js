@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../../assets/Poké_Ball_icon.svg.png';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -6,11 +6,12 @@ import './Nav.css'
 import { useHistory } from "react-router-dom/";
 
 function Nav({setPokemon}) {
-  const { signOutFunction, isAuthMan} = useContext(AuthContext);
+  const { registerUserName, setregisterUserName, valueTestName, signOutFunction, isAuthMan} = useContext(AuthContext);
   const history = useHistory();
 
   function signinOut() {
     signOutFunction()
+    setregisterUserName(false)
     history.push('/')
   }
 
@@ -20,7 +21,7 @@ function Nav({setPokemon}) {
           <span onClick={() => setPokemon('')} className="logo-container">
             <img src={logo} alt="logo"/>
             <h3>
-            welcome
+            welcome <span className={registerUserName ? '' : 'hidden'}>{valueTestName}</span>
             </h3>
           </span>
         </Link>

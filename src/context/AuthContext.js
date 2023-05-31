@@ -5,10 +5,11 @@ import axios from 'axios';
 export const AuthContext = createContext({})
 
 function AuthContextComponent({children}) {
-  const [valueFieldRegName, setValueFieldRegName] = useState('test')
-  const [valueFieldRegEmail, setValueFieldRegEmail] = useState('test email')
+  const [valueFieldRegName, setValueFieldRegName] = useState('')
+  const [valueFieldRegEmail, setValueFieldRegEmail] = useState('')
   const [valueFieldRegPassword, setValueFieldRegPassword] = useState('')
   const [profile, setProfile] = useState('')
+  const [registerUserName, setregisterUserName] = useState(true)
   const [auth, toggleIsAuth] = useState({
     isAuth: false,
     user: null,
@@ -17,6 +18,8 @@ function AuthContextComponent({children}) {
     username: null,
     status: 'pending'
   });
+
+  
 
     useEffect(() => {
       const token = localStorage.getItem('token');
@@ -138,7 +141,8 @@ function AuthContextComponent({children}) {
     valueTestPassword: valueFieldRegPassword,
     testName: setProfile,
     testNameProfile: profile,
-
+    setregisterUserName: setregisterUserName,
+    registerUserName: registerUserName,
   }
 
   return (

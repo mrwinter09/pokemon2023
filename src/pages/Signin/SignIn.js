@@ -8,7 +8,7 @@ import axios from 'axios';
 
 function SignIn() {
   const navigate = useHistory();
-  const {valueTestEmail, valueTestPassword, signInFunction} = useContext(AuthContext)
+  const {setregisterUserName, valueTestEmail, valueTestPassword, signInFunction} = useContext(AuthContext)
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [warning, setWarning] = useState(false)
@@ -32,6 +32,7 @@ function SignIn() {
        email: loginEmail,
        password: loginPassword,
      });
+     setregisterUserName(true)
      console.log(response.data.accessToken)
      signInFunction(response.data.accessToken)
     } catch (error) {
