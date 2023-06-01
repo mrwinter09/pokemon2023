@@ -8,7 +8,7 @@ import './Home.css'
 import HomeFooter from '../../components/HomeFooter/HomeFooter';
 
 
-function Home({setActive, active, pokemon, setPokemon, pokemonResult, results, pokemonHeight, pokemonWeight, pokemonStats, pokemonHp, pokemonResultImage, pokemonType, pokemonSpecies,abilityDescription }) {
+function Home({setPokemonBattleId, setActive, active, pokemon, setPokemon, pokemonResult, results, pokemonHeight, pokemonWeight, pokemonStats, pokemonHp, pokemonResultImage, pokemonType, pokemonSpecies,abilityDescription }) {
 
   
 
@@ -21,13 +21,13 @@ function Home({setActive, active, pokemon, setPokemon, pokemonResult, results, p
     </div>
     <section>
         <SearchBar setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
-        <SearchResults setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
+        <SearchResults setPokemonBattleId={setPokemonBattleId} setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
     <div className='wrapper'>
         <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
         <PokemonDescription pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
     </div>
-        <HomeFooter pokemonResult={pokemonResult} pokemon={pokemon} />
+        <HomeFooter setPokemonBattleId={setPokemonBattleId} pokemonResult={pokemonResult} pokemon={pokemon} />
     </>
   );
 }

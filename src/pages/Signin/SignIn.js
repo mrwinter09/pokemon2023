@@ -11,6 +11,7 @@ function SignIn() {
   const {setregisterUserName, valueTestEmail, valueTestPassword, signInFunction} = useContext(AuthContext)
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+  // eslint-disable-next-line
   const [warning, setWarning] = useState(false)
  
   function handleSubmit(e){
@@ -21,8 +22,6 @@ function SignIn() {
       return navigate.push('/')
      } else {
       setWarning(true)
-      console.log(loginEmail)
-      console.log(loginPassword)
      }
   }
 
@@ -33,7 +32,6 @@ function SignIn() {
        password: loginPassword,
      });
      setregisterUserName(true)
-     console.log(response.data.accessToken)
      signInFunction(response.data.accessToken)
     } catch (error) {
      console.error(error);

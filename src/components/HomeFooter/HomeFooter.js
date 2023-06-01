@@ -5,14 +5,20 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 
-function HomeFooter({pokemonResult, pokemon,}) {
+function HomeFooter({pokemonResult, pokemon, setPokemonBattleId}) {
   const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === pokemonResult.name
   const history = useHistory();
 
   // Trigger de math random
+  function battleStart() {
+    history.push('/battlepage')
+  }
 
- 
+  function pokemonId(max) {
+    return Math.floor(Math.random() * max)
+  }
+
 
 
   return (
@@ -23,7 +29,7 @@ function HomeFooter({pokemonResult, pokemon,}) {
       <p className='battle'>Let's battle with {pokemon}</p>
         <button
         type="button"
-        onClick={() => history.push('/battlepage')}
+        onClick={() => {battleStart(); setPokemonBattleId(pokemonId(10271))}}
         className='start-btn'
         >
           Battle
@@ -35,7 +41,7 @@ function HomeFooter({pokemonResult, pokemon,}) {
        <p className='top'><Link to="/signin">Log in</Link> ore register </p>
        <button
          type="button"
-         onClick={() => history.push('/signup')}
+         onClick={() => {history.push('/signup');}}
          className='registration'
        >
          Registreren

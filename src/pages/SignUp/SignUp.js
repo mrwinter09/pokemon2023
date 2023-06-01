@@ -17,12 +17,12 @@ function SignUp() {
 
  async function signUserUp() {
  try {
+  // eslint-disable-next-line
   const response = await axios.post('http://localhost:3000/users/register', {
     email: valueTestEmail,
     password: valueTestPassword,
     username: valueTestName
   });
-  console.log(response.data)
  } catch (error) {
   console.error(error);
  }

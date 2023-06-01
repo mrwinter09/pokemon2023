@@ -41,7 +41,6 @@ function AuthContextComponent({children}) {
             id: response.data.id,
             status: 'done',
       });
-           console.log(response.data)
            setValueFieldRegEmail(response.data.email)
            setValueFieldRegName(response.data.username)
         
@@ -70,13 +69,9 @@ function AuthContextComponent({children}) {
 
   function signIn(jwtToken) {
     localStorage.setItem('token', jwtToken);
-    console.log(jwtToken)
     const decodedToken = jwt_decode(jwtToken);
-    console.log(decodedToken)
-    console.log(decodedToken.sub);
     const id = decodedToken.sub;
     const token = jwtToken
-    console.log(token)
 
     async function getUserData() {
       try {

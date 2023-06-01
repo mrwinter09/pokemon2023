@@ -1,7 +1,6 @@
 import './SearchResultCard.css'
-function SearchResultCard({results, setPokemon, pokemon, setActive}) {
+function SearchResultCard({results, setPokemon, pokemon, setActive, setPokemonBattleId}) {
   const inactive = pokemon === results.name;
-
 
   return (
     <>
