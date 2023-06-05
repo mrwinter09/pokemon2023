@@ -80,7 +80,7 @@ function App() {
     }
   },[pokeAbilityName]);
 
-
+//Fetch Pokemon A
   useEffect(() => {
     async function fetchDataPokemon() {
       try {
@@ -104,13 +104,13 @@ function App() {
     }
   },[pokemon]);
 
+  //Fetch Pokemon B
+
   useEffect(() => {
     async function fetchDataPokemon() {
       try {
-
         const responsePokemonBattle = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonBattleId}`);
-        console.log(responsePokemonBattle)
-        
+        console.log(responsePokemonBattle.data)
       } catch (e) {
         console.error(e);
       }
@@ -119,10 +119,6 @@ function App() {
       fetchDataPokemon()
     }
   },[pokemonBattleId]);
-
-
-
-
 
 
   useEffect(() => {

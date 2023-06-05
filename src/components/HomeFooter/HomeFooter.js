@@ -29,7 +29,7 @@ function HomeFooter({pokemonResult, pokemon, setPokemonBattleId}) {
       <p className='battle'>Let's battle with {pokemon}</p>
         <button
         type="button"
-        onClick={() => {battleStart(); setPokemonBattleId(pokemonId(10271))}}
+        onClick={() => {battleStart(); setPokemonBattleId(pokemonId(1000))}}
         className='start-btn'
         >
           Battle
