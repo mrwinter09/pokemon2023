@@ -20,7 +20,7 @@ import water from '../../assets/icons/water.png'
 import './BattlePage.css'
 
 
-function BattlePage({setPokemonBattleId, pokemonHeightB, pokemonWeightB, pokemonStatsB, pokemonHpB, pokemonTypeB, pokemonResultB ,pokemonResultImageB, pokemonBattleIconB, pokemonBattleIcon, pokemonSpeciesName, abilityDescription, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
+function BattlePage({setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, setPokemonBattleId, pokemonHeightB, pokemonWeightB, pokemonStatsB, pokemonHpB, pokemonTypeB, pokemonResultB ,pokemonResultImageB, pokemonBattleIconB, pokemonBattleIcon, pokemonSpeciesName, abilityDescription, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
   const totalProgressBars = 1;
   const progressStatusArray = [1, 2, 3, 4, 5, 6];
   const progressStatusArrayLength = progressStatusArray.length;
@@ -55,9 +55,9 @@ function BattlePage({setPokemonBattleId, pokemonHeightB, pokemonWeightB, pokemon
 
   let testCountA = pokemonStats / 6 * pokemonStatsB / pokemonStats
   let testCountB = pokemonStatsB / 6 * pokemonStats / pokemonStatsB
- console.log(testCountB * 6) 
- console.log(testCountA * 6) 
- 
+ console.log(testCountB) 
+ console.log(testCountA) 
+
 
   const ProgressDivs = ({ backgroundColorStyle, flexValue }) => {
   return (
@@ -124,7 +124,7 @@ function BattlePage({setPokemonBattleId, pokemonHeightB, pokemonWeightB, pokemon
       </header>
       <div className="split-bar">
        <div>
-        <p className='titleNameA'>{pokemonHp} {pokemonStats}<img src={pokemonBattleIcon} alt=''></img><span className={winnerA ? '' : 'hidden'}>{pokemonSpeciesName}</span></p>
+        <p className='titleNameA'>{pokemonHp} {pokemonHpScoreA}<img src={pokemonBattleIcon} alt=''></img><span className={winnerA ? '' : 'hidden'}>{pokemonSpeciesName}</span></p>
        <div className='energyBar'>
           {progressStatusArray.map((item, index) => {
             return (
@@ -247,11 +247,11 @@ function BattlePage({setPokemonBattleId, pokemonHeightB, pokemonWeightB, pokemon
 
         <div className={startButton ? 'button-ab' : 'button-ab hidden'}>
           <h2 className={gameover ? 'title-margin' : 'title-margin hidden'}>Game Over</h2>
-          <button onClick={() => {reset(); scoreCount(); setPokemonBattleId(pokemonId(1000))}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
+          <button onClick={() => {reset(); scoreCount(); setPokemonBattleId(pokemonId(1000)); setPokemonHpScoreA(pokemonStats)}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
           
           <div className={gameover ? 'hidden' : ''}>
           <button onClick={() => {setBattleStatsB(battleStatsB - 1)}} type='button' className='video-game-button'>A</button>
-           <button onClick={() => {setBattleStatsA(battleStatsA - 1)}} type='button' className='video-game-button'>B</button>
+           <button onClick={() => {setBattleStatsA(battleStatsA - 1); setPokemonHpScoreA(pokemonHpScoreA - testCountB)}} type='button' className='video-game-button'>B</button>
           </div>
         </div>
 

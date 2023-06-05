@@ -52,6 +52,9 @@ function App() {
   const [pokemonBattleId, setPokemonBattleId] = useState(0)
   console.log(pokemonBattleId)
 
+// battlesystem 
+const [pokemonHpScoreA, setPokemonHpScoreA ] = useState(0)
+const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
 
 
   useEffect(() => {
@@ -166,13 +169,13 @@ function App() {
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} results={results} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonType={pokemonType} pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} />
+          <Home setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} results={results} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonType={pokemonType} pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile pokemonBattleIcon={pokemonBattleIcon} /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
-        {isAuthMan ? <BattlePage setPokemonBattleId={setPokemonBattleId} pokeAbilityNameB={pokeAbilityNameB} pokemonHeightB={pokemonHeightB} pokemonWeightB={pokemonWeightB} pokemonStatsB={pokemonStatsB} pokemonHpB={pokemonHpB} pokemonTypeB={pokemonTypeB} pokemonResultB={pokemonResultB} pokemonResultImageB={pokemonResultImageB} pokemonBattleIconB={pokemonBattleIconB} pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
+        {isAuthMan ? <BattlePage setPokemonHpScoreA={setPokemonHpScoreA} pokemonHpScoreA={pokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokeAbilityNameB={pokeAbilityNameB} pokemonHeightB={pokemonHeightB} pokemonWeightB={pokemonWeightB} pokemonStatsB={pokemonStatsB} pokemonHpB={pokemonHpB} pokemonTypeB={pokemonTypeB} pokemonResultB={pokemonResultB} pokemonResultImageB={pokemonResultImageB} pokemonBattleIconB={pokemonBattleIconB} pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/signin">
           <SignIn />

@@ -8,7 +8,7 @@ import './Home.css'
 import HomeFooter from '../../components/HomeFooter/HomeFooter';
 
 
-function Home({setPokemonBattleId, setActive, active, pokemon, setPokemon, pokemonResult, results, pokemonHeight, pokemonWeight, pokemonStats, pokemonHp, pokemonResultImage, pokemonType, pokemonSpecies,abilityDescription }) {
+function Home({setPokemonHpScoreA, setPokemonBattleId, setActive, active, pokemon, setPokemon, pokemonResult, results, pokemonHeight, pokemonWeight, pokemonStats, pokemonHp, pokemonResultImage, pokemonType, pokemonSpecies,abilityDescription }) {
 
   
 
@@ -27,7 +27,7 @@ function Home({setPokemonBattleId, setActive, active, pokemon, setPokemon, pokem
         <PokemonContainer pokemon={pokemon} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonResult={pokemonResult} pokemonType={pokemonType}/>
         <PokemonDescription pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
     </div>
-        <HomeFooter setPokemonBattleId={setPokemonBattleId} pokemonResult={pokemonResult} pokemon={pokemon} />
+        <HomeFooter pokemonStats={pokemonStats} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemonResult={pokemonResult} pokemon={pokemon} />
     </>
   );
 }

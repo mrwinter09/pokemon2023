@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 
-function HomeFooter({pokemonResult, pokemon, setPokemonBattleId}) {
+function HomeFooter({pokemonResult, pokemon, setPokemonBattleId, setPokemonHpScoreA, pokemonStats, setPokemonHpScoreB, pokemonStatsB}) {
   const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === pokemonResult.name
   const history = useHistory();
@@ -29,7 +29,7 @@ function HomeFooter({pokemonResult, pokemon, setPokemonBattleId}) {
       <p className='battle'>Let's battle with {pokemon}</p>
         <button
         type="button"
-        onClick={() => {battleStart(); setPokemonBattleId(pokemonId(1000))}}
+        onClick={() => {battleStart(); setPokemonBattleId(pokemonId(1000)); setPokemonHpScoreA(pokemonStats);}}
         className='start-btn'
         >
           Battle
