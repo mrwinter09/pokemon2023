@@ -16,7 +16,7 @@ function App() {
   const [results, setResults] = useState([])
   const [pokemon, setPokemon] = useState("")
 
-  // Pokemon A
+// Pokemon A
   const [pokemonResult, setPokemonResult] = useState("")
   const [pokemonResultImage, setPokemonResultImage] = useState("")
   const [pokemonBattleIcon, setPokemonBattleIcon] = useState("")
@@ -26,6 +26,18 @@ function App() {
   const [pokemonHeight, setPokemonHeight] = useState("")
   const [pokemonStats, setPokemonStats] = useState("")
   const [pokeAbilityName, setpokeAbilityName] = useState("")
+
+// Pokemon B
+   const [pokemonResultB, setPokemonResultB] = useState("")
+   const [pokemonResultImageB, setPokemonResultImageB] = useState("")
+   const [pokemonBattleIconB, setPokemonBattleIconB] = useState("")
+   const [pokemonTypeB, setPokemonTypeB] = useState("")
+   const [pokemonHpB, setPokemonHpB] = useState("")
+   const [pokemonWeightB, setPokemonWeightB] = useState("")
+   const [pokemonHeightB, setPokemonHeightB] = useState("")
+   const [pokemonStatsB, setPokemonStatsB] = useState("")
+   const [pokeAbilityNameB, setpokeAbilityNameB] = useState("")
+   console.log(pokeAbilityNameB)
 
 
 //Pokemon Datagrab
@@ -111,6 +123,15 @@ function App() {
       try {
         const responsePokemonBattle = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonBattleId}`);
         console.log(responsePokemonBattle.data)
+        setPokemonResultB(responsePokemonBattle.data)
+        setPokemonResultImageB(responsePokemonBattle.data.sprites.other['official-artwork'].front_default)
+        setPokemonBattleIconB(responsePokemonBattle.data.sprites.versions['generation-vii'].icons.front_default)
+        setPokemonTypeB(responsePokemonBattle.data.types['0'].type.name)
+        setPokemonHpB(responsePokemonBattle.data.stats['0'].stat.name)
+        setPokemonWeightB(responsePokemonBattle.data.weight)
+        setPokemonHeightB(responsePokemonBattle.data.height)
+        setPokemonStatsB(responsePokemonBattle.data.stats['0'].base_stat)
+        setpokeAbilityNameB(responsePokemonBattle.data.abilities['0'].ability.name)
       } catch (e) {
         console.error(e);
       }
@@ -151,7 +172,7 @@ function App() {
         {isAuthMan ? <Profile pokemonBattleIcon={pokemonBattleIcon} /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
-        {isAuthMan ? <BattlePage pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
+        {isAuthMan ? <BattlePage setPokemonBattleId={setPokemonBattleId} pokeAbilityNameB={pokeAbilityNameB} pokemonHeightB={pokemonHeightB} pokemonWeightB={pokemonWeightB} pokemonStatsB={pokemonStatsB} pokemonHpB={pokemonHpB} pokemonTypeB={pokemonTypeB} pokemonResultB={pokemonResultB} pokemonResultImageB={pokemonResultImageB} pokemonBattleIconB={pokemonBattleIconB} pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/signin">
           <SignIn />

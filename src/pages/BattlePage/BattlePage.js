@@ -20,7 +20,7 @@ import water from '../../assets/icons/water.png'
 import './BattlePage.css'
 
 
-function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
+function BattlePage({setPokemonBattleId, pokemonHeightB, pokemonWeightB, pokemonStatsB, pokemonHpB, pokemonTypeB, pokemonResultB ,pokemonResultImageB, pokemonBattleIconB, pokemonBattleIcon, pokemonSpeciesName, abilityDescription, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
   const totalProgressBars = 1;
   const progressStatusArray = [1, 2, 3, 4, 5, 6];
   const progressStatusArrayLength = progressStatusArray.length;
@@ -30,9 +30,6 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
   const [battleStatsB, setBattleStatsB] = useState(6)
   const [totalScore, setTotalScore] = useState(0)
   const gameover = battleStatsA === 0 || battleStatsB === 0;
-
-  const winnerA = battleStatsB === 0
-  const winnerB = battleStatsA === 0
 
   function reset(){
     setStartButton(false)
@@ -46,9 +43,21 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
     }
   }
 
+  function pokemonId(max) {
+    return Math.floor(Math.random() * max)
+  }
+
+  const winnerA = battleStatsB === 0
+  const winnerB = battleStatsA === 0
 
   let numberA = battleStatsA;
   let numberB = battleStatsB;
+
+  let testCountA = pokemonStats / 6 * pokemonStatsB / pokemonStats
+  let testCountB = pokemonStatsB / 6 * pokemonStats / pokemonStatsB
+ console.log(testCountB * 6) 
+ console.log(testCountA * 6) 
+ 
 
   const ProgressDivs = ({ backgroundColorStyle, flexValue }) => {
   return (
@@ -115,7 +124,7 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
       </header>
       <div className="split-bar">
        <div>
-        <p className='titleNameA'>{pokemonHp} {battleStatsA}<img src={pokemonBattleIcon} alt=''></img><span className={winnerA ? '' : 'hidden'}>{pokemonSpeciesName}</span></p>
+        <p className='titleNameA'>{pokemonHp} {pokemonStats}<img src={pokemonBattleIcon} alt=''></img><span className={winnerA ? '' : 'hidden'}>{pokemonSpeciesName}</span></p>
        <div className='energyBar'>
           {progressStatusArray.map((item, index) => {
             return (
@@ -131,7 +140,7 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
         </div>
        </div>
        <div>
-       <p className='titleNameB'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={pokemonBattleIcon} alt=''></img>{pokemonHp}{battleStatsB}</p>
+       <p className='titleNameB'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={pokemonBattleIconB} alt=''></img>{pokemonHpB} {pokemonStatsB}</p>
         <div
           className='energyBar'
         >
@@ -192,30 +201,30 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
           </div>
 
             <div className="split">
-              <p className="abilityDescriptionText">{abilityDescription}</p>
+            <p className="abilityDescriptionText">{abilityDescription}</p>
               <div className="right">
           <div style={{border: '5px solid'+ color}} className="card card--charizard">
            <div className="card-image">
              <div className="card-image-container">
-               <img src={pokemonResultImage} alt={pokemonResult.name}/>
+               <img src={pokemonResultImageB} alt={pokemonResultB.name}/>
              </div>
            </div>
            <div className="card-content">
              <div className="main">
-               <div className="title has-text-white">{pokemonResult.name}</div>
+               <div className="title has-text-white">{pokemonResultB.name}</div>
                <hr style={{backgroundColor: color}} />
-               <div className="hp">{pokemonHp} {pokemonStats}</div>
+               <div className="hp">{pokemonHpB} {pokemonStatsB}</div>
              </div>
              <div className="stats columns is-mobile">
                <div className="column nudge">
-               <img className='symbol' src={symbols} alt={pokemonType}></img>
+               <img className='symbol' src={symbols} alt={pokemonTypeB}></img>
                  <span style={{backgroundColor: color}} className="tag is-warning">Type</span>
                </div>
 
-               <div className="column center-column">{pokemonWeight} lbs
+               <div className="column center-column">{pokemonWeightB} lbs
                  <span style={{backgroundColor: color}} className="tag is-warning">Weight</span>
                </div>
-               <div className="column">{pokemonHeight} m
+               <div className="column">{pokemonHeightB} m
                  <span style={{backgroundColor: color}} className="tag is-warning">Height</span>
                </div>
              </div>
@@ -238,7 +247,7 @@ function BattlePage({pokemonBattleIcon, pokemonSpeciesName, abilityDescription, 
 
         <div className={startButton ? 'button-ab' : 'button-ab hidden'}>
           <h2 className={gameover ? 'title-margin' : 'title-margin hidden'}>Game Over</h2>
-          <button onClick={() => {reset(); scoreCount()}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
+          <button onClick={() => {reset(); scoreCount(); setPokemonBattleId(pokemonId(1000))}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
           
           <div className={gameover ? 'hidden' : ''}>
           <button onClick={() => {setBattleStatsB(battleStatsB - 1)}} type='button' className='video-game-button'>A</button>
