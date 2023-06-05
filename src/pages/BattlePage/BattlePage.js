@@ -53,10 +53,10 @@ function BattlePage({setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, po
   let numberA = battleStatsA;
   let numberB = battleStatsB;
 
-  let testCountA = pokemonStats / 6 * pokemonStatsB / pokemonStats
-  let testCountB = pokemonStatsB / 6 * pokemonStats / pokemonStatsB
- console.log(testCountB) 
- console.log(testCountA) 
+  let testCountA = (pokemonStats / 6 * pokemonStatsB / pokemonStats).toFixed(0)
+  let testCountB = (pokemonStatsB / 6 * pokemonStats / pokemonStatsB).toFixed(0)
+ console.log(testCountB ) 
+ console.log(testCountA ) 
 
 
   const ProgressDivs = ({ backgroundColorStyle, flexValue }) => {
@@ -71,6 +71,11 @@ function BattlePage({setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, po
     />
   );
 };
+
+  const player = {
+    1: pokemonResult.name,
+    2: pokemonResultB.name
+  }
 
   const colors = {
     fire:'#ffdec1',
@@ -140,7 +145,7 @@ function BattlePage({setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, po
         </div>
        </div>
        <div>
-       <p className='titleNameB'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={pokemonBattleIconB} alt=''></img>{pokemonHpB} {pokemonStatsB}</p>
+       <p className='titleNameB'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={pokemonBattleIconB} alt=''></img>{pokemonHpB} {pokemonHpScoreB}</p>
         <div
           className='energyBar'
         >
@@ -241,17 +246,18 @@ function BattlePage({setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, po
 
         <div className={!startButton ? 'button-start' : 'button-start hidden'}>
            <h2 className='title-margin'>Press Start</h2>
-           <button onClick={() => setStartButton(!startButton)} type='button' className='start-btn'>START</button>
+           <button onClick={() => {setStartButton(!startButton)}} type='button' className='start-btn'>START</button>
         </div>
 
 
         <div className={startButton ? 'button-ab' : 'button-ab hidden'}>
           <h2 className={gameover ? 'title-margin' : 'title-margin hidden'}>Game Over</h2>
-          <button onClick={() => {reset(); scoreCount(); setPokemonBattleId(pokemonId(1000)); setPokemonHpScoreA(pokemonStats)}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
+          <button onClick={() => {reset(); scoreCount(); setPokemonBattleId(pokemonId(1000)); setPokemonHpScoreA(pokemonStats); setPokemonHpScoreB(pokemonStatsB)}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
           
           <div className={gameover ? 'hidden' : ''}>
-          <button onClick={() => {setBattleStatsB(battleStatsB - 1)}} type='button' className='video-game-button'>A</button>
+          <button onClick={() => {setBattleStatsB(battleStatsB - 1); setPokemonHpScoreB(pokemonHpScoreB - testCountA)}} type='button' className='video-game-button'>A</button>
            <button onClick={() => {setBattleStatsA(battleStatsA - 1); setPokemonHpScoreA(pokemonHpScoreA - testCountB)}} type='button' className='video-game-button'>B</button>
+           {player[1]}
           </div>
         </div>
 

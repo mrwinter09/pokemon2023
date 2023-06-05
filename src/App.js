@@ -26,6 +26,7 @@ function App() {
   const [pokemonHeight, setPokemonHeight] = useState("")
   const [pokemonStats, setPokemonStats] = useState("")
   const [pokeAbilityName, setpokeAbilityName] = useState("")
+ 
 
 // Pokemon B
    const [pokemonResultB, setPokemonResultB] = useState("")
@@ -37,9 +38,7 @@ function App() {
    const [pokemonHeightB, setPokemonHeightB] = useState("")
    const [pokemonStatsB, setPokemonStatsB] = useState("")
    const [pokeAbilityNameB, setpokeAbilityNameB] = useState("")
-   console.log(pokeAbilityNameB)
-
-
+   
 //Pokemon Datagrab
   const [pokeNames, setPokeNames] = useState([])
 // eslint-disable-next-line
@@ -50,13 +49,15 @@ function App() {
 
 
   const [pokemonBattleId, setPokemonBattleId] = useState(0)
-  console.log(pokemonBattleId)
 
 // battlesystem 
 const [pokemonHpScoreA, setPokemonHpScoreA ] = useState(0)
 const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
 
-
+console.log(pokemonStats)
+console.log(pokemonStatsB)
+console.log(pokemonHpScoreA)
+console.log(pokemonHpScoreB)
   useEffect(() => {
     function callPokemon(value) {
       const results = pokeNames.filter((user)=> {
@@ -135,6 +136,7 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
         setPokemonHeightB(responsePokemonBattle.data.height)
         setPokemonStatsB(responsePokemonBattle.data.stats['0'].base_stat)
         setpokeAbilityNameB(responsePokemonBattle.data.abilities['0'].ability.name)
+        setPokemonHpScoreB(responsePokemonBattle.data.stats['0'].base_stat)
       } catch (e) {
         console.error(e);
       }
@@ -169,13 +171,13 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} results={results} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonType={pokemonType} pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} />
+          <Home pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} results={results} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonType={pokemonType} pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile pokemonBattleIcon={pokemonBattleIcon} /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
-        {isAuthMan ? <BattlePage setPokemonHpScoreA={setPokemonHpScoreA} pokemonHpScoreA={pokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokeAbilityNameB={pokeAbilityNameB} pokemonHeightB={pokemonHeightB} pokemonWeightB={pokemonWeightB} pokemonStatsB={pokemonStatsB} pokemonHpB={pokemonHpB} pokemonTypeB={pokemonTypeB} pokemonResultB={pokemonResultB} pokemonResultImageB={pokemonResultImageB} pokemonBattleIconB={pokemonBattleIconB} pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
+        {isAuthMan ? <BattlePage setPokemonHpScoreB={setPokemonHpScoreB} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} pokemonHpScoreA={pokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokeAbilityNameB={pokeAbilityNameB} pokemonHeightB={pokemonHeightB} pokemonWeightB={pokemonWeightB} pokemonStatsB={pokemonStatsB} pokemonHpB={pokemonHpB} pokemonTypeB={pokemonTypeB} pokemonResultB={pokemonResultB} pokemonResultImageB={pokemonResultImageB} pokemonBattleIconB={pokemonBattleIconB} pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/signin">
           <SignIn />
