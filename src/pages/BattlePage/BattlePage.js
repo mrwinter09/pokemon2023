@@ -72,6 +72,13 @@ function BattlePage({setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, po
   );
 };
 
+function generateRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+let randomNum = generateRandomNumber(1, 2);
+
+
   const player = {
     1: pokemonResult.name,
     2: pokemonResultB.name
@@ -242,22 +249,24 @@ function BattlePage({setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, po
 
       <section>
 
-
-
+      
         <div className={!startButton ? 'button-start' : 'button-start hidden'}>
            <h2 className='title-margin'>Press Start</h2>
            <button onClick={() => {setStartButton(!startButton)}} type='button' className='start-btn'>START</button>
         </div>
-
 
         <div className={startButton ? 'button-ab' : 'button-ab hidden'}>
           <h2 className={gameover ? 'title-margin' : 'title-margin hidden'}>Game Over</h2>
           <button onClick={() => {reset(); scoreCount(); setPokemonBattleId(pokemonId(1000)); setPokemonHpScoreA(pokemonStats); setPokemonHpScoreB(pokemonStatsB)}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
           
           <div className={gameover ? 'hidden' : ''}>
-          <button onClick={() => {setBattleStatsB(battleStatsB - 1); setPokemonHpScoreB(pokemonHpScoreB - testCountA)}} type='button' className='video-game-button'>A</button>
-           <button onClick={() => {setBattleStatsA(battleStatsA - 1); setPokemonHpScoreA(pokemonHpScoreA - testCountB)}} type='button' className='video-game-button'>B</button>
-           {player[1]}
+          <div className="center">
+          <header className="App-header">
+          <h1 className='battleplayer'>{player[randomNum]}</h1>
+          </header>
+          </div>
+          <button onClick={() => {setBattleStatsB(battleStatsB - 1); setPokemonHpScoreB(pokemonHpScoreB - testCountA); generateRandomNumber(1, 2)}} type='button' className='video-game-button'>A</button>
+           <button onClick={() => {setBattleStatsA(battleStatsA - 1); setPokemonHpScoreA(pokemonHpScoreA - testCountB); generateRandomNumber(1, 2)}} type='button' className='video-game-button'>B</button>
           </div>
         </div>
 
