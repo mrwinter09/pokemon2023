@@ -20,11 +20,10 @@ import water from '../../assets/icons/water.png'
 import './BattlePage.css'
 
 
-function BattlePage({firstPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, setPokemonBattleId, pokemonHeightB, pokemonWeightB, pokemonStatsB, pokemonHpB, pokemonTypeB, pokemonResultB ,pokemonResultImageB, pokemonBattleIconB, pokemonSpeciesName, abilityDescription}) {
+function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, setPokemonBattleId, pokemonSpeciesName, abilityDescription}) {
   const totalProgressBars = 1;
   const progressStatusArray = [1, 2, 3, 4, 5, 6];
   const progressStatusArrayLength = progressStatusArray.length;
-
   const [startButton, setStartButton] = useState(false)
   const [battleStatsA, setBattleStatsA] = useState(6)
   const [battleStatsB, setBattleStatsB] = useState(6)
@@ -36,7 +35,7 @@ function BattlePage({firstPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, se
     setBattleStatsA(6)
     setBattleStatsB(6)
   }
-  
+
   function scoreCount() {
     if (battleStatsB === 0) {
       return setTotalScore(totalScore + 1)
@@ -53,11 +52,8 @@ function BattlePage({firstPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, se
   let numberA = battleStatsA;
   let numberB = battleStatsB;
 
-  let testCountA = (firstPokemonResult.pokemonStats / 6 * pokemonStatsB / firstPokemonResult.pokemonStats).toFixed(0)
-  let testCountB = (pokemonStatsB / 6 * firstPokemonResult.pokemonStats / pokemonStatsB).toFixed(0)
- console.log(testCountB ) 
- console.log(testCountA ) 
-
+  let testCountA = (firstPokemonResult.pokemonStats / 6 * secondPokemonResult.pokemonStatsB / firstPokemonResult.pokemonStats).toFixed(0)
+  let testCountB = (secondPokemonResult.pokemonStatsB / 6 * firstPokemonResult.pokemonStats / secondPokemonResult.pokemonStatsB).toFixed(0)
 
   const ProgressDivs = ({ backgroundColorStyle, flexValue }) => {
   return (
@@ -72,16 +68,16 @@ function BattlePage({firstPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, se
   );
 };
 
-function generateRandomNumber(min, max) {
+  function generateRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
-}
+  }
 
-let randomNum = generateRandomNumber(1, 2);
+  let randomNum = generateRandomNumber(1, 2);
 
 
   const player = {
     1: firstPokemonResult.pokemonName,
-    2: pokemonResultB.name
+    2: secondPokemonResult.pokemonNameB
   }
 
   const colorsA = {
@@ -104,7 +100,7 @@ let randomNum = generateRandomNumber(1, 2);
     ice:'#d9c499',
     steel:'#c8ffcc',
   }
-  
+
   const iconA = {
     fire: fire,
     grass: grass,
@@ -125,8 +121,52 @@ let randomNum = generateRandomNumber(1, 2);
     ice: ice,
     steel: steel,
     }
-  const symbols = iconA[firstPokemonResult.pokemonType]
-  const color = colorsA[firstPokemonResult.pokemonType]
+  const firstSymbols = iconA[firstPokemonResult.pokemonType]
+  const firstColor = colorsA[firstPokemonResult.pokemonType]
+
+  const colorsB = {
+    fire:'#ffdec1',
+    grass:'#c8ffcc',
+    electric:'#fff5c4',
+    water:'#c5edff',
+    ground:'#f6dbc1',
+    rock:'#d3d3b3',
+    fairy:'#f8d3ff',
+    poison:'#7dd78f',
+    bug:'#fac984',
+    dragon:'#78a0e9',
+    psychic:'#e5e97b',
+    flying:'#e4c0c0',
+    fighting:'#d9c499',
+    normal:'#ecf0f1',
+    dark:'#7dd78f',
+    ghost:'#f6dbc1',
+    ice:'#d9c499',
+    steel:'#c8ffcc',
+  }
+
+  const iconB = {
+    fire: fire,
+    grass: grass,
+    electric: electric,
+    water: water,
+    ground: ground,
+    rock: rock,
+    fairy: fairy,
+    poison: poison,
+    bug: bug,
+    dragon: dragon,
+    psychic: psychic,
+    flying: flying,
+    fighting: fighting,
+    normal: normal,
+    dark: dark,
+    ghost: ghost,
+    ice: ice,
+    steel: steel,
+    }
+  const secondSymbols = iconB[secondPokemonResult.pokemonTypeB]
+  const secondColor = colorsB[secondPokemonResult.pokemonTypeB]
 
   return (
     <>
@@ -152,7 +192,7 @@ let randomNum = generateRandomNumber(1, 2);
         </div>
        </div>
        <div>
-       <p className='titleNameB'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={pokemonBattleIconB} alt=''></img>{pokemonHpB} {pokemonHpScoreB}</p>
+       <p className='titleNameB'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={secondPokemonResult.pokemonBattleIconB} alt=''></img>{secondPokemonResult.pokemonHpB} {pokemonHpScoreB}</p>
         <div
           className='energyBar'
         >
@@ -175,7 +215,7 @@ let randomNum = generateRandomNumber(1, 2);
 
         <div className="split">
               <div className="left">
-          <div style={{border: '5px solid'+ color}} className="card card--charizard">
+          <div style={{border: '5px solid'+ firstColor}} className="card card--charizard">
            <div className="card-image">
              <div className="card-image-container">
                <img src={firstPokemonResult.pokemonResultImage} alt={firstPokemonResult.pokemonName}/>
@@ -184,20 +224,20 @@ let randomNum = generateRandomNumber(1, 2);
            <div className="card-content">
              <div className="main">
                <div className="title has-text-white">{firstPokemonResult.pokemonName}</div>
-               <hr style={{backgroundColor: color}} />
+               <hr style={{backgroundColor: firstColor}} />
                <div className="hp">{firstPokemonResult.pokemonHp} {firstPokemonResult.pokemonStats}</div>
              </div>
              <div className="stats columns is-mobile">
                <div className="column nudge">
-               <img className='symbol' src={symbols} alt={firstPokemonResult.pokemonType}></img>
-                 <span style={{backgroundColor: color}} className="tag is-warning">Type</span>
+               <img className='symbol' src={firstSymbols} alt={firstPokemonResult.pokemonType}></img>
+                 <span style={{backgroundColor: firstColor}} className="tag is-warning">Type</span>
                </div>
 
                <div className="column center-column">{firstPokemonResult.pokemonWeight} lbs
-                 <span style={{backgroundColor: color}} className="tag is-warning">Weight</span>
+                 <span style={{backgroundColor: firstColor}} className="tag is-warning">Weight</span>
                </div>
                <div className="column">{firstPokemonResult.pokemonHeight} m
-                 <span style={{backgroundColor: color}} className="tag is-warning">Height</span>
+                 <span style={{backgroundColor: firstColor}} className="tag is-warning">Height</span>
                </div>
              </div>
            </div>
@@ -215,41 +255,39 @@ let randomNum = generateRandomNumber(1, 2);
             <div className="split">
             <p className="abilityDescriptionText">{abilityDescription}</p>
               <div className="right">
-          <div style={{border: '5px solid'+ color}} className="card card--charizard">
+          <div style={{border: '5px solid'+ secondColor}} className="card card--charizard">
            <div className="card-image">
              <div className="card-image-container">
-               <img src={pokemonResultImageB} alt={pokemonResultB.name}/>
+               <img src={secondPokemonResult.pokemonResultImageB} alt={secondPokemonResult.pokemonNameB}/>
              </div>
            </div>
            <div className="card-content">
              <div className="main">
-               <div className="title has-text-white">{pokemonResultB.name}</div>
-               <hr style={{backgroundColor: color}} />
-               <div className="hp">{pokemonHpB} {pokemonStatsB}</div>
+               <div className="title has-text-white">{secondPokemonResult.pokemonNameB}</div>
+               <hr style={{backgroundColor: secondColor}} />
+               <div className="hp">{secondPokemonResult.pokemonHpB} {secondPokemonResult.pokemonStatsB}</div>
              </div>
              <div className="stats columns is-mobile">
                <div className="column nudge">
-               <img className='symbol' src={symbols} alt={pokemonTypeB}></img>
-                 <span style={{backgroundColor: color}} className="tag is-warning">Type</span>
+               <img className='symbol' src={secondSymbols} alt={secondPokemonResult.pokemonTypeB}></img>
+                 <span style={{backgroundColor: secondColor}} className="tag is-warning">Type</span>
                </div>
 
-               <div className="column center-column">{pokemonWeightB} lbs
-                 <span style={{backgroundColor: color}} className="tag is-warning">Weight</span>
+               <div className="column center-column">{secondPokemonResult.pokemonWeightB} lbs
+                 <span style={{backgroundColor: secondColor}} className="tag is-warning">Weight</span>
                </div>
-               <div className="column">{pokemonHeightB} m
-                 <span style={{backgroundColor: color}} className="tag is-warning">Height</span>
+               <div className="column">{secondPokemonResult.pokemonHeightB} m
+                 <span style={{backgroundColor: secondColor}} className="tag is-warning">Height</span>
                </div>
              </div>
            </div>
         </div>
           </div>
-          
             </div>
           </div>
 
       <section>
 
-      
         <div className={!startButton ? 'button-start' : 'button-start hidden'}>
            <h2 className='title-margin'>Press Start</h2>
            <button onClick={() => {setStartButton(!startButton)}} type='button' className='start-btn'>START</button>
@@ -257,8 +295,8 @@ let randomNum = generateRandomNumber(1, 2);
 
         <div className={startButton ? 'button-ab' : 'button-ab hidden'}>
           <h2 className={gameover ? 'title-margin' : 'title-margin hidden'}>Game Over</h2>
-          <button onClick={() => {reset(); scoreCount(); setPokemonBattleId(pokemonId(1000)); setPokemonHpScoreA(firstPokemonResult.pokemonStats); setPokemonHpScoreB(pokemonStatsB)}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
-          
+          <button onClick={() => {reset(); scoreCount(); setPokemonBattleId(pokemonId(1000)); setPokemonHpScoreA(firstPokemonResult.pokemonStats); setPokemonHpScoreB(secondPokemonResult.pokemonStatsB)}} className={gameover ? 'start-btn' : 'hidden'}>Reset</button>
+
           <div className={gameover ? 'hidden' : ''}>
           <div className="center">
           <header className="App-header">

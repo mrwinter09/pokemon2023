@@ -8,7 +8,7 @@ import './Home.css'
 import HomeFooter from '../../components/HomeFooter/HomeFooter';
 
 
-function Home({firstPokemonResult, pokemonHpScoreB, pokemonStatsB, setPokemonHpScoreB, setPokemonHpScoreA, setPokemonBattleId, setActive, active, pokemon, setPokemon, results, pokemonSpecies }) {
+function Home({firstPokemonResult, secondPokemonResult, pokemonHpScoreB, setPokemonHpScoreB, setPokemonHpScoreA, setPokemonBattleId, setActive, active, pokemon, setPokemon, results, pokemonSpecies }) {
 
   
 
@@ -27,7 +27,7 @@ function Home({firstPokemonResult, pokemonHpScoreB, pokemonStatsB, setPokemonHpS
         <PokemonContainer firstPokemonResult={firstPokemonResult} pokemon={pokemon}/>
         <PokemonDescription firstPokemonResult={firstPokemonResult} pokemonSpecies={pokemonSpecies} pokemon={pokemon}/>
     </div>
-        <HomeFooter firstPokemonResult={firstPokemonResult} pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemon={pokemon} />
+        <HomeFooter firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemon={pokemon} />
     </>
   );
 }
