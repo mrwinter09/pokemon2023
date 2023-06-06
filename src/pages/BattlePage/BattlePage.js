@@ -265,8 +265,8 @@ let randomNum = generateRandomNumber(1, 2);
           <h1 className='battleplayer'>{player[randomNum]}</h1>
           </header>
           </div>
-          <button onClick={() => {setBattleStatsB(battleStatsB - 1); setPokemonHpScoreB(pokemonHpScoreB - testCountA); generateRandomNumber(1, 2)}} type='button' className='video-game-button'>A</button>
-           <button onClick={() => {setBattleStatsA(battleStatsA - 1); setPokemonHpScoreA(pokemonHpScoreA - testCountB); generateRandomNumber(1, 2)}} type='button' className='video-game-button'>B</button>
+          <button disabled={randomNum === 2} onClick={() => {setBattleStatsB(battleStatsB - 1); setPokemonHpScoreB(pokemonHpScoreB - testCountA); generateRandomNumber(1, 2)}} type='button' className={randomNum === 1 ? 'video-game-button' : 'video-game-disable'}>A</button>
+           <button disabled={randomNum === 1} onClick={() => {setBattleStatsA(battleStatsA - 1); setPokemonHpScoreA(pokemonHpScoreA - testCountB); generateRandomNumber(1, 2)}} type='button' className={randomNum === 2 ? 'video-game-button' : 'video-game-disable'}>B</button>
           </div>
         </div>
 

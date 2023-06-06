@@ -221,6 +221,26 @@
 	cursor: pointer;
   padding-left: 5px;
 }
+
+.App .video-game-disable {
+	text-shadow: 1px 1px pink, -1px -1px #7c7c7c;
+    line-height: 1.5em;
+    text-align: center;
+    display: inline-block;
+    width: 9.5em;
+    border-radius: 0.75em;
+    -o-box-shadow: 0 .2em maroon;
+    box-shadow: 0 0.2em grey;
+    color: #787878;
+    margin: 10px;
+    background-color: #939393;
+    cursor: pointer;
+    padding-left: 5px;
+}
+
+
+
+
 .App .start-btn{
     text-align: center;
 	display: inline-block;
