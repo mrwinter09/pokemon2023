@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 
-function Profile({pokemonBattleIcon}) {
+function Profile({firstPokemonResult}) {
   const {valueTestEmail, valueTestName,} = useContext(AuthContext);
 
   return (
@@ -19,7 +19,7 @@ function Profile({pokemonBattleIcon}) {
       <section>
         <h2>Number of battles</h2>
         <div className='footer'>
-        <p><img src={pokemonBattleIcon} alt=''></img> have won 10 battles</p>
+        <p><img src={firstPokemonResult.pokemonBattleIcon} alt=''></img> have won 10 battles</p>
         </div>
        
       </section>

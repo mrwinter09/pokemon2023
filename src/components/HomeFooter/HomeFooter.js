@@ -5,9 +5,9 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 
-function HomeFooter({pokemonResult, pokemon, setPokemonBattleId, setPokemonHpScoreA, pokemonStats, setPokemonHpScoreB, pokemonStatsB, pokemonHpScoreB}) {
+function HomeFooter({firstPokemonResult, pokemon, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB, pokemonStatsB, pokemonHpScoreB}) {
   const {isAuthMan} = useContext(AuthContext);
-  const inactive = pokemon === pokemonResult.name
+  const inactive = pokemon === firstPokemonResult.pokemonName
   const history = useHistory();
 
  
@@ -23,7 +23,7 @@ function HomeFooter({pokemonResult, pokemon, setPokemonBattleId, setPokemonHpSco
 
   function pokemonBattleStart() {
     setPokemonHpScoreB(pokemonStatsB);
-    setPokemonHpScoreA(pokemonStats)
+    setPokemonHpScoreA(firstPokemonResult.pokemonStats)
   }
 
   console.log(pokemonHpScoreB)

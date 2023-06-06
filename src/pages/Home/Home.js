@@ -8,7 +8,7 @@ import './Home.css'
 import HomeFooter from '../../components/HomeFooter/HomeFooter';
 
 
-function Home({firstPokemonResult, pokemonHpScoreB, pokemonStatsB, setPokemonHpScoreB, setPokemonHpScoreA, setPokemonBattleId, setActive, active, pokemon, setPokemon, pokemonResult, results, pokemonHeight, pokemonWeight, pokemonStats, pokemonHp, pokemonResultImage, pokemonType, pokemonSpecies,abilityDescription }) {
+function Home({firstPokemonResult, pokemonHpScoreB, pokemonStatsB, setPokemonHpScoreB, setPokemonHpScoreA, setPokemonBattleId, setActive, active, pokemon, setPokemon, results, pokemonSpecies }) {
 
   
 
@@ -20,14 +20,14 @@ function Home({firstPokemonResult, pokemonHpScoreB, pokemonStatsB, setPokemonHpS
       </header>
     </div>
     <section>
-        <SearchBar setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} />
+        <SearchBar firstPokemonResult={firstPokemonResult} setActive={setActive} active={active} pokemon={pokemon} setPokemon={setPokemon}/>
         <SearchResults setPokemonBattleId={setPokemonBattleId} setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
     <div className='wrapper'>
-        <PokemonContainer firstPokemonResult={firstPokemonResult} pokemon={pokemon} pokemonResult={pokemonResult}/>
-        <PokemonDescription pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} pokemonResult={pokemonResult} pokemon={pokemon}/>
+        <PokemonContainer firstPokemonResult={firstPokemonResult} pokemon={pokemon}/>
+        <PokemonDescription firstPokemonResult={firstPokemonResult} pokemonSpecies={pokemonSpecies} pokemon={pokemon}/>
     </div>
-        <HomeFooter firstPokemonResult={firstPokemonResult} pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} pokemonStats={pokemonStats} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemonResult={pokemonResult} pokemon={pokemon} />
+        <HomeFooter firstPokemonResult={firstPokemonResult} pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemon={pokemon} />
     </>
   );
 }

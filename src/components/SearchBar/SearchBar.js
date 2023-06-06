@@ -2,8 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import './SearchBar.css'
 
-function SearchBar({ pokemon, setPokemon, pokemonResult, setActive, active }) {
-  const inactive = pokemon === pokemonResult.name
+function SearchBar({ pokemon, setPokemon, firstPokemonResult, setActive, active }) {
+  const inactive = pokemon === firstPokemonResult.pokemonName
 
   return (
     <>

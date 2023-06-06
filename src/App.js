@@ -17,18 +17,8 @@ function App() {
   const [pokemon, setPokemon] = useState("")
 
 // Pokemon A
-  const [pokemonResult, setPokemonResult] = useState("")
-  const [pokemonResultImage, setPokemonResultImage] = useState("")
-  const [pokemonBattleIcon, setPokemonBattleIcon] = useState("")
-  const [pokemonType, setPokemonType] = useState("")
-  const [pokemonHp, setPokemonHp] = useState("")
-  const [pokemonWeight, setPokemonWeight] = useState("")
-  const [pokemonHeight, setPokemonHeight] = useState("")
-  const [pokemonStats, setPokemonStats] = useState("")
-  const [pokeAbilityName, setpokeAbilityName] = useState("")
   const [firstPokemonResult, setFirstPokemonResult] = useState({})
-
-
+  const [pokeAbilityName, setpokeAbilityName] = useState("")
 
 // Pokemon B
    const [pokemonResultB, setPokemonResultB] = useState("")
@@ -93,12 +83,27 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
     }
   },[pokeAbilityName]);
 
+  useEffect(() => {
+    async function fetchDataPokemon() {
+      try {
+        const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
+        setPokemonSpecies(responseSpecies.data.flavor_text_entries['6'].flavor_text)
+        setPokemonSpeciesName(responseSpecies.data.names['0'].name)
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    if(pokemon){
+      fetchDataPokemon()
+    }
+  },[pokemon]);
+
+
 //Fetch Pokemon A
   useEffect(() => {
     async function fetchDataPokemon() {
       try {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-
         const firstPokemonApiResult = {
           pokemonResult: response.data,
           pokemonName: response.data.name,
@@ -111,28 +116,8 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
           pokemonStats: response.data.stats['0'].base_stat,
           pokeAbilityName: response.data.abilities['0'].ability.name,
         }
-
         setFirstPokemonResult(firstPokemonApiResult)
-    
-        setPokemonResult(response.data)
-        setPokemonResultImage(response.data.sprites.other['official-artwork'].front_default)
-        setPokemonBattleIcon(response.data.sprites.versions['generation-vii'].icons.front_default)
-        setPokemonType(response.data.types['0'].type.name)
-        setPokemonHp(response.data.stats['0'].stat.name)
-        setPokemonWeight(response.data.weight)
-        setPokemonHeight(response.data.height)
-        setPokemonStats(response.data.stats['0'].base_stat)
         setpokeAbilityName(response.data.abilities['0'].ability.name)
-
-        // const pokemonResult = response.data;
-        // const pokemonResultImage = response.data.sprites.other['official-artwork'].front_default;
-        // const pokemonBattleIcon = response.data.sprites.versions['generation-vii'].icons.front_default;
-        // const pokemonType = response.data.types['0'].type.name;
-        // const pokemonHp = response.data.stats['0'].stat.name;
-        // const pokemonWeight = response.data.weight;
-        // const pokemonHeight = response.data.height;
-        // const pokemonStats = response.data.stats['0'].base_stat;
-        // const pokeAbilityName = response.data.abilities['0'].ability.name;
       } catch (e) {
         console.error(e);
       }
@@ -167,36 +152,6 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
     }
   },[pokemonBattleId]);
 
-
-  useEffect(() => {
-    async function fetchDataPokemon() {
-      try {
-        const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
-        setPokemonSpecies(responseSpecies.data.flavor_text_entries['6'].flavor_text)
-        setPokemonSpeciesName(responseSpecies.data.names['0'].name)
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    if(pokemon){
-      fetchDataPokemon()
-    }
-  },[pokemon]);
-
-  // const firstPokemonApiResult = {
-  //   pokemonResult: pokemonResult,
-  //   pokemonResultImage: pokemonResultImage,
-  //   pokemonBattleIcon: pokemonBattleIcon,
-  //   pokemonType: pokemonType,
-  //   pokemonHp: pokemonHp,
-  //   pokemonWeight: pokemonWeight,
-  //   pokemonHeight: pokemonHeight,
-  //   pokemonStats: pokemonStats,
-  //   pokeAbilityName: pokeAbilityName,
-  // }
-
-console.log(firstPokemonResult)
-
   const { isAuthMan } = useContext(AuthContext);
   return (
     <>
@@ -204,13 +159,13 @@ console.log(firstPokemonResult)
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home firstPokemonResult={firstPokemonResult} pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} results={results} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonType={pokemonType} pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} />
+          <Home firstPokemonResult={firstPokemonResult} pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} results={results} pokemonSpecies={pokemonSpecies} />
         </Route>
         <Route path="/profile">
-        {isAuthMan ? <Profile pokemonBattleIcon={pokemonBattleIcon} /> : <Redirect to="/" />}
+        {isAuthMan ? <Profile firstPokemonResult={firstPokemonResult} /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
-        {isAuthMan ? <BattlePage setPokemonHpScoreB={setPokemonHpScoreB} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} pokemonHpScoreA={pokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokeAbilityNameB={pokeAbilityNameB} pokemonHeightB={pokemonHeightB} pokemonWeightB={pokemonWeightB} pokemonStatsB={pokemonStatsB} pokemonHpB={pokemonHpB} pokemonTypeB={pokemonTypeB} pokemonResultB={pokemonResultB} pokemonResultImageB={pokemonResultImageB} pokemonBattleIconB={pokemonBattleIconB} pokemonBattleIcon={pokemonBattleIcon} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription} pokemonResultImage={pokemonResultImage} pokemon={pokemon} pokemonResult={pokemonResult} pokemonType={pokemonType} pokemonHp={pokemonHp} pokemonStats={pokemonStats} pokemonWeight={pokemonWeight} pokemonHeight={pokemonHeight} /> : <Redirect to="/" />}
+        {isAuthMan ? <BattlePage firstPokemonResult={firstPokemonResult} setPokemonHpScoreB={setPokemonHpScoreB} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} pokemonHpScoreA={pokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokeAbilityNameB={pokeAbilityNameB} pokemonHeightB={pokemonHeightB} pokemonWeightB={pokemonWeightB} pokemonStatsB={pokemonStatsB} pokemonHpB={pokemonHpB} pokemonTypeB={pokemonTypeB} pokemonResultB={pokemonResultB} pokemonResultImageB={pokemonResultImageB} pokemonBattleIconB={pokemonBattleIconB}  pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription}  pokemon={pokemon}/> : <Redirect to="/" />}
         </Route>
         <Route exact path="/signin">
           <SignIn />

@@ -18,8 +18,8 @@ import rock from '../../assets/icons/rock.png'
 import steel from '../../assets/icons/steel.png'
 import water from '../../assets/icons/water.png'
 
-function PokemonContainer({pokemon, firstPokemonResult, pokemonResult}) {
-const inactive = pokemon === pokemonResult.name
+function PokemonContainer({pokemon, firstPokemonResult}) {
+const inactive = pokemon === firstPokemonResult.pokemonName
 
 const colors = {
   fire:'#ffdec1',
@@ -74,14 +74,14 @@ const color = colors[firstPokemonResult.pokemonType]
       
       <div className="card-image">
         <div className="card-image-container">
-          <img src={firstPokemonResult.pokemonResultImage} alt={firstPokemonResult.name}/>
+          <img src={firstPokemonResult.pokemonResultImage} alt={firstPokemonResult.pokemonName}/>
         </div>
       </div>
 
       <div className="card-content">
 
         <div className="main">
-          <div className="title has-text-white">{firstPokemonResult.name}</div>
+          <div className="title has-text-white">{firstPokemonResult.pokemonName}</div>
           <hr style={{backgroundColor: color}} />
           <div className="hp">{firstPokemonResult.pokemonHp} {firstPokemonResult.pokemonStats}</div>
         </div>
