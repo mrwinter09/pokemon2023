@@ -19,8 +19,10 @@ function App() {
 // Pokemon A
   const [firstPokemonResult, setFirstPokemonResult] = useState({})
   const [pokeAbilityName, setpokeAbilityName] = useState("")
+  const firstPokemonResultAbility = firstPokemonResult.pokeAbilityName
 
 // Pokemon B
+   const [secondPokemonResult, setSecondPokemonResult] = useState({})
    const [pokemonResultB, setPokemonResultB] = useState("")
    const [pokemonResultImageB, setPokemonResultImageB] = useState("")
    const [pokemonBattleIconB, setPokemonBattleIconB] = useState("")
@@ -34,11 +36,9 @@ function App() {
 //Pokemon Datagrab
   const [pokeNames, setPokeNames] = useState([])
 // eslint-disable-next-line
-  const [pokeAbility, setpokeAbility] = useState([])
   const [abilityDescription, setAbilityDescription] = useState("")
   const [pokemonSpecies, setPokemonSpecies] = useState([])
   const [pokemonSpeciesName, setPokemonSpeciesName] = useState('')
-
   const [pokemonBattleId, setPokemonBattleId] = useState(0)
 
 // battlesystem
@@ -72,7 +72,6 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
     async function fetchDataPokemonAbility() {
       try {
         const responseAbility = await axios.get(`https://pokeapi.co/api/v2/ability/${pokeAbilityName}`);
-        setpokeAbility(responseAbility.data)
         setAbilityDescription(responseAbility.data.effect_entries['1'].effect)
       } catch (e) {
         console.error(e);
@@ -132,7 +131,21 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
     async function fetchDataPokemon() {
       try {
         const responsePokemonBattle = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonBattleId}`);
-        console.log(responsePokemonBattle.data)
+        const secondPokemonApiResult = {
+          pokemonResultB: responsePokemonBattle.data,
+          pokemonNameB: responsePokemonBattle.data.name,
+          pokemonResultImageB: responsePokemonBattle.data.sprites.other['official-artwork'].front_default,
+          pokemonBattleIconB: responsePokemonBattle.data.sprites.versions['generation-vii'].icons.front_default,
+          pokemonTypeB: responsePokemonBattle.data.types['0'].type.name,
+          pokemonHpB: responsePokemonBattle.data.stats['0'].stat.name,
+          pokemonWeightB: responsePokemonBattle.data.weight,
+          pokemonHeightB: responsePokemonBattle.data.height,
+          pokemonStatsB: responsePokemonBattle.data.stats['0'].base_stat,
+          pokeAbilityNameB: responsePokemonBattle.data.abilities['0'].ability.name,
+        }
+        setSecondPokemonResult(secondPokemonApiResult)
+        setpokeAbilityNameB(responsePokemonBattle.data.abilities['0'].ability.name)
+
         setPokemonResultB(responsePokemonBattle.data)
         setPokemonResultImageB(responsePokemonBattle.data.sprites.other['official-artwork'].front_default)
         setPokemonBattleIconB(responsePokemonBattle.data.sprites.versions['generation-vii'].icons.front_default)
@@ -141,7 +154,6 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
         setPokemonWeightB(responsePokemonBattle.data.weight)
         setPokemonHeightB(responsePokemonBattle.data.height)
         setPokemonStatsB(responsePokemonBattle.data.stats['0'].base_stat)
-        setpokeAbilityNameB(responsePokemonBattle.data.abilities['0'].ability.name)
         setPokemonHpScoreB(responsePokemonBattle.data.stats['0'].base_stat)
       } catch (e) {
         console.error(e);
@@ -159,7 +171,7 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home firstPokemonResult={firstPokemonResult} pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} results={results} pokemonSpecies={pokemonSpecies} />
+          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} results={results} pokemonSpecies={pokemonSpecies} />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile firstPokemonResult={firstPokemonResult} /> : <Redirect to="/" />}
