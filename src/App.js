@@ -26,7 +26,6 @@ function App() {
   const [pokemonHeight, setPokemonHeight] = useState("")
   const [pokemonStats, setPokemonStats] = useState("")
   const [pokeAbilityName, setpokeAbilityName] = useState("")
- 
 
 // Pokemon B
    const [pokemonResultB, setPokemonResultB] = useState("")
@@ -38,7 +37,7 @@ function App() {
    const [pokemonHeightB, setPokemonHeightB] = useState("")
    const [pokemonStatsB, setPokemonStatsB] = useState("")
    const [pokeAbilityNameB, setpokeAbilityNameB] = useState("")
-   
+
 //Pokemon Datagrab
   const [pokeNames, setPokeNames] = useState([])
 // eslint-disable-next-line
@@ -47,17 +46,12 @@ function App() {
   const [pokemonSpecies, setPokemonSpecies] = useState([])
   const [pokemonSpeciesName, setPokemonSpeciesName] = useState('')
 
-
   const [pokemonBattleId, setPokemonBattleId] = useState(0)
 
-// battlesystem 
+// battlesystem
 const [pokemonHpScoreA, setPokemonHpScoreA ] = useState(0)
 const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
 
-console.log(pokemonStats)
-console.log(pokemonStatsB)
-console.log(pokemonHpScoreA)
-console.log(pokemonHpScoreB)
   useEffect(() => {
     function callPokemon(value) {
       const results = pokeNames.filter((user)=> {
@@ -121,7 +115,6 @@ console.log(pokemonHpScoreB)
   },[pokemon]);
 
   //Fetch Pokemon B
-
   useEffect(() => {
     async function fetchDataPokemon() {
       try {
@@ -161,8 +154,6 @@ console.log(pokemonHpScoreB)
       fetchDataPokemon()
     }
   },[pokemon]);
-
-
 
   const { isAuthMan } = useContext(AuthContext);
   return (
