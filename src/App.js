@@ -26,6 +26,9 @@ function App() {
   const [pokemonHeight, setPokemonHeight] = useState("")
   const [pokemonStats, setPokemonStats] = useState("")
   const [pokeAbilityName, setpokeAbilityName] = useState("")
+  const [firstPokemonResult, setFirstPokemonResult] = useState({})
+
+
 
 // Pokemon B
    const [pokemonResultB, setPokemonResultB] = useState("")
@@ -94,8 +97,23 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
   useEffect(() => {
     async function fetchDataPokemon() {
       try {
-
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+
+        const firstPokemonApiResult = {
+          pokemonResult: response.data,
+          pokemonName: response.data.name,
+          pokemonResultImage: response.data.sprites.other['official-artwork'].front_default,
+          pokemonBattleIcon: response.data.sprites.versions['generation-vii'].icons.front_default,
+          pokemonType: response.data.types['0'].type.name,
+          pokemonHp: response.data.stats['0'].stat.name,
+          pokemonWeight: response.data.weight,
+          pokemonHeight: response.data.height,
+          pokemonStats: response.data.stats['0'].base_stat,
+          pokeAbilityName: response.data.abilities['0'].ability.name,
+        }
+
+        setFirstPokemonResult(firstPokemonApiResult)
+    
         setPokemonResult(response.data)
         setPokemonResultImage(response.data.sprites.other['official-artwork'].front_default)
         setPokemonBattleIcon(response.data.sprites.versions['generation-vii'].icons.front_default)
@@ -105,6 +123,16 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
         setPokemonHeight(response.data.height)
         setPokemonStats(response.data.stats['0'].base_stat)
         setpokeAbilityName(response.data.abilities['0'].ability.name)
+
+        // const pokemonResult = response.data;
+        // const pokemonResultImage = response.data.sprites.other['official-artwork'].front_default;
+        // const pokemonBattleIcon = response.data.sprites.versions['generation-vii'].icons.front_default;
+        // const pokemonType = response.data.types['0'].type.name;
+        // const pokemonHp = response.data.stats['0'].stat.name;
+        // const pokemonWeight = response.data.weight;
+        // const pokemonHeight = response.data.height;
+        // const pokemonStats = response.data.stats['0'].base_stat;
+        // const pokeAbilityName = response.data.abilities['0'].ability.name;
       } catch (e) {
         console.error(e);
       }
@@ -155,6 +183,20 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
     }
   },[pokemon]);
 
+  // const firstPokemonApiResult = {
+  //   pokemonResult: pokemonResult,
+  //   pokemonResultImage: pokemonResultImage,
+  //   pokemonBattleIcon: pokemonBattleIcon,
+  //   pokemonType: pokemonType,
+  //   pokemonHp: pokemonHp,
+  //   pokemonWeight: pokemonWeight,
+  //   pokemonHeight: pokemonHeight,
+  //   pokemonStats: pokemonStats,
+  //   pokeAbilityName: pokeAbilityName,
+  // }
+
+console.log(firstPokemonResult)
+
   const { isAuthMan } = useContext(AuthContext);
   return (
     <>
@@ -162,7 +204,7 @@ const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} results={results} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonType={pokemonType} pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} />
+          <Home firstPokemonResult={firstPokemonResult} pokemonHpScoreB={pokemonHpScoreB} pokemonStatsB={pokemonStatsB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} pokemonResult={pokemonResult} results={results} pokemonHeight={pokemonHeight} pokemonWeight={pokemonWeight} pokemonStats={pokemonStats} pokemonHp={pokemonHp} pokemonResultImage={pokemonResultImage} pokemonType={pokemonType} pokemonSpecies={pokemonSpecies} abilityDescription={abilityDescription} />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile pokemonBattleIcon={pokemonBattleIcon} /> : <Redirect to="/" />}
