@@ -5,7 +5,7 @@ import SearchResults from '../../components/SearchResult/SearchResult';
 import PokemonContainer from '../../components/PokemonContainer/PokemonContainer';
 import PokemonDescription from '../../components/PokemonDescription/PokemonDescription'
 import './Home.css'
-import HomeFooter from '../../components/HomeFooter/HomeFooter';
+import HomePageFooter from '../../components/HomeFooter/HomePageFooter';
 
 
 function Home({firstPokemonResult, secondPokemonResult, pokemonHpScoreB, setPokemonHpScoreB, setPokemonHpScoreA, setPokemonBattleId, setActive, active, pokemon, setPokemon, results, pokemonSpecies }) {
@@ -27,7 +27,7 @@ function Home({firstPokemonResult, secondPokemonResult, pokemonHpScoreB, setPoke
         <PokemonContainer firstPokemonResult={firstPokemonResult} pokemon={pokemon}/>
         <PokemonDescription firstPokemonResult={firstPokemonResult} pokemonSpecies={pokemonSpecies} pokemon={pokemon}/>
     </div>
-        <HomeFooter firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemon={pokemon} />
+        <HomePageFooter firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemon={pokemon} />
     </>
   );
 }

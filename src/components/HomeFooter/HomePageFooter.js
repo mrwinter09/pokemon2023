@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import './HomeFooter.css'
+import './HomePageFooter.css'
 import { useHistory } from "react-router-dom/";
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 
-function HomeFooter({firstPokemonResult, secondPokemonResult, pokemon, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB, pokemonHpScoreB}) {
+function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB, pokemonHpScoreB}) {
   const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === firstPokemonResult.pokemonName
   const history = useHistory();
@@ -62,5 +62,5 @@ function HomeFooter({firstPokemonResult, secondPokemonResult, pokemon, setPokemo
   );
 }
 
-export default HomeFooter;
+export default HomePageFooter;
 

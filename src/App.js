@@ -118,9 +118,6 @@ const [pokemonBattleId, setPokemonBattleId] = useState(0)
 
   //Fetch Pokemon B
   useEffect(() => {
-    let newResult = secondPokemonResult
-    let newHpResult = pokemonHpScoreB
-    
     async function fetchDataPokemon() {
       try {
         const responsePokemonBattle = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonBattleId}`);
@@ -136,8 +133,8 @@ const [pokemonBattleId, setPokemonBattleId] = useState(0)
           pokemonStatsB: responsePokemonBattle.data.stats['0'].base_stat,
           pokeAbilityNameB: responsePokemonBattle.data.abilities['0'].ability.name,
         }
-        newResult = secondPokemonApiResult
-        newHpResult = responsePokemonBattle.data.stats['0'].base_stat
+        setSecondPokemonResult(secondPokemonApiResult)
+        setPokemonHpScoreB(responsePokemonBattle.data.stats['0'].base_stat)
       } catch (e) {
         console.error(e);
       }
@@ -145,9 +142,7 @@ const [pokemonBattleId, setPokemonBattleId] = useState(0)
     if(pokemonBattleId){
       fetchDataPokemon()
     }
-    setSecondPokemonResult(newResult)
-    setPokemonHpScoreB(newHpResult)
-  },[pokemonBattleId, pokemonHpScoreB, secondPokemonResult]);
+  },[pokemonBattleId]);
 
   const { isAuthMan } = useContext(AuthContext);
   return (
