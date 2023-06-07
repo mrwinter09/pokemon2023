@@ -42,7 +42,7 @@ const colors = {
   steel:'#c8ffcc',
 }
 
-const icon = {
+const icons = {
   fire: fire,
   grass: grass,
   electric: electric,
@@ -63,7 +63,7 @@ const icon = {
   steel: steel,
   }
 
-const symbols = icon[firstPokemonResult.pokemonType]
+const icon = icons[firstPokemonResult.pokemonType]
 const color = colors[firstPokemonResult.pokemonType]
 
 
@@ -88,7 +88,7 @@ const color = colors[firstPokemonResult.pokemonType]
         
         <div className="stats columns is-mobile">
           <div className="column nudge">
-          <img className='symbol' src={symbols} alt={firstPokemonResult.pokemonType}></img>
+          <img className='symbol' src={icon} alt={firstPokemonResult.pokemonType}></img>
             <span style={{backgroundColor: color}} className="tag is-warning">Type</span>
           </div>
 
