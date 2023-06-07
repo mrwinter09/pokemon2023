@@ -223,11 +223,11 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
            </div>
            <div className="card-content">
              <div className="main">
-               <div className="title has-text-white">{firstPokemonResult.pokemonName}</div>
+               <div className="title ">{firstPokemonResult.pokemonName}</div>
                <hr style={{backgroundColor: firstColor}} />
-               <div className="hp">{firstPokemonResult.pokemonHp} {firstPokemonResult.pokemonStats}</div>
+               <div className="pokemon-hp">{firstPokemonResult.pokemonHp} {firstPokemonResult.pokemonStats}</div>
              </div>
-             <div className="stats columns is-mobile">
+             <div className="stats">
                <div className="column nudge">
                <img className='symbol' src={firstSymbols} alt={firstPokemonResult.pokemonType}></img>
                  <span style={{backgroundColor: firstColor}} className="tag is-warning">Type</span>
@@ -263,11 +263,11 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
            </div>
            <div className="card-content">
              <div className="main">
-               <div className="title has-text-white">{secondPokemonResult.pokemonNameB}</div>
+               <div className="title ">{secondPokemonResult.pokemonNameB}</div>
                <hr style={{backgroundColor: secondColor}} />
-               <div className="hp">{secondPokemonResult.pokemonHpB} {secondPokemonResult.pokemonStatsB}</div>
+               <div className="pokemon-hp">{secondPokemonResult.pokemonHpB} {secondPokemonResult.pokemonStatsB}</div>
              </div>
-             <div className="stats columns is-mobile">
+             <div className="stats">
                <div className="column nudge">
                <img className='symbol' src={secondSymbols} alt={secondPokemonResult.pokemonTypeB}></img>
                  <span style={{backgroundColor: secondColor}} className="tag is-warning">Type</span>

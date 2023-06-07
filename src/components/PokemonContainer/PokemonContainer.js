@@ -70,7 +70,7 @@ const color = colors[firstPokemonResult.pokemonType]
   return (
     <>
 <div className={inactive ? 'pokemonCardContainer' : 'pokemonCardContainer hidden'}>
-    <div style={{border: '5px solid'+ color}} className="card card--charizard">
+    <div style={{border: '5px solid'+ color}} className="card card--pokemon">
       <div className="card-image">
         <div className="card-image-container">
           <img src={firstPokemonResult.pokemonResultImage} alt={firstPokemonResult.pokemonName}/>
@@ -80,21 +80,21 @@ const color = colors[firstPokemonResult.pokemonType]
       <div className="card-content">
 
         <div className="main">
-          <div className="title has-text-white">{firstPokemonResult.pokemonName}</div>
+          <div className="title">{firstPokemonResult.pokemonName}</div>
           <hr style={{backgroundColor: color}} />
-          <div className="hp">{firstPokemonResult.pokemonHp} {firstPokemonResult.pokemonStats}</div>
+          <div className="pokemon-hp">{firstPokemonResult.pokemonHp} {firstPokemonResult.pokemonStats}</div>
         </div>
-        <div className="stats columns is-mobile">
+        <div className="stats">
           <div className="column nudge">
-          <img className='symbol' src={icon} alt={firstPokemonResult.pokemonType}></img>
-            <span style={{backgroundColor: color}} className="tag is-warning">Type</span>
+          <img className='icon' src={icon} alt={firstPokemonResult.pokemonType}></img>
+            <span style={{backgroundColor: color}} className="tag">Type</span>
           </div>
 
           <div className="column center-column">{firstPokemonResult.pokemonWeight} lbs
-            <span style={{backgroundColor: color}} className="tag is-warning">Weight</span>
+            <span style={{backgroundColor: color}} className="tag">Weight</span>
           </div>
           <div className="column">{firstPokemonResult.pokemonHeight} m
-            <span style={{backgroundColor: color}} className="tag is-warning">Height</span>
+            <span style={{backgroundColor: color}} className="tag">Height</span>
           </div>
         </div>
       </div>
