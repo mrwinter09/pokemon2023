@@ -51,15 +51,15 @@ top: .2em;
 p{
   margin-top: 30px;
 
-  &.bottom{
+  &.signin-top{
     margin-bottom: 0px;
   }
 
-  &.top{
+  &.signin-bottom{
     margin-top: 0px
   }
 
-  &.battle{
+  &.battle-slogan{
     font-family: Alfa Slab One;
     letter-spacing: -1px;
     margin-bottom: 1px;
@@ -85,7 +85,7 @@ footer  {
 
 @media (max-width: 390px) {
   p{
-    &.battle{
+    &.battle-slogan{
       max-width: 90%;
       font-family: Alfa Slab One;
       letter-spacing: -1px;

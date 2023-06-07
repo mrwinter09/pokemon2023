@@ -71,7 +71,6 @@ const color = colors[firstPokemonResult.pokemonType]
     <>
 <div className={inactive ? 'pokemonCardContainer' : 'pokemonCardContainer hidden'}>
     <div style={{border: '5px solid'+ color}} className="card card--charizard">
-      
       <div className="card-image">
         <div className="card-image-container">
           <img src={firstPokemonResult.pokemonResultImage} alt={firstPokemonResult.pokemonName}/>
@@ -85,7 +84,6 @@ const color = colors[firstPokemonResult.pokemonType]
           <hr style={{backgroundColor: color}} />
           <div className="hp">{firstPokemonResult.pokemonHp} {firstPokemonResult.pokemonStats}</div>
         </div>
-        
         <div className="stats columns is-mobile">
           <div className="column nudge">
           <img className='symbol' src={icon} alt={firstPokemonResult.pokemonType}></img>
