@@ -8,7 +8,7 @@ import axios from 'axios';
 
 function SignIn() {
   const navigate = useHistory();
-  const {setregisterUserName, valueTestEmail, valueTestPassword, signInFunction} = useContext(AuthContext)
+  const {setRegisterUserName, valueTestEmail, valueTestPassword, signInFunction} = useContext(AuthContext)
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   // eslint-disable-next-line
@@ -31,7 +31,7 @@ function SignIn() {
        email: loginEmail,
        password: loginPassword,
      });
-     setregisterUserName(true)
+     setRegisterUserName(true)
      signInFunction(response.data.accessToken)
     } catch (error) {
      console.error(error);

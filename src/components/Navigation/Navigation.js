@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import logo from '../../assets/Poké_Ball_icon.svg.png';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import './Nav.css'
+import './Navigation.css'
 import { useHistory } from "react-router-dom/";
 
 function Nav({setPokemon}) {
-  const { registerUserName, setregisterUserName, valueTestName, signOutFunction, isAuthMan} = useContext(AuthContext);
+  const { registerUserName, setRegisterUserName, valueTestName, signOutFunction, isAuthMan} = useContext(AuthContext);
   const history = useHistory();
 
-  function signinOut() {
+  function signInOut() {
     signOutFunction()
-    setregisterUserName(false)
+    setRegisterUserName(false)
     history.push('/')
   }
 
@@ -30,7 +30,7 @@ function Nav({setPokemon}) {
         <>
         <button
           type="button"
-          onClick={signinOut}
+          onClick={signInOut}
           className='loggOff'
         >
           Log out

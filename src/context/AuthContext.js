@@ -9,7 +9,7 @@ function AuthContextComponent({children}) {
   const [valueFieldRegEmail, setValueFieldRegEmail] = useState('')
   const [valueFieldRegPassword, setValueFieldRegPassword] = useState('')
   const [profile, setProfile] = useState('')
-  const [registerUserName, setregisterUserName] = useState(true)
+  const [registerUserName, setRegisterUserName] = useState(true)
   const [auth, toggleIsAuth] = useState({
     isAuth: false,
     user: null,
@@ -136,7 +136,7 @@ function AuthContextComponent({children}) {
     valueTestPassword: valueFieldRegPassword,
     testName: setProfile,
     testNameProfile: profile,
-    setregisterUserName: setregisterUserName,
+    setRegisterUserName: setRegisterUserName,
     registerUserName: registerUserName,
   }
 

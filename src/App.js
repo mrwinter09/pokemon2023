@@ -1,7 +1,7 @@
 
 import React, { useContext, useState, useEffect } from 'react';
 import {Redirect, Switch, Route } from 'react-router-dom';
-import Nav from './components/Navigation/Nav';
+import Navigation from './components/Navigation/Navigation';
 import BattlePage from './pages/BattlePage/BattlePage';
 import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile'
@@ -147,7 +147,7 @@ const [pokemonBattleId, setPokemonBattleId] = useState(0)
   const { isAuthMan } = useContext(AuthContext);
   return (
     <>
-    <Nav setPokemon={setPokemon} />
+    <Navigation setPokemon={setPokemon} />
     <div className="content">
       <Switch>
         <Route exact path="/">
