@@ -1,11 +1,3 @@
-.hidden {
-  display: hidden;
-}
-
-.not-hidden {
-  display: block;
-}
-
 .footer{
   display: flex;
   justify-content: center;

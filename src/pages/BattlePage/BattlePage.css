@@ -197,10 +197,6 @@
 }
 
 
-.hidden {
-  display: none;
-}
-
 .App .video-game-button {
 	text-shadow: 1px 1px pink, -1px -1px maroon;
 	line-height: 1.5em;
