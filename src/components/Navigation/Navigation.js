@@ -9,14 +9,14 @@ function Nav({setPokemon}) {
   const { registerUserName, setRegisterUserName, valueTestName, signOutFunction, isAuthMan} = useContext(AuthContext);
   const history = useHistory();
 
-  function signInOut() {
+  function signOutButton() {
     signOutFunction()
     setRegisterUserName(false)
     history.push('/')
   }
 
   return (
-    <nav className='nav-display-mobile'>
+    <nav className='nav-logo'>
         <Link to="/">
           <span onClick={() => setPokemon('')} className="logo-container">
             <img src={logo} alt="logo"/>
@@ -25,13 +25,13 @@ function Nav({setPokemon}) {
             </h3>
           </span>
         </Link>
-      <div className='nav-mobile'>
+      <div className='nav-button'>
         {isAuthMan ?
         <>
         <button
           type="button"
-          onClick={signInOut}
-          className='loggOff'
+          onClick={signOutButton}
+          className='sign-out'
         >
           Log out
         </button>
