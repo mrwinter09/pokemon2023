@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import logo from '../../assets/Poké_Ball_icon.svg.png';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
