@@ -5,30 +5,19 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 
-function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB, pokemonHpScoreB}) {
+function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB}) {
   const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === firstPokemonResult.pokemonName
   const history = useHistory();
-
- 
-
-  // Trigger de math random
-  function battleStart() {
-    history.push('/battlepage')
-  }
 
   function pokemonId(max) {
     return Math.floor(Math.random() * max)
   }
 
-  function pokemonBattleStart() {
+  function pokemonHpStartScore() {
     setPokemonHpScoreB(secondPokemonResult.pokemonStatsB);
     setPokemonHpScoreA(firstPokemonResult.pokemonStats)
   }
-
-  console.log(pokemonHpScoreB)
-  console.log(secondPokemonResult.pokemonStatsB)
-
 
   return (
     <>
@@ -38,7 +27,7 @@ function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon, setPo
       <p className='battle'>Let's battle with {pokemon}</p>
         <button
         type="button"
-        onClick={() => {battleStart(); setPokemonBattleId(pokemonId(1000)); pokemonBattleStart()}}
+        onClick={() => {history.push('/battlepage'); setPokemonBattleId(pokemonId(1000)); pokemonHpStartScore()}}
         className='start-btn'
         >
           Battle
