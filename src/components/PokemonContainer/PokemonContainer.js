@@ -1,4 +1,4 @@
-import './PokemonCardContainer.css'
+import './PokemonContainer.css'
 import bug from '../../assets/icons/bug.png'
 import dark from '../../assets/icons/dark.png'
 import dragon from '../../assets/icons/dragon.png'
@@ -18,7 +18,7 @@ import rock from '../../assets/icons/rock.png'
 import steel from '../../assets/icons/steel.png'
 import water from '../../assets/icons/water.png'
 
-function PokemonCardContainer({pokemon, firstPokemonResult}) {
+function PokemonContainer({pokemon, firstPokemonResult}) {
 const inactive = pokemon === firstPokemonResult.pokemonName
 
 const colors = {
@@ -106,4 +106,4 @@ const color = colors[firstPokemonResult.pokemonType]
   );
 }
 
-export default PokemonCardContainer;
+export default PokemonContainer;
