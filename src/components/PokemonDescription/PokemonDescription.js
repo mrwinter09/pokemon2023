@@ -1,13 +1,13 @@
 import './PokemonDescription.css'
-function HomeText({pokemon, pokemonSpecies, firstPokemonResult}) {
+function PokemonDescription({pokemon, pokemonSpecies, firstPokemonResult}) {
   const inactive = pokemon === firstPokemonResult.pokemonName
  
 
 
   return (
     <>
-    <div className='homeTextContainer'>
-    <div className='homeTextContainerContent'>
+    <div className='pokemonDescriptionContainer'>
+    <div className='pokemonDescriptionContainerContent'>
     <p className={inactive ? '' : ' hidden'} >{pokemonSpecies}</p>
     </div>
     </div>
@@ -15,4 +15,4 @@ function HomeText({pokemon, pokemonSpecies, firstPokemonResult}) {
   );
 }
 
-export default HomeText;
+export default PokemonDescription;
