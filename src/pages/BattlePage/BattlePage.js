@@ -46,6 +46,16 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
     return Math.floor(Math.random() * max)
   }
 
+  function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+  let randomNum = generateRandomNumber(1, 2);
+
+  const player = {
+      1: firstPokemonResult.pokemonName,
+      2: secondPokemonResult.pokemonNameB
+    }
+
   const winnerA = battleStatsB === 0
   const winnerB = battleStatsA === 0
 
@@ -67,18 +77,6 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
     />
   );
 };
-
-  function generateRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  let randomNum = generateRandomNumber(1, 2);
-
-
-  const player = {
-    1: firstPokemonResult.pokemonName,
-    2: secondPokemonResult.pokemonNameB
-  }
 
   const colorsA = {
     fire:'#ffdec1',
@@ -121,6 +119,7 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
     ice: ice,
     steel: steel,
     }
+
   const firstSymbols = iconA[firstPokemonResult.pokemonType]
   const firstColor = colorsA[firstPokemonResult.pokemonType]
 
@@ -165,6 +164,7 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
     ice: ice,
     steel: steel,
     }
+
   const secondSymbols = iconB[secondPokemonResult.pokemonTypeB]
   const secondColor = colorsB[secondPokemonResult.pokemonTypeB]
 
@@ -172,12 +172,12 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
     <>
     <div className="App">
       <header className="App-header">
-        <h1 className='battle'>Battle Page</h1>
+        <h1 className='battle-title'>Battle Page</h1>
       </header>
       <div className="split-bar">
        <div>
-        <p className='titleNameA'>{firstPokemonResult.pokemonHp} {pokemonHpScoreA}<img src={firstPokemonResult.pokemonBattleIcon} alt=''></img><span className={winnerA ? '' : 'hidden'}>{pokemonSpeciesName}</span></p>
-       <div className='energyBar'>
+        <p className='pokemonScoreFirst'>{firstPokemonResult.pokemonHp} {pokemonHpScoreA}<img src={firstPokemonResult.pokemonBattleIcon} alt=''></img><span className={winnerA ? '' : 'hidden'}>{pokemonSpeciesName}</span></p>
+       <div className='power-bar'>
           {progressStatusArray.map((item, index) => {
             return (
               <ProgressDivs
@@ -192,9 +192,9 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
         </div>
        </div>
        <div>
-       <p className='titleNameB'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={secondPokemonResult.pokemonBattleIconB} alt=''></img>{secondPokemonResult.pokemonHpB} {pokemonHpScoreB}</p>
+       <p className='pokemonScoreSecond'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={secondPokemonResult.pokemonBattleIconB} alt=''></img>{secondPokemonResult.pokemonHpB} {pokemonHpScoreB}</p>
         <div
-          className='energyBar'
+          className='power-bar'
         >
           {progressStatusArray.map((item, index) => {
             return (
@@ -215,7 +215,7 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
 
         <div className="split">
               <div className="left">
-          <div style={{border: '5px solid'+ firstColor}} className="card card--charizard">
+          <div style={{border: '5px solid'+ firstColor}} className="card card--pokemon">
            <div className="card-image">
              <div className="card-image-container">
                <img src={firstPokemonResult.pokemonResultImage} alt={firstPokemonResult.pokemonName}/>
@@ -255,7 +255,7 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
             <div className="split">
             <p className="abilityDescriptionText">{abilityDescription}</p>
               <div className="right">
-          <div style={{border: '5px solid'+ secondColor}} className="card card--charizard">
+          <div style={{border: '5px solid'+ secondColor}} className="card card--pokemon">
            <div className="card-image">
              <div className="card-image-container">
                <img src={secondPokemonResult.pokemonResultImageB} alt={secondPokemonResult.pokemonNameB}/>
