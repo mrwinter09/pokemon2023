@@ -40,8 +40,8 @@ function SignIn() {
     <>
     <div>
     <header className="App-header">
-        <h1 className='signin'>Log in</h1>
-        <p className='signin'>Ready to Battle</p>
+        <h1 className='signin-title'>Log in</h1>
+        <p className='signin-title'>Ready to Battle</p>
       </header>
       <div className='singin-form'>
         <form onSubmit={handleSubmit}>
@@ -62,7 +62,7 @@ function SignIn() {
         <button type='submit' className='submit-button' onClick={signUserip}>Log in</button>
       </form>
     </div>
-    <div className='footer'> 
+    <div className='signin-footer'> 
     <p>Don't have an account yet? <Link to="/signup">Sign</Link> up here.</p>
     </div>
     

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import './Profile.css'
 
 
 function Profile({firstPokemonResult}) {
@@ -8,7 +9,7 @@ function Profile({firstPokemonResult}) {
   return (
     <>
     <header className="App-header">
-        <h1 className='signin'>Profile Page</h1>
+        <h1 className='profile-title'>Profile Page</h1>
       </header>
  
       <section>
@@ -18,7 +19,7 @@ function Profile({firstPokemonResult}) {
       </section>
       <section>
         <h2>Number of battles</h2>
-        <div className='footer'>
+        <div className='profile-footer'>
         <p><img src={firstPokemonResult.pokemonBattleIcon} alt=''></img> have won 10 battles</p>
         </div>
        
