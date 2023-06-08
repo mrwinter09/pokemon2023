@@ -15,7 +15,7 @@ function Home({firstPokemonResult, secondPokemonResult, pokemonHpScoreB, setPoke
   return (
     <>
   <div className="App">
-      <header className="App-header">
+      <header className="header-logo">
         <img src={logobanner} alt="logo" />
       </header>
     </div>
