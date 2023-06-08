@@ -7,7 +7,7 @@ import './SignUp.css'
 
 
 function SignUp() {
- const {valueTestName, valueTestEmail, valueTestPassword, valueInputName, valueInputEmail, valueInputPassword} = useContext(AuthContext)
+ const {valueName, valueEmail, valuePassword, valueInputName, valueInputEmail, valueInputPassword} = useContext(AuthContext)
  const navigate = useHistory();
 
  function onSubmit(){
@@ -19,9 +19,9 @@ function SignUp() {
  try {
   // eslint-disable-next-line
   const response = await axios.post('http://localhost:3000/users/register', {
-    email: valueTestEmail,
-    password: valueTestPassword,
-    username: valueTestName
+    email: valueEmail,
+    password: valuePassword,
+    username: valueName
   });
  } catch (error) {
   console.error(error);

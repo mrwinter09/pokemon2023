@@ -6,7 +6,7 @@ import './Navigation.css'
 import { useHistory } from "react-router-dom/";
 
 function Nav({setPokemon}) {
-  const { registerUserName, setRegisterUserName, valueTestName, signOutFunction, isAuthMan} = useContext(AuthContext);
+  const { registerUserName, setRegisterUserName, valueName, signOutFunction, isAuthMan} = useContext(AuthContext);
   const history = useHistory();
 
   function signOutButton() {
@@ -21,7 +21,7 @@ function Nav({setPokemon}) {
           <span onClick={() => setPokemon('')} className="logo-container">
             <img src={logo} alt="logo"/>
             <h3>
-            welcome <span className={registerUserName ? '' : 'hidden'}>{valueTestName}</span>
+            welcome <span className={registerUserName ? '' : 'hidden'}>{valueName}</span>
             </h3>
           </span>
         </Link>

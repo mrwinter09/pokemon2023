@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 
 function Profile({firstPokemonResult}) {
-  const {valueTestEmail, valueTestName,} = useContext(AuthContext);
+  const {valueEmail, valueName,} = useContext(AuthContext);
 
   return (
     <>
@@ -12,9 +12,9 @@ function Profile({firstPokemonResult}) {
       </header>
  
       <section>
-        <h2>{valueTestName}</h2>
-        <p><strong>Gebruikersnaam:</strong> {valueTestName}</p>
-        <p><strong>Email: </strong>{valueTestEmail}</p>
+        <h2>{valueName}</h2>
+        <p><strong>Gebruikersnaam:</strong> {valueName}</p>
+        <p><strong>Email: </strong>{valueEmail}</p>
       </section>
       <section>
         <h2>Number of battles</h2>

@@ -8,17 +8,15 @@ import axios from 'axios';
 
 function SignIn() {
   const navigate = useHistory();
-  const {setRegisterUserName, valueTestEmail, valueTestPassword, signInFunction} = useContext(AuthContext)
+  const {setRegisterUserName, valueEmail, valuePassword, signInFunction} = useContext(AuthContext)
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   // eslint-disable-next-line
   const [warning, setWarning] = useState(false)
  
   function handleSubmit(e){
-    if(loginEmail === valueTestEmail && loginPassword === valueTestPassword ) {
+    if(loginEmail === valueEmail && loginPassword === valuePassword ) {
       e.preventDefault();
-      console.log(loginEmail)
-      console.log(loginPassword)
       return navigate.push('/')
      } else {
       setWarning(true)
