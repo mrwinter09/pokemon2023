@@ -1,3 +1,21 @@
+h1, p{
+  &.signup-title{
+    font-family: Alfa Slab One;
+    letter-spacing: -1px;
+    margin-bottom: 1px;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 2px;
+    text-transform: uppercase;
+    transform-origin: 0 0;
+    transform: rotate(354deg);
+    -webkit-text-stroke-width: 1px;
+    text-shadow: 5px 10px 2px #FF0000, 10px 15px 11px #2a75bb;
+    -webkit-text-stroke-color: #2a75bb;
+    color: #ffcb05;
+  }
+}
+
 .signup-form{
   display: flex;
   align-items: center;
@@ -5,13 +23,13 @@
   height: 400px;
 }
 
-.footer{
+.signup-footer{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.footer p{
+.signup-footer p{
   margin-top: 0px;
 }
 
