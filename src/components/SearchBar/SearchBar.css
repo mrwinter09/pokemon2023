@@ -1,11 +1,19 @@
+.title {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px
+}
+
+
 .search{
   display: flex;
   justify-content: center;
   position: relative;
   height: 50px;
-
 }
-.search .input{
+.search .input-searchbar{
   background-color: rgb(255, 255, 255);
   border: 0;
   font-size: 18px;
@@ -31,11 +39,11 @@
   transition: transform 0.3s ease;
 }
 
-.btn:focus, .input:focus{
+.btn:focus, .input-searchbar:focus{
   outline: none;
 }
 
-.search.active .input{
+.search.active .input-searchbar{
   width: 200px;
 }
 .search.active .btn{
@@ -43,7 +51,7 @@
 }
 
 .btn-style{
-  border-radius: 0px;
+    border-radius: 0px;
     padding: 0px 0px;
     background: transparent;
     color: black;

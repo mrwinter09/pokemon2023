@@ -1,4 +1,4 @@
-.result{
+.search-result{
   width: 20%;
   max-height: 200px;
   display: flex;
@@ -10,7 +10,7 @@
 }
 
 @media (max-width: 400px) {
-  .result {
+  .search-result {
     width: 55%;
   }
 }

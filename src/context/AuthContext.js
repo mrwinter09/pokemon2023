@@ -43,7 +43,6 @@ function AuthContextComponent({children}) {
       });
            setValueFieldRegEmail(response.data.email)
            setValueFieldRegName(response.data.username)
-        
            console.log(' Gebruiker is ingelogged');
           } catch (e) {
            console.error(e);

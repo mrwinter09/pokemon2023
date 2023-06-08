@@ -8,7 +8,7 @@ function SearchResults({results, setPokemon, pokemon, setActive, setPokemonBattl
   const inactive = pokemon === '';
   return (
     <>
-        <div className={!inactive ? 'result' : 'result hidden'}>
+        <div className={!inactive ? 'search-result' : 'search-result hidden'}>
      {
       results.map((result, id) => {
         return <SearchResultCard setPokemonBattleId={setPokemonBattleId} setActive={setActive} results={result} key={id} setPokemon={setPokemon} pokemon={pokemon}/>

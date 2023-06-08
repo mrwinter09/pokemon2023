@@ -1,7 +1,7 @@
-.search-result{
+.search-result-card{
   padding: 10px 20px;
 }
 
-.search-result:hover {
+.search-result-card:hover {
   background-color: #ffe77c;
 }
