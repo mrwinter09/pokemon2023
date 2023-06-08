@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #ffffff;
   display: flex;
@@ -23,10 +12,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .hidden {
   display: none;
 }
@@ -35,22 +20,15 @@
   display: block;
 }
 
-/*In dit voorbeeld staat alle CSS in één bestand, dit wil je eigenlijk nooit.
-Om de het begrijpen van de bestaande code zo eenvoudig mogelijk te maken,
-is het voor deze opdracht wel gedaan!*/
-
-/*Algemene button styling*/
 button {
   border-radius: 4px;
   border: none;
-  /*color: white;*/
   padding: 8px 16px;
   background-color: #f5ab00;
   color: white;
   font-weight: bold;
 }
 
-/*Zorgt ervoor dat als twee buttons naast elkaar staan, er altijd ruimte tussen blijft*/
 button + button {
   margin-left: 8px;
 }
@@ -69,71 +47,8 @@ a:hover {
   color: #ea7e1f;
 }
 
-/*Algemene formulier-styling*/
-form {
-  display: flex;
-  flex-direction: column;
-  background-color: #faeab3;
-  padding: 32px;
-  max-width: 300px;
-  border-radius: 4px;
-}
-
-form label {
-  margin: 4px 0;
-  font-weight: bold;
-}
-
-form input {
-  width: 100%;
-  padding: 4px 8px;
-  margin: 6px 0;
-}
-
 h2 {
   margin: 32px 0 24px 0;
-}
-
-.form-button {
-  width: 100%;
-}
-
-nav {
-  background-color: #0d3b66;
-  color: white;
-  display: flex;
-  padding: 0 32px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-nav a,
-nav a:visited,
-nav a:active {
-  color: white;
-  text-decoration-line: none;
-}
-
-.user {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.user h5 {
-  margin-right: 8px;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.logo-container img {
-  width: 40px;
-  margin-right: 8px;
 }
 
 section  {
@@ -143,11 +58,4 @@ section  {
   align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
