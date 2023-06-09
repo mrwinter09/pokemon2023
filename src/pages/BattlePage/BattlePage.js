@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import {PokemonContext} from '../../context/PokemonContext'
 import bug from '../../assets/icons/bug.png'
 import dark from '../../assets/icons/dark.png'
 import dragon from '../../assets/icons/dragon.png'
@@ -21,27 +22,12 @@ import './BattlePage.css'
 
 
 function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, setPokemonBattleId, pokemonSpeciesName, abilityDescription}) {
-  const [startButton, setStartButton] = useState(false)
-  const [battleStatsA, setBattleStatsA] = useState(6)
-  const [battleStatsB, setBattleStatsB] = useState(6)
-  const [totalScore, setTotalScore] = useState(0)
+  const {startButton, setStartButton, battleStatsA, setBattleStatsA, battleStatsB, setBattleStatsB, reset, gameover, scoreCount} = useContext(PokemonContext)
+
   const totalProgressBars = 1;
   const progressStatusArray = [1, 2, 3, 4, 5, 6];
   const progressStatusArrayLength = progressStatusArray.length;
-  const gameover = battleStatsA === 0 || battleStatsB === 0;
-
-  function reset(){
-    setStartButton(false)
-    setBattleStatsA(6)
-    setBattleStatsB(6)
-  }
-
-  function scoreCount() {
-    if (battleStatsB === 0) {
-      return setTotalScore(totalScore + 1)
-    }
-  }
-
+ 
   function pokemonId(max) {
     return Math.floor(Math.random() * max)
   }
