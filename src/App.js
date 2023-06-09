@@ -16,6 +16,7 @@ function App() {
   const { pokemonBattleId, setPokemonHpScoreB} = useContext(PokemonContext);
   const { isAuthMan } = useContext(AuthContext);
 
+// set Result
   const [active, setActive] = useState(false)
   const [pokemon, setPokemon] = useState("")
 
@@ -36,6 +37,7 @@ function App() {
    const [secondPokemonResult, setSecondPokemonResult] = useState({})
 
 
+   
   useEffect(() => {
     function callPokemon(value) {
       const results = pokeNames.filter((user)=> {
@@ -62,16 +64,16 @@ function App() {
   useEffect(() => {
     async function fetchDataPokemonAbility() {
       try {
-        const responseAbility = await axios.get(`https://pokeapi.co/api/v2/ability/${pokeAbilityName}`);
+        const responseAbility = await axios.get(`https://pokeapi.co/api/v2/ability/${firstPokemonResult.pokeAbilityName}`);
         setAbilityDescription(responseAbility.data.effect_entries['1'].effect)
       } catch (e) {
         console.error(e);
       }
     }
-    if(pokeAbilityName){
+    if(pokemon){
       fetchDataPokemonAbility()
     }
-  },[pokeAbilityName]);
+  },[pokemon]);
 
   useEffect(() => {
     async function fetchDataPokemon() {
@@ -144,7 +146,6 @@ function App() {
     }
   },[pokemonBattleId]);
 
-  
 
   return (
     <>

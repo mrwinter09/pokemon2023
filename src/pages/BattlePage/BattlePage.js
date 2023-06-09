@@ -99,7 +99,7 @@ function BattlePage({firstPokemonResult, secondPokemonResult, pokemonSpeciesName
 
           <div className="center">
           <header className="App-header">
-          <h1 className='battle vs'>VS</h1>
+          <h1 className='battle-title vs'>VS</h1>
           </header>
           </div>
 
