@@ -1,34 +1,15 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 export const PokemonContext = createContext({})
 
 function PokemonContextComponent({children}) {
-
-  class PokemonMoves {
-    constructor(name, move){
-      this.name = name;
-      this.move = move;
-    }
-    attackA() {
-     const {name, move} = this;
-     return `${name} is doing the ${move}`
-    }
-  }
-
-  class PokemonA extends PokemonMoves {
-    attackA() {
-      return 'Take That!!!!'
-    }
-  }
-
-  class PokemonB extends PokemonMoves {
-    attackB() {
-      return 'Take That!!!!'
-    }
+  function pokemonId(max) {
+    return Math.floor(Math.random() * max)
   }
 
   const data = {
-   fight: PokemonMoves
+    pokemonId:pokemonId,
+
   }
 
   return (

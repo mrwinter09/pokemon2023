@@ -21,13 +21,13 @@ import './BattlePage.css'
 
 
 function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, setPokemonBattleId, pokemonSpeciesName, abilityDescription}) {
-  const totalProgressBars = 1;
-  const progressStatusArray = [1, 2, 3, 4, 5, 6];
-  const progressStatusArrayLength = progressStatusArray.length;
   const [startButton, setStartButton] = useState(false)
   const [battleStatsA, setBattleStatsA] = useState(6)
   const [battleStatsB, setBattleStatsB] = useState(6)
   const [totalScore, setTotalScore] = useState(0)
+  const totalProgressBars = 1;
+  const progressStatusArray = [1, 2, 3, 4, 5, 6];
+  const progressStatusArrayLength = progressStatusArray.length;
   const gameover = battleStatsA === 0 || battleStatsB === 0;
 
   function reset(){
@@ -78,7 +78,7 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
   );
 };
 
-  const colorsA = {
+  const colors = {
     fire:'#ffdec1',
     grass:'#c8ffcc',
     electric:'#fff5c4',
@@ -99,7 +99,7 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
     steel:'#c8ffcc',
   }
 
-  const iconA = {
+  const icon = {
     fire: fire,
     grass: grass,
     electric: electric,
@@ -120,53 +120,10 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
     steel: steel,
     }
 
-  const firstSymbols = iconA[firstPokemonResult.pokemonType]
-  const firstColor = colorsA[firstPokemonResult.pokemonType]
-
-  const colorsB = {
-    fire:'#ffdec1',
-    grass:'#c8ffcc',
-    electric:'#fff5c4',
-    water:'#c5edff',
-    ground:'#f6dbc1',
-    rock:'#d3d3b3',
-    fairy:'#f8d3ff',
-    poison:'#7dd78f',
-    bug:'#fac984',
-    dragon:'#78a0e9',
-    psychic:'#e5e97b',
-    flying:'#e4c0c0',
-    fighting:'#d9c499',
-    normal:'#ecf0f1',
-    dark:'#7dd78f',
-    ghost:'#f6dbc1',
-    ice:'#d9c499',
-    steel:'#c8ffcc',
-  }
-
-  const iconB = {
-    fire: fire,
-    grass: grass,
-    electric: electric,
-    water: water,
-    ground: ground,
-    rock: rock,
-    fairy: fairy,
-    poison: poison,
-    bug: bug,
-    dragon: dragon,
-    psychic: psychic,
-    flying: flying,
-    fighting: fighting,
-    normal: normal,
-    dark: dark,
-    ghost: ghost,
-    ice: ice,
-    steel: steel,
-    }
-
-  const secondSymbols = iconB[secondPokemonResult.pokemonTypeB]
-  const secondColor = colorsB[secondPokemonResult.pokemonTypeB]
+  const firstSymbols = icon[firstPokemonResult.pokemonType]
+  const firstColor = colors[firstPokemonResult.pokemonType]
+  const secondSymbols = icon[secondPokemonResult.pokemonTypeB]
+  const secondColor = colors[secondPokemonResult.pokemonTypeB]
 
   return (
     <>
