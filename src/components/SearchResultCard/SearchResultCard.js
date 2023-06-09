@@ -1,5 +1,10 @@
+
+import React, { useContext} from 'react';
+import { PokemonContext } from '../../context/PokemonContext'
 import './SearchResultCard.css'
-function SearchResultCard({results, setPokemon, pokemon, setActive}) {
+
+function SearchResultCard({results, setPokemon, pokemon}) {
+  const {setActive} = useContext(PokemonContext);
   const inactive = pokemon === results.name;
 
   return (

@@ -8,11 +8,15 @@ import Profile from './pages/Profile/Profile'
 import SignIn from './pages/Signin/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import { AuthContext } from './context/AuthContext';
+import { PokemonContext } from './context/PokemonContext'
 import axios from 'axios';
 import './App.css';
 
 function App() {
-  const [active, setActive] = useState(false)
+  const { pokemonBattleId, setPokemonHpScoreB} = useContext(PokemonContext);
+  const { isAuthMan } = useContext(AuthContext);
+
+// set Result
   const [pokemon, setPokemon] = useState("")
 
 // Data pull first
@@ -26,16 +30,12 @@ function App() {
 
 // Pokemon A
   const [firstPokemonResult, setFirstPokemonResult] = useState({})
-  const [pokeAbilityName, setpokeAbilityName] = useState("")
 
 // Pokemon B
    const [secondPokemonResult, setSecondPokemonResult] = useState({})
 
-// Battlescore
-const [pokemonHpScoreA, setPokemonHpScoreA ] = useState(0)
-const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
-const [pokemonBattleId, setPokemonBattleId] = useState(0)
 
+   
   useEffect(() => {
     function callPokemon(value) {
       const results = pokeNames.filter((user)=> {
@@ -62,16 +62,16 @@ const [pokemonBattleId, setPokemonBattleId] = useState(0)
   useEffect(() => {
     async function fetchDataPokemonAbility() {
       try {
-        const responseAbility = await axios.get(`https://pokeapi.co/api/v2/ability/${pokeAbilityName}`);
+        const responseAbility = await axios.get(`https://pokeapi.co/api/v2/ability/${firstPokemonResult.pokeAbilityName}`);
         setAbilityDescription(responseAbility.data.effect_entries['1'].effect)
       } catch (e) {
         console.error(e);
       }
     }
-    if(pokeAbilityName){
+    if(pokemon){
       fetchDataPokemonAbility()
     }
-  },[pokeAbilityName]);
+  },[pokemon]);
 
   useEffect(() => {
     async function fetchDataPokemon() {
@@ -106,7 +106,6 @@ const [pokemonBattleId, setPokemonBattleId] = useState(0)
           pokeAbilityName: response.data.abilities['0'].ability.name,
         }
         setFirstPokemonResult(firstPokemonApiResult)
-        setpokeAbilityName(response.data.abilities['0'].ability.name)
       } catch (e) {
         console.error(e);
       }
@@ -144,20 +143,20 @@ const [pokemonBattleId, setPokemonBattleId] = useState(0)
     }
   },[pokemonBattleId]);
 
-  const { isAuthMan } = useContext(AuthContext);
+
   return (
     <>
     <Navigation setPokemon={setPokemon} />
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} results={results} pokemonSpecies={pokemonSpecies} />
+          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemon={pokemon} setPokemon={setPokemon} results={results} pokemonSpecies={pokemonSpecies} />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile firstPokemonResult={firstPokemonResult} /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
-        {isAuthMan ? <BattlePage firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} setPokemonHpScoreB={setPokemonHpScoreB} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} pokemonHpScoreA={pokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription}  pokemon={pokemon}/> : <Redirect to="/" />}
+        {isAuthMan ? <BattlePage firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription}  pokemon={pokemon}/> : <Redirect to="/" />}
         </Route>
         <Route exact path="/signin">
           <SignIn />
