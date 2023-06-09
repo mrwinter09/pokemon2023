@@ -1,114 +1,27 @@
 import React, { useState, useContext } from 'react';
 import {PokemonContext} from '../../context/PokemonContext'
-import bug from '../../assets/icons/bug.png'
-import dark from '../../assets/icons/dark.png'
-import dragon from '../../assets/icons/dragon.png'
-import electric from '../../assets/icons/electric.png'
-import fairy from '../../assets/icons/fairy.png'
-import fighting from '../../assets/icons/fighting.png'
-import fire from '../../assets/icons/fire.png'
-import flying from '../../assets/icons/flying.png'
-import ghost from '../../assets/icons/ghost.png'
-import grass from '../../assets/icons/grass.png'
-import ground from '../../assets/icons/ground.png'
-import ice from '../../assets/icons/ice.png'
-import normal from '../../assets/icons/normal.png'
-import poison from '../../assets/icons/poison.png'
-import psychic from '../../assets/icons/psychic.png'
-import rock from '../../assets/icons/rock.png'
-import steel from '../../assets/icons/steel.png'
-import water from '../../assets/icons/water.png'
 import './BattlePage.css'
 
 
 function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, setPokemonBattleId, pokemonSpeciesName, abilityDescription}) {
-  const {startButton, setStartButton, battleStatsA, setBattleStatsA, battleStatsB, setBattleStatsB, reset, gameover, scoreCount} = useContext(PokemonContext)
+  const {startButton, setStartButton, battleStatsA, setBattleStatsA, battleStatsB, setBattleStatsB, reset, gameover, scoreCount, winnerA, winnerB, numberA, numberB, pokemonId, generateRandomNumber, randomNum, ProgressDivs, icons, colors } = useContext(PokemonContext)
 
   const totalProgressBars = 1;
   const progressStatusArray = [1, 2, 3, 4, 5, 6];
   const progressStatusArrayLength = progressStatusArray.length;
  
-  function pokemonId(max) {
-    return Math.floor(Math.random() * max)
-  }
-
-  function generateRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-  let randomNum = generateRandomNumber(1, 2);
 
   const player = {
       1: firstPokemonResult.pokemonName,
       2: secondPokemonResult.pokemonNameB
     }
 
-  const winnerA = battleStatsB === 0
-  const winnerB = battleStatsA === 0
-
-  let numberA = battleStatsA;
-  let numberB = battleStatsB;
-
   let testCountA = (firstPokemonResult.pokemonStats / 6 * secondPokemonResult.pokemonStatsB / firstPokemonResult.pokemonStats).toFixed(0)
   let testCountB = (secondPokemonResult.pokemonStatsB / 6 * firstPokemonResult.pokemonStats / secondPokemonResult.pokemonStatsB).toFixed(0)
 
-  const ProgressDivs = ({ backgroundColorStyle, flexValue }) => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        backgroundColor: backgroundColorStyle,
-        flex: flexValue,
-        padding: "1.5%"
-      }}
-    />
-  );
-};
-
-  const colors = {
-    fire:'#ffdec1',
-    grass:'#c8ffcc',
-    electric:'#fff5c4',
-    water:'#c5edff',
-    ground:'#f6dbc1',
-    rock:'#d3d3b3',
-    fairy:'#f8d3ff',
-    poison:'#7dd78f',
-    bug:'#fac984',
-    dragon:'#78a0e9',
-    psychic:'#e5e97b',
-    flying:'#e4c0c0',
-    fighting:'#d9c499',
-    normal:'#ecf0f1',
-    dark:'#7dd78f',
-    ghost:'#f6dbc1',
-    ice:'#d9c499',
-    steel:'#c8ffcc',
-  }
-
-  const icon = {
-    fire: fire,
-    grass: grass,
-    electric: electric,
-    water: water,
-    ground: ground,
-    rock: rock,
-    fairy: fairy,
-    poison: poison,
-    bug: bug,
-    dragon: dragon,
-    psychic: psychic,
-    flying: flying,
-    fighting: fighting,
-    normal: normal,
-    dark: dark,
-    ghost: ghost,
-    ice: ice,
-    steel: steel,
-    }
-
-  const firstSymbols = icon[firstPokemonResult.pokemonType]
+  const firstSymbols = icons[firstPokemonResult.pokemonType]
   const firstColor = colors[firstPokemonResult.pokemonType]
-  const secondSymbols = icon[secondPokemonResult.pokemonTypeB]
+  const secondSymbols = icons[secondPokemonResult.pokemonTypeB]
   const secondColor = colors[secondPokemonResult.pokemonTypeB]
 
   return (
