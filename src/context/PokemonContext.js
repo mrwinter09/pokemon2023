@@ -21,6 +21,8 @@ import water from '../assets/icons/water.png'
 export const PokemonContext = createContext({})
 
 function PokemonContextComponent({children}) {
+ const [active, setActive] = useState(false)
+
   const [startButton, setStartButton] = useState(false)
   const [battleStatsA, setBattleStatsA] = useState(6)
   const [battleStatsB, setBattleStatsB] = useState(6)
@@ -146,6 +148,8 @@ function PokemonContextComponent({children}) {
     setPokemonHpScoreA:setPokemonHpScoreA,
     pokemonHpScoreB:pokemonHpScoreB,
     setPokemonHpScoreB:setPokemonHpScoreB,
+    active:active,
+    setActive:setActive,
   }
 
   return (

@@ -17,7 +17,6 @@ function App() {
   const { isAuthMan } = useContext(AuthContext);
 
 // set Result
-  const [active, setActive] = useState(false)
   const [pokemon, setPokemon] = useState("")
 
 // Data pull first
@@ -31,7 +30,6 @@ function App() {
 
 // Pokemon A
   const [firstPokemonResult, setFirstPokemonResult] = useState({})
-  const [pokeAbilityName, setpokeAbilityName] = useState("")
 
 // Pokemon B
    const [secondPokemonResult, setSecondPokemonResult] = useState({})
@@ -108,7 +106,6 @@ function App() {
           pokeAbilityName: response.data.abilities['0'].ability.name,
         }
         setFirstPokemonResult(firstPokemonApiResult)
-        setpokeAbilityName(response.data.abilities['0'].ability.name)
       } catch (e) {
         console.error(e);
       }
@@ -153,7 +150,7 @@ function App() {
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} setActive={setActive}  active={active} pokemon={pokemon} setPokemon={setPokemon} results={results} pokemonSpecies={pokemonSpecies} />
+          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemon={pokemon} setPokemon={setPokemon} results={results} pokemonSpecies={pokemonSpecies} />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile firstPokemonResult={firstPokemonResult} /> : <Redirect to="/" />}
