@@ -2,17 +2,15 @@ import React, { useContext } from 'react';
 import './HomePageFooter.css'
 import { useHistory } from "react-router-dom/";
 import { AuthContext } from '../../context/AuthContext';
+import {PokemonContext} from '../../context/PokemonContext'
 import { Link } from 'react-router-dom';
 
 
-function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB}) {
+function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon}) {
+  const {pokemonId, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB} = useContext(PokemonContext);
   const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === firstPokemonResult.pokemonName
   const history = useHistory();
-
-  function pokemonIdSelector(max) {
-    return Math.floor(Math.random() * max)
-  }
 
   function pokemonHpStartScore() {
     setPokemonHpScoreB(secondPokemonResult.pokemonStatsB);
@@ -27,7 +25,7 @@ function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon, setPo
       <p className='battle-slogan'>Let's battle with {pokemon}</p>
         <button
         type="button"
-        onClick={() => {history.push('/battlepage'); setPokemonBattleId(pokemonIdSelector(1000)); pokemonHpStartScore()}}
+        onClick={() => {history.push('/battlepage'); setPokemonBattleId(pokemonId(1000)); pokemonHpStartScore()}}
         className='start-btn'
         >
          Start Battle

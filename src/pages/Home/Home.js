@@ -8,7 +8,7 @@ import './Home.css'
 import HomePageFooter from '../../components/HomeFooter/HomePageFooter';
 
 
-function Home({firstPokemonResult, secondPokemonResult, pokemonHpScoreB, setPokemonHpScoreB, setPokemonHpScoreA, setPokemonBattleId, setActive, active, pokemon, setPokemon, results, pokemonSpecies }) {
+function Home({firstPokemonResult, secondPokemonResult, setActive, active, pokemon, setPokemon, results, pokemonSpecies }) {
 
   
 
@@ -21,13 +21,13 @@ function Home({firstPokemonResult, secondPokemonResult, pokemonHpScoreB, setPoke
     </div>
     <section>
         <SearchBar firstPokemonResult={firstPokemonResult} setActive={setActive} active={active} pokemon={pokemon} setPokemon={setPokemon}/>
-        <SearchResults setPokemonBattleId={setPokemonBattleId} setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
+        <SearchResults setActive={setActive} results={results} setPokemon={setPokemon} pokemon={pokemon}/>
       </section>
     <div className='wrapper'>
         <PokemonContainer firstPokemonResult={firstPokemonResult} pokemon={pokemon}/>
         <PokemonDescription firstPokemonResult={firstPokemonResult} pokemonSpecies={pokemonSpecies} pokemon={pokemon}/>
     </div>
-        <HomePageFooter firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonHpScoreB={pokemonHpScoreB} setPokemonHpScoreB={setPokemonHpScoreB} setPokemonHpScoreA={setPokemonHpScoreA} setPokemonBattleId={setPokemonBattleId} pokemon={pokemon} />
+        <HomePageFooter firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult}  pokemon={pokemon} />
     </>
   );
 }

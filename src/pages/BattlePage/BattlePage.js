@@ -1,16 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import {PokemonContext} from '../../context/PokemonContext'
 import './BattlePage.css'
 
 
-function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, setPokemonBattleId, pokemonSpeciesName, abilityDescription}) {
-  const {startButton, setStartButton, battleStatsA, setBattleStatsA, battleStatsB, setBattleStatsB, reset, gameover, scoreCount, winnerA, winnerB, numberA, numberB, pokemonId, generateRandomNumber, randomNum, ProgressDivs, icons, colors } = useContext(PokemonContext)
-
-  const totalProgressBars = 1;
-  const progressStatusArray = [1, 2, 3, 4, 5, 6];
-  const progressStatusArrayLength = progressStatusArray.length;
+function BattlePage({firstPokemonResult, secondPokemonResult, pokemonSpeciesName, abilityDescription}) {
+  const {setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, startButton, setPokemonBattleId, setStartButton, battleStatsA, setBattleStatsA, battleStatsB, setBattleStatsB, reset, gameover, scoreCount, winnerA, winnerB, numberA, numberB, pokemonId, generateRandomNumber, randomNum, ProgressDivs, icons, colors, totalProgressBars, progressStatusArrayLength, progressStatusArray } = useContext(PokemonContext)
  
-
   const player = {
       1: firstPokemonResult.pokemonName,
       2: secondPokemonResult.pokemonNameB
@@ -163,9 +158,6 @@ function BattlePage({firstPokemonResult, secondPokemonResult, setPokemonHpScoreB
            <button disabled={randomNum === 1} onClick={() => {setBattleStatsA(battleStatsA - 1); setPokemonHpScoreA(pokemonHpScoreA - testCountB); generateRandomNumber(1, 2)}} type='button' className={randomNum === 2 ? 'video-game-button' : 'video-game-disable'}>B</button>
           </div>
         </div>
-
-
-
       </section>
       </div>
     </>

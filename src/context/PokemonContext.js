@@ -29,6 +29,15 @@ function PokemonContextComponent({children}) {
   const winnerA = battleStatsB === 0
   const winnerB = battleStatsA === 0
 
+  const [pokemonBattleId, setPokemonBattleId] = useState(0)
+  const [pokemonHpScoreA, setPokemonHpScoreA ] = useState(0)
+  const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
+
+
+  const totalProgressBars = 1;
+  const progressStatusArray = [1, 2, 3, 4, 5, 6];
+  const progressStatusArrayLength = progressStatusArray.length;
+
   let numberA = battleStatsA;
   let numberB = battleStatsB;
 
@@ -128,6 +137,15 @@ function PokemonContextComponent({children}) {
     ProgressDivs:ProgressDivs,
     colors:colors,
     icons:icons,
+    totalProgressBars:totalProgressBars,
+    progressStatusArrayLength:progressStatusArrayLength,
+    progressStatusArray:progressStatusArray,
+    pokemonBattleId:pokemonBattleId,
+    setPokemonBattleId:setPokemonBattleId,
+    pokemonHpScoreA:pokemonHpScoreA,
+    setPokemonHpScoreA:setPokemonHpScoreA,
+    pokemonHpScoreB:pokemonHpScoreB,
+    setPokemonHpScoreB:setPokemonHpScoreB,
   }
 
   return (
