@@ -1,9 +1,29 @@
-.hidden{
-  display: none;
+nav {
+  background-color: #0d3b66;
+  color: white;
+  display: flex;
+  padding: 0 32px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.not-hidden {
-  display: block
+nav a,
+nav a:visited,
+nav a:active {
+  color: white;
+  text-decoration-line: none;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-container img {
+  width: 40px;
+  margin-right: 8px;
 }
 
 .flex {
@@ -13,7 +33,7 @@
   flex-direction: row;
 }
 
-.loggOff {
+.sign-out {
 	line-height: 1.5em;
 	text-align: center;
 	display: inline-block;
@@ -30,10 +50,9 @@
 	background-color: red;
 	cursor: pointer;
   padding-left: 5px;
-  
 }
 
-.loggOff:active {
+.sign-out:active {
   box-shadow: none;
 	position: relative;
 	top: .2em;
@@ -68,7 +87,7 @@ h3{
 }
 
 @media (max-width: 400px) {
-  .loggOff {
+  .sign-out {
     line-height: 1.5em;
     text-align: center;
     display: inline-block;
@@ -87,13 +106,13 @@ h3{
     padding-left: 5px;
     padding-right: 5px;
   }
-  
-  .loggOff:active {
+
+  .sign-out:active {
     box-shadow: none;
     position: relative;
     top: .2em;
   }
-  
+
   .profile{
     line-height: 1.5em;
   text-align: center;
@@ -110,17 +129,17 @@ h3{
   text-shadow: -1px -1px black, 1px 1px white;
   padding-right: 5px;
   }
-  
+
   .profile:active {
   box-shadow: none;
   position: relative;
   top: .2em;
   }
 
-  .nav-display-mobile{
+  .nav-logo{
     padding: 0 4px;
 
-    .nav-mobile{
+    .nav-button{
       display: flex;
       padding: 4px 8px;
     }

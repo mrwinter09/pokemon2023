@@ -18,8 +18,8 @@ import rock from '../../assets/icons/rock.png'
 import steel from '../../assets/icons/steel.png'
 import water from '../../assets/icons/water.png'
 
-function PokemonContainer({pokemon, pokemonResultImage, pokemonResult, pokemonType, pokemonHp, pokemonStats, pokemonWeight, pokemonHeight}) {
-const inactive = pokemon === pokemonResult.name
+function PokemonContainer({pokemon, firstPokemonResult}) {
+const inactive = pokemon === firstPokemonResult.pokemonName
 
 const colors = {
   fire:'#ffdec1',
@@ -42,7 +42,7 @@ const colors = {
   steel:'#c8ffcc',
 }
 
-const icon = {
+const icons = {
   fire: fire,
   grass: grass,
   electric: electric,
@@ -63,40 +63,38 @@ const icon = {
   steel: steel,
   }
 
-const symbols =icon[pokemonType]
-const color = colors[pokemonType]
+const icon = icons[firstPokemonResult.pokemonType]
+const color = colors[firstPokemonResult.pokemonType]
 
 
   return (
     <>
 <div className={inactive ? 'pokemonCardContainer' : 'pokemonCardContainer hidden'}>
-    <div style={{border: '5px solid'+ color}} className="card card--charizard">
-      
+    <div style={{border: '5px solid'+ color}} className="card card--pokemon">
       <div className="card-image">
         <div className="card-image-container">
-          <img src={pokemonResultImage} alt={pokemonResult.name}/>
+          <img src={firstPokemonResult.pokemonResultImage} alt={firstPokemonResult.pokemonName}/>
         </div>
       </div>
 
       <div className="card-content">
 
         <div className="main">
-          <div className="title has-text-white">{pokemonResult.name}</div>
+          <div className="title">{firstPokemonResult.pokemonName}</div>
           <hr style={{backgroundColor: color}} />
-          <div className="hp">{pokemonHp} {pokemonStats}</div>
+          <div className="pokemon-hp">{firstPokemonResult.pokemonHp} {firstPokemonResult.pokemonStats}</div>
         </div>
-        
-        <div className="stats columns is-mobile">
+        <div className="stats">
           <div className="column nudge">
-          <img className='symbol' src={symbols} alt={pokemonType}></img>
-            <span style={{backgroundColor: color}} className="tag is-warning">Type</span>
+          <img className='icon' src={icon} alt={firstPokemonResult.pokemonType}></img>
+            <span style={{backgroundColor: color}} className="tag">Type</span>
           </div>
 
-          <div className="column center-column">{pokemonWeight} lbs
-            <span style={{backgroundColor: color}} className="tag is-warning">Weight</span>
+          <div className="column center-column">{firstPokemonResult.pokemonWeight} lbs
+            <span style={{backgroundColor: color}} className="tag">Weight</span>
           </div>
-          <div className="column">{pokemonHeight} m
-            <span style={{backgroundColor: color}} className="tag is-warning">Height</span>
+          <div className="column">{firstPokemonResult.pokemonHeight} m
+            <span style={{backgroundColor: color}} className="tag">Height</span>
           </div>
         </div>
       </div>

@@ -1,37 +1,37 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import logo from '../../assets/Poké_Ball_icon.svg.png';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import './Nav.css'
+import './Navigation.css'
 import { useHistory } from "react-router-dom/";
 
 function Nav({setPokemon}) {
-  const { registerUserName, setregisterUserName, valueTestName, signOutFunction, isAuthMan} = useContext(AuthContext);
+  const { registerUserName, setRegisterUserName, valueName, signOutFunction, isAuthMan} = useContext(AuthContext);
   const history = useHistory();
 
-  function signinOut() {
+  function signOutButton() {
     signOutFunction()
-    setregisterUserName(false)
+    setRegisterUserName(false)
     history.push('/')
   }
 
   return (
-    <nav className='nav-display-mobile'>
+    <nav className='nav-logo'>
         <Link to="/">
           <span onClick={() => setPokemon('')} className="logo-container">
             <img src={logo} alt="logo"/>
             <h3>
-            welcome <span className={registerUserName ? '' : 'hidden'}>{valueTestName}</span>
+            welcome <span className={registerUserName ? '' : 'hidden'}>{valueName}</span>
             </h3>
           </span>
         </Link>
-      <div className='nav-mobile'>
+      <div className='nav-button'>
         {isAuthMan ?
         <>
         <button
           type="button"
-          onClick={signinOut}
-          className='loggOff'
+          onClick={signOutButton}
+          className='sign-out'
         >
           Log out
         </button>

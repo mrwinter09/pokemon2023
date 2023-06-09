@@ -5,11 +5,10 @@ import axios from 'axios';
 export const AuthContext = createContext({})
 
 function AuthContextComponent({children}) {
-  const [valueFieldRegName, setValueFieldRegName] = useState('')
-  const [valueFieldRegEmail, setValueFieldRegEmail] = useState('')
-  const [valueFieldRegPassword, setValueFieldRegPassword] = useState('')
-  const [profile, setProfile] = useState('')
-  const [registerUserName, setregisterUserName] = useState(true)
+  const [valueFieldRegisterName, setValueFieldRegisterName] = useState('')
+  const [valueFieldRegisterEmail, setValueFieldRegisterEmail] = useState('')
+  const [valueFieldRegisterPassword, setValueFieldRegisterPassword] = useState('')
+  const [registerUserName, setRegisterUserName] = useState(true)
   const [auth, toggleIsAuth] = useState({
     isAuth: false,
     user: null,
@@ -19,11 +18,8 @@ function AuthContextComponent({children}) {
     status: 'pending'
   });
 
-  
-
     useEffect(() => {
       const token = localStorage.getItem('token');
-
       if(token) {
         const decodedToken = jwt_decode(token);
         async function getUserToken() {
@@ -41,9 +37,8 @@ function AuthContextComponent({children}) {
             id: response.data.id,
             status: 'done',
       });
-           setValueFieldRegEmail(response.data.email)
-           setValueFieldRegName(response.data.username)
-        
+      setValueFieldRegisterEmail(response.data.email)
+           setValueFieldRegisterName(response.data.username)
            console.log(' Gebruiker is ingelogged');
           } catch (e) {
            console.error(e);
@@ -63,8 +58,8 @@ function AuthContextComponent({children}) {
           status: 'done',
         });
       }
-    }, 
-    // eslint-disable-next-line 
+    },
+    // eslint-disable-next-line
     [])
 
   function signIn(jwtToken) {
@@ -81,8 +76,6 @@ function AuthContextComponent({children}) {
           Authorization: `Bearer ${token}`,
         }
        });
-       console.log(response.data)
-       console.log(' Gebruiker is ingelogged');
     toggleIsAuth({
       ...auth,
       isAuth: true,
@@ -107,7 +100,6 @@ function AuthContextComponent({children}) {
       username: null,
       id: null,
     });
-    console.log(' Gebruiker is uitgelogd');
   }
 
   function authTrue() {
@@ -117,7 +109,6 @@ function AuthContextComponent({children}) {
     });
   }
 
-
   const data = {
     email: auth.email,
     id: auth.id,
@@ -126,17 +117,13 @@ function AuthContextComponent({children}) {
     isAuthMan: auth.isAuth,
     signInFunction: signIn,
     signOutFunction: signOut,
-    Gebruikersnaam: 'wagwan',
-    Email: "hardcoded@test.com",
-    valueInputName: setValueFieldRegName,
-    valueInputEmail: setValueFieldRegEmail,
-    valueInputPassword: setValueFieldRegPassword,
-    valueTestName: valueFieldRegName,
-    valueTestEmail: valueFieldRegEmail,
-    valueTestPassword: valueFieldRegPassword,
-    testName: setProfile,
-    testNameProfile: profile,
-    setregisterUserName: setregisterUserName,
+    valueInputName: setValueFieldRegisterName,
+    valueName: valueFieldRegisterName,
+    valueInputEmail: setValueFieldRegisterEmail,
+    valueEmail: valueFieldRegisterEmail,
+    valueInputPassword: setValueFieldRegisterPassword,
+    valuePassword: valueFieldRegisterPassword,
+    setRegisterUserName: setRegisterUserName,
     registerUserName: registerUserName,
   }
 

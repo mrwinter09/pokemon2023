@@ -8,17 +8,15 @@ import axios from 'axios';
 
 function SignIn() {
   const navigate = useHistory();
-  const {setregisterUserName, valueTestEmail, valueTestPassword, signInFunction} = useContext(AuthContext)
+  const {setRegisterUserName, valueEmail, valuePassword, signInFunction} = useContext(AuthContext)
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   // eslint-disable-next-line
   const [warning, setWarning] = useState(false)
  
   function handleSubmit(e){
-    if(loginEmail === valueTestEmail && loginPassword === valueTestPassword ) {
+    if(loginEmail === valueEmail && loginPassword === valuePassword ) {
       e.preventDefault();
-      console.log(loginEmail)
-      console.log(loginPassword)
       return navigate.push('/')
      } else {
       setWarning(true)
@@ -31,7 +29,7 @@ function SignIn() {
        email: loginEmail,
        password: loginPassword,
      });
-     setregisterUserName(true)
+     setRegisterUserName(true)
      signInFunction(response.data.accessToken)
     } catch (error) {
      console.error(error);
@@ -42,8 +40,8 @@ function SignIn() {
     <>
     <div>
     <header className="App-header">
-        <h1 className='signin'>Log in</h1>
-        <p className='signin'>Ready to Battle</p>
+        <h1 className='signin-title'>Log in</h1>
+        <p className='signin-title'>Ready to Battle</p>
       </header>
       <div className='singin-form'>
         <form onSubmit={handleSubmit}>
@@ -64,7 +62,7 @@ function SignIn() {
         <button type='submit' className='submit-button' onClick={signUserip}>Log in</button>
       </form>
     </div>
-    <div className='footer'> 
+    <div className='signin-footer'> 
     <p>Don't have an account yet? <Link to="/signup">Sign</Link> up here.</p>
     </div>
     

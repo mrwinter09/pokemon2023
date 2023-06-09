@@ -1,18 +1,10 @@
-.hidden {
-  display: hidden;
-}
-
-.not-hidden {
-  display: block;
-}
-
-.footer{
+.signin-footer{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.footer p{
+.signin-footer p{
   margin-top: 0px;
 }
 
@@ -37,6 +29,26 @@
   top: .2em;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: #faeab3;
+  padding: 32px;
+  max-width: 300px;
+  border-radius: 4px;
+}
+
+form label {
+  margin: 4px 0;
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 4px 8px;
+  margin: 6px 0;
+}
+
 
 .singin-form{
   display: flex;
@@ -46,7 +58,7 @@
 }
 
 h1, p{
-  &.signin{
+  &.signin-title{
     font-family: Alfa Slab One;
     letter-spacing: -1px;
     margin-bottom: 1px;

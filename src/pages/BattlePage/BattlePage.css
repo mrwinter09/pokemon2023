@@ -4,21 +4,21 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  .energyBar{
+  .power-bar{
     display: flex;
     flex: 1; 
     justify-content:space-evenly;
     margin: 10px 10px 50px 10px;
   }
 
-  .titleNameA{
+  .pokemonScoreFirst{
     justify-content: flex-end;
     display: flex;
     margin: 0px 15px 0px 0px;
     font-size: larger;
   }
 
-  .titleNameB{
+  .pokemonScoreSecond{
     justify-content: flex-start;
     display: flex;
     margin: 0px 0px 0px 15px;
@@ -95,7 +95,7 @@
   height: 175px;
 }
 
-.pokemonCardContainerBattlePage .card--charizard .card-image-container {
+.pokemonCardContainerBattlePage .card--pokemon .card-image-container {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -104,7 +104,7 @@
   height: 150px;
 }
 
-.pokemonCardContainerBattlePage .card--charizard .card-image-container img{
+.pokemonCardContainerBattlePage .card--pokemon .card-image-container img{
   width: 220px;
 }
 
@@ -134,7 +134,7 @@
   text-transform: uppercase;
 }
 
-.pokemonCardContainerBattlePage .hp {
+.pokemonCardContainerBattlePage .pokemon-hp {
   font-family: Cinzel;
   position: relative;
   font-weight: lighter;
@@ -151,7 +151,7 @@
     margin: 0px;
 }
 
-.pokemonCardContainerBattlePage .hp::before {
+.pokemonCardContainerBattlePage .pokemon-hp::before {
   position: absolute;
     top: -8px;
     left: 50%;
@@ -196,10 +196,6 @@
 
 }
 
-
-.hidden {
-  display: none;
-}
 
 .App .video-game-button {
 	text-shadow: 1px 1px pink, -1px -1px maroon;
@@ -266,7 +262,7 @@
 }
 
 h1{
-  &.battle{
+  &.battle-title{
     font-family: Alfa Slab One;
     letter-spacing: -1px;
     margin-bottom: 1px;
@@ -303,7 +299,7 @@ h1{
 
 @media (max-width: 1200px) {
   h1{
-    &.battle{
+    &.battle-title{
       max-width: 90%;
       font-family: Alfa Slab One;
       letter-spacing: -1px;
@@ -329,7 +325,7 @@ h1{
 
 @media (max-width: 900px) {
   h1{
-    &.battle{
+    &.battle-title{
       max-width: 90%;
       font-family: Alfa Slab One;
       letter-spacing: -1px;
@@ -357,7 +353,7 @@ h1{
     display: grid;
     grid-template-columns: 1fr 1fr;
   
-    .energyBar{
+    .power-bar{
       display: flex;
       flex: 1; 
       justify-content:space-evenly;
@@ -435,7 +431,7 @@ h1{
   height: 150px;
 }
 
-.pokemonCardContainerBattlePage .card--charizard .card-image-container {
+.pokemonCardContainerBattlePage .card--pokemon .card-image-container {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -444,7 +440,7 @@ h1{
   height: 150px;
 }
 
-.pokemonCardContainerBattlePage .card--charizard .card-image-container img{
+.pokemonCardContainerBattlePage .card--pokemon .card-image-container img{
   width: 120px;
 }
 
@@ -474,7 +470,7 @@ h1{
   text-transform: uppercase;
 }
 
-.pokemonCardContainerBattlePage .hp {
+.pokemonCardContainerBattlePage .pokemon-hp {
   font-family: Cinzel;
   position: relative;
   font-weight: lighter;
@@ -491,7 +487,7 @@ h1{
     margin: 0px;
 }
 
-.pokemonCardContainerBattlePage .hp::before {
+.pokemonCardContainerBattlePage .pokemon-hp::before {
   position: absolute;
     top: -8px;
     left: 50%;

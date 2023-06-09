@@ -7,7 +7,7 @@ import './SignUp.css'
 
 
 function SignUp() {
- const {valueTestName, valueTestEmail, valueTestPassword, valueInputName, valueInputEmail, valueInputPassword} = useContext(AuthContext)
+ const {valueName, valueEmail, valuePassword, valueInputName, valueInputEmail, valueInputPassword} = useContext(AuthContext)
  const navigate = useHistory();
 
  function onSubmit(){
@@ -19,9 +19,9 @@ function SignUp() {
  try {
   // eslint-disable-next-line
   const response = await axios.post('http://localhost:3000/users/register', {
-    email: valueTestEmail,
-    password: valueTestPassword,
-    username: valueTestName
+    email: valueEmail,
+    password: valuePassword,
+    username: valueName
   });
  } catch (error) {
   console.error(error);
@@ -31,8 +31,8 @@ function SignUp() {
   return (
     <>
      <header className="App-header">
-        <h1 className='signin'>Register</h1>
-        <p className='signin'>to Battle</p>
+        <h1 className='signup-title'>Register</h1>
+        <p className='signup-title'>to Battle</p>
       </header>
       <div className='signup-form'>
       <form onSubmit={onSubmit}>
@@ -57,7 +57,7 @@ function SignUp() {
         <button type="submit" className='submit-button' onClick={signUserUp}>Sign up</button>
       </form>
       </div>
-      <div className='footer'> 
+      <div className='signup-footer'> 
       <p>Already have an account? <Link to="/signin">Login</Link></p>
     </div>
       

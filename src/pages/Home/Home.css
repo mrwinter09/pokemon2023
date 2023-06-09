@@ -1,18 +1,4 @@
-.pokemon{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.pokemon img{
-  width: 200px;
-}
-
-.hidden{
-  display: none;
-}
-
-.App-header img{
+.header-logo img{
   width: 325px;
   height: 150px;
 }

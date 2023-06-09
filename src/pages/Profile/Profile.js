@@ -1,25 +1,26 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import './Profile.css'
 
 
-function Profile({pokemonBattleIcon}) {
-  const {valueTestEmail, valueTestName,} = useContext(AuthContext);
+function Profile({firstPokemonResult}) {
+  const {valueEmail, valueName,} = useContext(AuthContext);
 
   return (
     <>
     <header className="App-header">
-        <h1 className='signin'>Profile Page</h1>
+        <h1 className='profile-title'>Profile Page</h1>
       </header>
  
       <section>
-        <h2>{valueTestName}</h2>
-        <p><strong>Gebruikersnaam:</strong> {valueTestName}</p>
-        <p><strong>Email: </strong>{valueTestEmail}</p>
+        <h2>{valueName}</h2>
+        <p><strong>Gebruikersnaam:</strong> {valueName}</p>
+        <p><strong>Email: </strong>{valueEmail}</p>
       </section>
       <section>
         <h2>Number of battles</h2>
-        <div className='footer'>
-        <p><img src={pokemonBattleIcon} alt=''></img> have won 10 battles</p>
+        <div className='profile-footer'>
+        <p><img src={firstPokemonResult.pokemonBattleIcon} alt=''></img> have won 10 battles</p>
         </div>
        
       </section>

@@ -25,7 +25,7 @@
   height: 175px;
 }
 
-.pokemonCardContainer .card--charizard .card-image-container {
+.pokemonCardContainer .card--pokemon .card-image-container {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -34,11 +34,11 @@
   height: 150px;
 }
 
-.pokemonCardContainer .card--charizard .card-image-container img{
+.pokemonCardContainer .card--pokemon .card-image-container img{
   width: 220px;
 }
 
-.pokemonCardContainer .card-content .column .symbol {
+.pokemonCardContainer .card-content .column .icon {
   width: 25px;
     height: 25px;
     filter: drop-shadow(0px 1px 9px black);
@@ -64,7 +64,7 @@
   text-transform: uppercase;
 }
 
-.pokemonCardContainer .hp {
+.pokemonCardContainer .pokemon-hp {
   font-family: Cinzel;
   position: relative;
   font-weight: lighter;
@@ -81,7 +81,7 @@
     margin: 0px;
 }
 
-.pokemonCardContainer .hp::before {
+.pokemonCardContainer .pokemon-hp::before {
   position: absolute;
     top: -8px;
     left: 50%;
