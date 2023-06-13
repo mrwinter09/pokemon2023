@@ -8,16 +8,16 @@ function BattlePage({firstPokemonResult, secondPokemonResult, pokemonSpeciesName
  
   const player = {
       1: firstPokemonResult.pokemonName,
-      2: secondPokemonResult.pokemonNameB
+      2: secondPokemonResult.pokemonName
     }
 
-  let testCountA = (firstPokemonResult.pokemonStats / 6 * secondPokemonResult.pokemonStatsB / firstPokemonResult.pokemonStats).toFixed(0)
-  let testCountB = (secondPokemonResult.pokemonStatsB / 6 * firstPokemonResult.pokemonStats / secondPokemonResult.pokemonStatsB).toFixed(0)
+  let testCountA = (firstPokemonResult.pokemonStats / 6 * secondPokemonResult.pokemonStats / firstPokemonResult.pokemonStats).toFixed(0)
+  let testCountB = (secondPokemonResult.pokemonStats / 6 * firstPokemonResult.pokemonStats / secondPokemonResult.pokemonStats).toFixed(0)
 
   const firstSymbols = icons[firstPokemonResult.pokemonType]
   const firstColor = colors[firstPokemonResult.pokemonType]
-  const secondSymbols = icons[secondPokemonResult.pokemonTypeB]
-  const secondColor = colors[secondPokemonResult.pokemonTypeB]
+  const secondSymbols = icons[secondPokemonResult.pokemonType]
+  const secondColor = colors[secondPokemonResult.pokemonType]
 
   return (
     <>
@@ -43,7 +43,7 @@ function BattlePage({firstPokemonResult, secondPokemonResult, pokemonSpeciesName
         </div>
        </div>
        <div>
-       <p className='pokemonScoreSecond'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={secondPokemonResult.pokemonBattleIconB} alt=''></img>{secondPokemonResult.pokemonHpB} {pokemonHpScoreB}</p>
+       <p className='pokemonScoreSecond'><span className={winnerB ? '' : 'hidden'}>{pokemonSpeciesName}</span><img src={secondPokemonResult.pokemonBattleIcon} alt=''></img>{secondPokemonResult.pokemonHp} {pokemonHpScoreB}</p>
         <div
           className='power-bar'
         >
@@ -109,22 +109,22 @@ function BattlePage({firstPokemonResult, secondPokemonResult, pokemonSpeciesName
           <div style={{border: '5px solid'+ secondColor}} className="card card--pokemon">
            <div className="card-image">
              <div className="card-image-container">
-               <img src={secondPokemonResult.pokemonResultImageB} alt={secondPokemonResult.pokemonNameB}/>
+               <img src={secondPokemonResult.pokemonResultImage} alt={secondPokemonResult.pokemonName}/>
              </div>
            </div>
            <div className="card-content">
              <div className="main">
-               <div className="title ">{secondPokemonResult.pokemonNameB}</div>
+               <div className="title ">{secondPokemonResult.pokemonName}</div>
                <hr style={{backgroundColor: secondColor}} />
-               <div className="pokemon-hp">{secondPokemonResult.pokemonHpB} {secondPokemonResult.pokemonStatsB}</div>
+               <div className="pokemon-hp">{secondPokemonResult.pokemonHp} {secondPokemonResult.pokemonStats}</div>
              </div>
              <div className="stats">
                <div className="column nudge">
-               <img className='symbol' src={secondSymbols} alt={secondPokemonResult.pokemonTypeB}></img>
+               <img className='symbol' src={secondSymbols} alt={secondPokemonResult.pokemonType}></img>
                  <span style={{backgroundColor: secondColor}} className="tag is-warning">Type</span>
                </div>
 
-               <div className="column center-column">{secondPokemonResult.pokemonWeightB} lbs
+               <div className="column center-column">{secondPokemonResult.pokemonWeight} lbs
                  <span style={{backgroundColor: secondColor}} className="tag is-warning">Weight</span>
                </div>
                <div className="column">{secondPokemonResult.pokemonHeightB} m

@@ -35,7 +35,6 @@ function App() {
    const [secondPokemonResult, setSecondPokemonResult] = useState({})
 
 
-   
   useEffect(() => {
     function callPokemon(value) {
       const results = pokeNames.filter((user)=> {
@@ -88,60 +87,44 @@ function App() {
     }
   },[pokemon]);
 
-//Fetch Pokemon A
-  useEffect(() => {
-    async function fetchDataPokemon() {
-      try {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-        const firstPokemonApiResult = {
-          pokemonResult: response.data,
-          pokemonName: response.data.name,
-          pokemonResultImage: response.data.sprites.other['official-artwork'].front_default,
-          pokemonBattleIcon: response.data.sprites.versions['generation-vii'].icons.front_default,
-          pokemonType: response.data.types['0'].type.name,
-          pokemonHp: response.data.stats['0'].stat.name,
-          pokemonWeight: response.data.weight,
-          pokemonHeight: response.data.height,
-          pokemonStats: response.data.stats['0'].base_stat,
-          pokeAbilityName: response.data.abilities['0'].ability.name,
-        }
-        setFirstPokemonResult(firstPokemonApiResult)
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    if(pokemon){
-      fetchDataPokemon()
-    }
-  },[pokemon]);
 
-  //Fetch Pokemon B
   useEffect(() => {
-    async function fetchDataPokemon() {
-      try {
-        const responsePokemonBattle = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonBattleId}`);
-        const secondPokemonApiResult = {
-          pokemonResultB: responsePokemonBattle.data,
-          pokemonNameB: responsePokemonBattle.data.name,
-          pokemonResultImageB: responsePokemonBattle.data.sprites.other['official-artwork'].front_default,
-          pokemonBattleIconB: responsePokemonBattle.data.sprites.versions['generation-vii'].icons.front_default,
-          pokemonTypeB: responsePokemonBattle.data.types['0'].type.name,
-          pokemonHpB: responsePokemonBattle.data.stats['0'].stat.name,
-          pokemonWeightB: responsePokemonBattle.data.weight,
-          pokemonHeightB: responsePokemonBattle.data.height,
-          pokemonStatsB: responsePokemonBattle.data.stats['0'].base_stat,
-          pokeAbilityNameB: responsePokemonBattle.data.abilities['0'].ability.name,
+        function creatPlayer(value) {
+           const playerObject =  {
+             pokemonResult: value.data,
+             pokemonName: value.data.name,
+             pokemonResultImage: value.data.sprites.other['official-artwork'].front_default,
+             pokemonBattleIcon: value.data.sprites.versions['generation-vii'].icons.front_default,
+             pokemonType: value.data.types['0'].type.name,
+             pokemonHp: value.data.stats['0'].stat.name,
+             pokemonWeight: value.data.weight,
+             pokemonHeight: value.data.height,
+             pokemonStats: value.data.stats['0'].base_stat,
+             pokeAbilityName: value.data.abilities['0'].ability.name,
+           }
+           return playerObject
         }
-        setSecondPokemonResult(secondPokemonApiResult)
-        setPokemonHpScoreB(responsePokemonBattle.data.stats['0'].base_stat)
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    if(pokemonBattleId){
-      fetchDataPokemon()
-    }
-  },[pokemonBattleId]);
+        async function fetchDataPokemon(a, b) {
+           try {
+             if(a) {
+              const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${a}`);
+               const playerOne = creatPlayer(response)
+               setFirstPokemonResult(playerOne)
+             }
+             if(b) {
+               const responsePokemonBattle = await axios.get(`https://pokeapi.co/api/v2/pokemon/${b}`);
+               const playerTwo = creatPlayer(responsePokemonBattle)
+               setSecondPokemonResult(playerTwo)
+               setPokemonHpScoreB(playerTwo.pokemonStats)
+             }
+           } catch (e) {
+             console.error(e);
+           }
+        }
+        if(pokemon){
+           fetchDataPokemon(pokemon, pokemonBattleId )
+        }
+    },[pokemon, pokemonBattleId]);
 
 
   return (
