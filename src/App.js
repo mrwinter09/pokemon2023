@@ -8,11 +8,9 @@ import Profile from './pages/Profile/Profile'
 import SignIn from './pages/Signin/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import { AuthContext } from './context/AuthContext';
-import { PokemonContext } from './context/PokemonContext'
 import './App.css';
 
 function App() {
-  const {firstPokemonResult, secondPokemonResult, pokemonSpecies } = useContext(PokemonContext);
   const { isAuthMan } = useContext(AuthContext);
 
 // set Result
@@ -23,7 +21,7 @@ function App() {
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonSpecies={pokemonSpecies} />
+          <Home />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile /> : <Redirect to="/" />}

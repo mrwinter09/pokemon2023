@@ -6,8 +6,8 @@ import {PokemonContext} from '../../context/PokemonContext'
 import { Link } from 'react-router-dom';
 
 
-function HomePageFooter({firstPokemonResult, secondPokemonResult}) {
-  const {pokemonId, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB, reset, pokemon} = useContext(PokemonContext);
+function HomePageFooter() {
+  const {firstPokemonResult, secondPokemonResult, pokemonId, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB, reset, pokemon} = useContext(PokemonContext);
   const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === firstPokemonResult.pokemonName
   const history = useHistory();

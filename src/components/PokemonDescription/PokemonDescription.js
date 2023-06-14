@@ -1,8 +1,8 @@
 import './PokemonDescription.css'
 import { useContext } from 'react'
 import {PokemonContext} from '../../context/PokemonContext'
-function PokemonDescription({pokemonSpecies, firstPokemonResult}) {
-  const { pokemon } = useContext(PokemonContext)
+function PokemonDescription() {
+  const { pokemon, pokemonSpecies, firstPokemonResult } = useContext(PokemonContext)
   const inactive = pokemon === firstPokemonResult.pokemonName
  
 

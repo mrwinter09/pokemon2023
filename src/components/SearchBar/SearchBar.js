@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import './SearchBar.css'
 
-function SearchBar({ firstPokemonResult }) {
-  const {setActive, active, setPokemon, pokemon} = useContext(PokemonContext);
+function SearchBar() {
+  const {setActive, active, setPokemon, pokemon, firstPokemonResult} = useContext(PokemonContext);
   const inactive = pokemon === firstPokemonResult.pokemonName
 
   return (

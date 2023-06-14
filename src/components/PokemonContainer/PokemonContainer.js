@@ -2,8 +2,8 @@ import './PokemonContainer.css'
 import { useContext } from 'react'
 import {PokemonContext} from '../../context/PokemonContext'
 
-function PokemonContainer({firstPokemonResult}) {
-const {icons, colors, pokemon } = useContext(PokemonContext)
+function PokemonContainer() {
+const {icons, colors, pokemon, firstPokemonResult } = useContext(PokemonContext)
 const inactive = pokemon === firstPokemonResult.pokemonName
 const icon = icons[firstPokemonResult.pokemonType]
 const color = colors[firstPokemonResult.pokemonType]
