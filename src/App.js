@@ -24,7 +24,7 @@ function App() {
   const [pokeNames, setPokeNames] = useState([])
 
 // eslint-disable-next-line
-  const [abilityDescription, setAbilityDescription] = useState("")
+  const [abilityDescription, setAbilityDescription] = useState('')
   const [pokemonSpecies, setPokemonSpecies] = useState([])
   const [pokemonSpeciesName, setPokemonSpeciesName] = useState('')
 
@@ -57,20 +57,6 @@ function App() {
     }
       fetchData()
   },[]);
-
-  useEffect(() => {
-    async function fetchDataPokemonAbility() {
-      try {
-        const responseAbility = await axios.get(`https://pokeapi.co/api/v2/ability/${firstPokemonResult.pokeAbilityName}`);
-        setAbilityDescription(responseAbility.data.effect_entries['1'].effect)
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    if(pokemon){
-      fetchDataPokemonAbility()
-    }
-  },[pokemon]);
 
   useEffect(() => {
     async function fetchDataPokemon() {
@@ -108,8 +94,11 @@ function App() {
            try {
              if(a) {
               const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${a}`);
-               const playerOne = creatPlayer(response)
-               setFirstPokemonResult(playerOne)
+              const playerOne = creatPlayer(response)
+              setFirstPokemonResult(playerOne)
+              const responseAbility = await axios.get(`https://pokeapi.co/api/v2/ability/${firstPokemonResult.pokeAbilityName}`);
+              const abilities = responseAbility.data.effect_entries['1'].effect;
+              setAbilityDescription(abilities)
              }
              if(b) {
                const responsePokemonBattle = await axios.get(`https://pokeapi.co/api/v2/pokemon/${b}`);

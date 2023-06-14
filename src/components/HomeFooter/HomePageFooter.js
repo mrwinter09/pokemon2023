@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 
 
 function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon}) {
-  const {pokemonId, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB} = useContext(PokemonContext);
+  const {pokemonId, setPokemonBattleId, setPokemonHpScoreA, setPokemonHpScoreB, reset} = useContext(PokemonContext);
   const {isAuthMan} = useContext(AuthContext);
   const inactive = pokemon === firstPokemonResult.pokemonName
   const history = useHistory();
 
   function pokemonHpStartScore() {
-    setPokemonHpScoreB(secondPokemonResult.pokemonStatsB);
+    setPokemonHpScoreB(secondPokemonResult.pokemonStats);
     setPokemonHpScoreA(firstPokemonResult.pokemonStats)
   }
 
@@ -25,7 +25,7 @@ function HomePageFooter({firstPokemonResult, secondPokemonResult, pokemon}) {
       <p className='battle-slogan'>Let's battle with {pokemon}</p>
         <button
         type="button"
-        onClick={() => {history.push('/battlepage'); setPokemonBattleId(pokemonId(1000)); pokemonHpStartScore()}}
+        onClick={() => {history.push('/battlepage'); setPokemonBattleId(pokemonId(1000)); reset(); pokemonHpStartScore()}}
         className='start-btn'
         >
          Start Battle
