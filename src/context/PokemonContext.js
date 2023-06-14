@@ -21,7 +21,7 @@ import water from '../assets/icons/water.png'
 export const PokemonContext = createContext({})
 
 function PokemonContextComponent({children}) {
- const [pokemon, setPokemon] = useState("")
+ const [pokemon, setPokemon] = useState('')
  const [active, setActive] = useState(false)
 
   const [startButton, setStartButton] = useState(false)

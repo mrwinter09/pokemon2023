@@ -121,7 +121,7 @@ function App() {
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemon={pokemon} results={results} pokemonSpecies={pokemonSpecies} />
+          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} results={results} pokemonSpecies={pokemonSpecies} />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile firstPokemonResult={firstPokemonResult} /> : <Redirect to="/" />}
