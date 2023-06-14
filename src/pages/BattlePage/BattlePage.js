@@ -3,8 +3,8 @@ import {PokemonContext} from '../../context/PokemonContext'
 import './BattlePage.css'
 
 
-function BattlePage({firstPokemonResult, secondPokemonResult, pokemonSpeciesName, abilityDescription}) {
-  const {setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, startButton, setPokemonBattleId, setStartButton, battleStatsA, setBattleStatsA, battleStatsB, setBattleStatsB, reset, gameover, scoreCount, winnerA, winnerB, numberA, numberB, pokemonId, generateRandomNumber, randomNum, ProgressDivs, icons, colors, totalProgressBars, progressStatusArrayLength, progressStatusArray } = useContext(PokemonContext)
+function BattlePage() {
+  const {firstPokemonResult, secondPokemonResult, pokemonSpeciesName, abilityDescription, setPokemonHpScoreB, pokemonHpScoreB, setPokemonHpScoreA, pokemonHpScoreA, startButton, setPokemonBattleId, setStartButton, battleStatsA, setBattleStatsA, battleStatsB, setBattleStatsB, reset, gameover, scoreCount, winnerA, winnerB, numberA, numberB, pokemonId, generateRandomNumber, randomNum, ProgressDivs, icons, colors, totalProgressBars, progressStatusArrayLength, progressStatusArray } = useContext(PokemonContext)
  
   const player = {
       1: firstPokemonResult.pokemonName,

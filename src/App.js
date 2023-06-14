@@ -12,7 +12,7 @@ import { PokemonContext } from './context/PokemonContext'
 import './App.css';
 
 function App() {
-  const {firstPokemonResult, secondPokemonResult, pokemonSpecies, abilityDescription, pokemonSpeciesName } = useContext(PokemonContext);
+  const {firstPokemonResult, secondPokemonResult, pokemonSpecies } = useContext(PokemonContext);
   const { isAuthMan } = useContext(AuthContext);
 
 // set Result
@@ -26,10 +26,10 @@ function App() {
           <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonSpecies={pokemonSpecies} />
         </Route>
         <Route path="/profile">
-        {isAuthMan ? <Profile firstPokemonResult={firstPokemonResult} /> : <Redirect to="/" />}
+        {isAuthMan ? <Profile /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
-        {isAuthMan ? <BattlePage firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription}/> : <Redirect to="/" />}
+        {isAuthMan ? <BattlePage/> : <Redirect to="/" />}
         </Route>
         <Route exact path="/signin">
           <SignIn />

@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './Profile.css'
+import { PokemonContext } from '../../context/PokemonContext';
 
 
-function Profile({firstPokemonResult}) {
+function Profile() {
   const {valueEmail, valueName,} = useContext(AuthContext);
+  const {firstPokemonResult} = useContext(PokemonContext);
 
   return (
     <>
