@@ -6,16 +6,16 @@ import {PokemonContext} from '../../context/PokemonContext'
 
 
 
-function SearchResults({results }) {
-  const { pokemon } = useContext(PokemonContext)
+function SearchResults({}) {
+  const { pokemon, results } = useContext(PokemonContext)
  
   const inactive = pokemon === '';
   return (
     <>
         <div className={!inactive ? 'search-result' : 'search-result hidden'}>
      {
-      results.map((result, id) => {
-        return <SearchResultCard results={result} key={id}/>
+      results.map((result) => {
+        return <SearchResultCard results={result}/>
       })
      }
     </div>

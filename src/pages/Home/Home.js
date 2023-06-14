@@ -8,7 +8,7 @@ import './Home.css'
 import HomePageFooter from '../../components/HomeFooter/HomePageFooter';
 
 
-function Home({firstPokemonResult, secondPokemonResult, results, pokemonSpecies }) {
+function Home({firstPokemonResult, secondPokemonResult, pokemonSpecies }) {
 
   
 
@@ -21,7 +21,7 @@ function Home({firstPokemonResult, secondPokemonResult, results, pokemonSpecies 
     </div>
     <section>
         <SearchBar firstPokemonResult={firstPokemonResult}/>
-        <SearchResults results={results}/>
+        <SearchResults/>
       </section>
     <div className='wrapper'>
         <PokemonContainer firstPokemonResult={firstPokemonResult}/>

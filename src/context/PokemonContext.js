@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import axios from 'axios';
 import bug from '../assets/icons/bug.png'
 import dark from '../assets/icons/dark.png'
 import dragon from '../assets/icons/dragon.png'
@@ -21,7 +22,105 @@ import water from '../assets/icons/water.png'
 export const PokemonContext = createContext({})
 
 function PokemonContextComponent({children}) {
- const [pokemon, setPokemon] = useState('')
+
+// Pokemon API and Data call
+
+  const [pokemon, setPokemon] = useState('')
+  const [pokemonBattleId, setPokemonBattleId] = useState(0)
+  const [results, setResults] = useState([])
+  const [pokeNames, setPokeNames] = useState([])
+
+  const [abilityDescription, setAbilityDescription] = useState('')
+  const [pokemonSpecies, setPokemonSpecies] = useState([])
+  const [pokemonSpeciesName, setPokemonSpeciesName] = useState('')
+
+// Pokemon A
+  const [firstPokemonResult, setFirstPokemonResult] = useState({})
+
+// Pokemon B
+   const [secondPokemonResult, setSecondPokemonResult] = useState({})
+
+  useEffect(() => {
+    function callPokemon(value) {
+      const results = pokeNames.filter((user)=> {
+        return value && user && user.name && user.name.toLowerCase().includes(value.toLowerCase())
+      })
+      setResults(results);
+    }
+    callPokemon(pokemon)
+  },
+  [pokemon])
+
+  useEffect(()=> {
+    const fetchData = () => {
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
+        .then(response => response.json())
+        .then((json) => {
+          setPokeNames(json.results)
+        })
+    }
+      fetchData()
+  },[]);
+
+  useEffect(() => {
+    async function fetchDataPokemon() {
+      try {
+        const responseSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
+        setPokemonSpecies(responseSpecies.data.flavor_text_entries['6'].flavor_text)
+        setPokemonSpeciesName(responseSpecies.data.names['0'].name)
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    if(pokemon){
+      fetchDataPokemon()
+    }
+  },[pokemon]);
+
+
+  useEffect(() => {
+        function creatPlayer(value) {
+           const playerObject =  {
+             pokemonResult: value.data,
+             pokemonName: value.data.name,
+             pokemonResultImage: value.data.sprites.other['official-artwork'].front_default,
+             pokemonBattleIcon: value.data.sprites.versions['generation-vii'].icons.front_default,
+             pokemonType: value.data.types['0'].type.name,
+             pokemonHp: value.data.stats['0'].stat.name,
+             pokemonWeight: value.data.weight,
+             pokemonHeight: value.data.height,
+             pokemonStats: value.data.stats['0'].base_stat,
+             pokeAbilityName: value.data.abilities['0'].ability.name,
+           }
+           return playerObject
+        }
+        async function fetchDataPokemon(a, b) {
+           try {
+             if(a) {
+              const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${a}`);
+              const playerOne = creatPlayer(response)
+              setFirstPokemonResult(playerOne)
+              const responseAbility = await axios.get(`https://pokeapi.co/api/v2/ability/${firstPokemonResult.pokeAbilityName}`);
+              const abilities = responseAbility.data.effect_entries['1'].effect;
+              setAbilityDescription(abilities)
+             }
+             if(b) {
+               const responsePokemonBattle = await axios.get(`https://pokeapi.co/api/v2/pokemon/${b}`);
+               const playerTwo = creatPlayer(responsePokemonBattle)
+               setSecondPokemonResult(playerTwo)
+               setPokemonHpScoreB(playerTwo.pokemonStats)
+             }
+           } catch (e) {
+             console.error(e);
+           }
+        }
+        if(pokemon){
+           fetchDataPokemon(pokemon, pokemonBattleId )
+        }
+    },[pokemon, pokemonBattleId]);
+
+//Pokemon Battle State
+
  const [active, setActive] = useState(false)
 
   const [startButton, setStartButton] = useState(false)
@@ -32,7 +131,6 @@ function PokemonContextComponent({children}) {
   const winnerA = battleStatsB === 0
   const winnerB = battleStatsA === 0
 
-  const [pokemonBattleId, setPokemonBattleId] = useState(0)
   const [pokemonHpScoreA, setPokemonHpScoreA ] = useState(0)
   const [pokemonHpScoreB, setPokemonHpScoreB ] = useState(0)
 
@@ -153,6 +251,20 @@ function PokemonContextComponent({children}) {
     setActive:setActive,
     pokemon:pokemon,
     setPokemon:setPokemon,
+    results:results,
+    setResults:setResults,
+    pokeNames:pokeNames,
+    setPokeNames:setPokeNames,
+    firstPokemonResult:firstPokemonResult,
+    setFirstPokemonResult:setFirstPokemonResult,
+    secondPokemonResult:secondPokemonResult,
+    setSecondPokemonResult:setSecondPokemonResult,
+    pokemonSpecies:pokemonSpecies,
+    setPokemonSpecies:setPokemonSpecies,
+    pokemonSpeciesName:pokemonSpeciesName,
+    setPokemonSpeciesName:setPokemonSpeciesName,
+    abilityDescription:abilityDescription,
+    setAbilityDescription:setAbilityDescription,
   }
 
   return (
