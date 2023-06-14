@@ -3,8 +3,8 @@ import React, { useContext} from 'react';
 import { PokemonContext } from '../../context/PokemonContext'
 import './SearchResultCard.css'
 
-function SearchResultCard({results, setPokemon, pokemon}) {
-  const {setActive} = useContext(PokemonContext);
+function SearchResultCard({results, pokemon}) {
+  const {setActive, setPokemon} = useContext(PokemonContext);
   const inactive = pokemon === results.name;
 
   return (

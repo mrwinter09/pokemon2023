@@ -13,12 +13,11 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  const { pokemonBattleId, setPokemonHpScoreB} = useContext(PokemonContext);
+  const { pokemonBattleId, setPokemonHpScoreB, pokemon} = useContext(PokemonContext);
   const { isAuthMan } = useContext(AuthContext);
 
 // set Result
-  const [pokemon, setPokemon] = useState("")
-
+ 
 // Data pull first
   const [results, setResults] = useState([])
   const [pokeNames, setPokeNames] = useState([])
@@ -118,17 +117,17 @@ function App() {
 
   return (
     <>
-    <Navigation setPokemon={setPokemon} />
+    <Navigation/>
     <div className="content">
       <Switch>
         <Route exact path="/">
-          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemon={pokemon} setPokemon={setPokemon} results={results} pokemonSpecies={pokemonSpecies} />
+          <Home firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemon={pokemon} results={results} pokemonSpecies={pokemonSpecies} />
         </Route>
         <Route path="/profile">
         {isAuthMan ? <Profile firstPokemonResult={firstPokemonResult} /> : <Redirect to="/" />}
         </Route>
         <Route path="/battlepage">
-        {isAuthMan ? <BattlePage firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription}  pokemon={pokemon}/> : <Redirect to="/" />}
+        {isAuthMan ? <BattlePage firstPokemonResult={firstPokemonResult} secondPokemonResult={secondPokemonResult} pokemonSpeciesName={pokemonSpeciesName} abilityDescription={abilityDescription}/> : <Redirect to="/" />}
         </Route>
         <Route exact path="/signin">
           <SignIn />

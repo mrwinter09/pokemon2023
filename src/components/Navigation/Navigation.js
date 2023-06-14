@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import './Navigation.css'
 import { useHistory } from "react-router-dom/";
+import { PokemonContext } from '../../context/PokemonContext';
 
-function Nav({setPokemon}) {
+function Nav() {
   const { registerUserName, setRegisterUserName, valueName, signOutFunction, isAuthMan} = useContext(AuthContext);
+  const {setPokemon} = useContext(PokemonContext)
   const history = useHistory();
 
   function signOutButton() {
