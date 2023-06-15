@@ -6,7 +6,7 @@ import {PokemonContext} from '../../context/PokemonContext'
 
 
 
-function SearchResults({}) {
+function SearchResults() {
   const { pokemon, results } = useContext(PokemonContext)
  
   const inactive = pokemon === '';
