@@ -10,6 +10,10 @@ Als ouder heb je soms ff een moment voor jezelf om tijd te spenderen aan iets wa
 
 # Benodigheden
 
+## NVM
+
+Dit project maakt gebruik van een .nvmrc-bestand om de versie van Node.js te beheren. Het .nvmrc-bestand specificeert de aanbevolen Node.js-versie voor dit project. Dit zorgt ervoor dat alle samenwerkende projectleden dezelfde Node.js-versie gebruiken, wat compatibiliteitsproblemen kan voorkomen.
+
 ## Applicatie draaien
 
 Als je het project gecloned hebt naar jouw locale machine, installeer je eerst de `node_modules` door het volgende
