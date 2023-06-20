@@ -22,7 +22,7 @@ function SignIn() {
     }
   }
 
-  async function signUserip() {
+  async function signUserin() {
     try {
       const response = await axios.post('http://localhost:3000/login', {
         email: loginEmail,
@@ -57,7 +57,7 @@ function SignIn() {
                 onChange={(e) => setLoginPassword(e.target.value)}
               ></input>
             </label>
-            <button type="submit" className="submit-button" onClick={signUserip}>
+            <button type="submit" className="submit-button" onClick={signUserin}>
               Log in
             </button>
           </form>
