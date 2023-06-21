@@ -10,7 +10,7 @@ Als ouder heb je soms ff een moment voor jezelf om tijd te spenderen aan iets wa
 
 ## Benodigheden
 
-Om gebruik te maken van de registratie systeem om in te loggen, moet je de volgende repository downloaden [De link naar de Github repository](https://github.com/hogeschoolnovi/frontend-fake-server)
+Bij deze applicatie kunnen gebruikers inloggen en registreren, hiervoor moet je de volgende repository downloaden [De link naar de Github repository](https://github.com/hogeschoolnovi/frontend-fake-server)
 
 ### Beschrijving
 
@@ -52,5 +52,3 @@ Wanneer dit klaar is, kun je de applicatie starten met behulp van:
 ```bash
 npm start
 ```
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

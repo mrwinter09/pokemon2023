@@ -14,8 +14,8 @@ function SignIn() {
   const [warning, setWarning] = useState(false)
 
   function handleSubmit(e) {
+    e.preventDefault()
     if (loginEmail === valueEmail && loginPassword === valuePassword) {
-      e.preventDefault()
       return navigate.push('/')
     } else {
       setWarning(true)
@@ -46,7 +46,7 @@ function SignIn() {
           <form onSubmit={handleSubmit}>
             <label>
               Email:
-              <input type="text" name="name" id="details-name" onChange={(e) => setLoginEmail(e.target.value)}></input>
+              <input type="email" name="name" id="details-name" onChange={(e) => setLoginEmail(e.target.value)}></input>
             </label>
             <label>
               Password:
@@ -63,6 +63,7 @@ function SignIn() {
           </form>
         </div>
         <div className="signin-footer">
+          <p className={warning ? 'not-hidden' : 'hidden'}>WRONG email</p>
           <p>
             Don't have an account yet? <Link to="/signup">Sign</Link> up here.
           </p>
