@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { PokemonContext } from '../../context/PokemonContext'
+import { useHistory } from 'react-router-dom'
 import './BattlePage.css'
 
 function BattlePage() {
+  const navigate = useHistory()
   const {
     firstPokemonResult,
     secondPokemonResult,
@@ -221,6 +223,14 @@ function BattlePage() {
               className={gameover ? 'start-btn' : 'hidden'}
             >
               Reset
+            </button>
+            <button
+              onClick={() => {
+                navigate.push('/')
+              }}
+              className={gameover ? 'start-btn' : 'hidden'}
+            >
+              Home
             </button>
 
             <div className={gameover ? 'hidden' : ''}>
