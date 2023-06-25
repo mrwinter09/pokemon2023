@@ -1,9 +1,11 @@
 import './PokemonContainer.css'
 import { useContext } from 'react'
 import { PokemonContext } from '../../context/PokemonContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 function PokemonContainer() {
-  const { icons, colors, pokemon, firstPokemonResult } = useContext(PokemonContext)
+  const { icons, colors, pokemon, firstPokemonResult, setPokemon } = useContext(PokemonContext)
   const inactive = pokemon === firstPokemonResult.pokemonName
   const icon = icons[firstPokemonResult.pokemonType]
   const color = colors[firstPokemonResult.pokemonType]
@@ -11,13 +13,17 @@ function PokemonContainer() {
   return (
     <>
       <div className={inactive ? 'pokemonCardContainer' : 'pokemonCardContainer hidden'}>
+        <div>
+          <button onClick={() => setPokemon('')} className="trash-button">
+            <FontAwesomeIcon className="icon-color" icon={faTrash} />
+          </button>
+        </div>
         <div style={{ border: '5px solid' + color }} className="card card--pokemon">
           <div className="card-image">
             <div className="card-image-container">
               <img src={firstPokemonResult.pokemonResultImage} alt={firstPokemonResult.pokemonName} />
             </div>
           </div>
-
           <div className="card-content">
             <div className="main">
               <div className="title">{firstPokemonResult.pokemonName}</div>
