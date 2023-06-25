@@ -230,7 +230,7 @@ function BattlePage() {
               }}
               className={gameover ? 'start-btn' : 'hidden'}
             >
-              Home
+              New Pokemon
             </button>
 
             <div className={gameover ? 'hidden' : ''}>
