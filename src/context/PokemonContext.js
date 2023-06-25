@@ -28,6 +28,7 @@ function PokemonContextComponent({ children }) {
   const [pokemonBattleId, setPokemonBattleId] = useState(0)
   const [results, setResults] = useState([])
   const [pokeNames, setPokeNames] = useState([])
+  console.log(pokeNames)
 
   const [abilityDescription, setAbilityDescription] = useState('')
   const [pokemonSpecies, setPokemonSpecies] = useState([])
@@ -50,12 +51,14 @@ function PokemonContextComponent({ children }) {
   }, [pokemon])
 
   useEffect(() => {
-    const fetchData = () => {
-      fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
-        .then((response) => response.json())
-        .then((json) => {
-          setPokeNames(json.results)
-        })
+    async function fetchData() {
+      try {
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
+        console.log(response.data.results)
+        setPokeNames(response.data.results)
+      } catch (e) {
+        console.error(e)
+      }
     }
     fetchData()
   }, [])
