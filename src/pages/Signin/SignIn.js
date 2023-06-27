@@ -7,7 +7,7 @@ import axios from 'axios'
 
 function SignIn() {
   const navigate = useHistory()
-  const { setRegisterUserName, valueEmail, valuePassword, signInFunction } = useContext(AuthContext)
+  const { setRegisterUserName, valueName, valuePassword, signInFunction } = useContext(AuthContext)
   const [loginEmail, setLoginEmail] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   // eslint-disable-next-line
@@ -15,7 +15,7 @@ function SignIn() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (loginEmail === valueEmail && loginPassword === valuePassword) {
+    if (loginEmail === valueName && loginPassword === valuePassword) {
       signUserin()
       return navigate.push('/')
     } else {
@@ -25,8 +25,8 @@ function SignIn() {
 
   async function signUserin() {
     try {
-      const response = await axios.post('http://localhost:3000/login', {
-        email: loginEmail,
+      const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
+        username: valueName,
         password: loginPassword,
       })
       setRegisterUserName(true)
@@ -46,8 +46,8 @@ function SignIn() {
         <div className="singin-form">
           <form onSubmit={handleSubmit}>
             <label>
-              Email:
-              <input type="email" name="name" id="details-name" onChange={(e) => setLoginEmail(e.target.value)}></input>
+              Username:
+              <input type="text" name="name" id="details-name" onChange={(e) => setLoginEmail(e.target.value)}></input>
             </label>
             <label>
               Password:

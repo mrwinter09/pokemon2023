@@ -1,10 +1,9 @@
-import React, { createContext, useState, useEffect } from "react";
-import jwt_decode from 'jwt-decode';
-import axios from 'axios';
+import React, { createContext, useState, useEffect } from 'react'
+import axios from 'axios'
 
 export const AuthContext = createContext({})
 
-function AuthContextComponent({children}) {
+function AuthContextComponent({ children }) {
   const [valueFieldRegisterName, setValueFieldRegisterName] = useState('')
   const [valueFieldRegisterEmail, setValueFieldRegisterEmail] = useState('')
   const [valueFieldRegisterPassword, setValueFieldRegisterPassword] = useState('')
@@ -15,98 +14,97 @@ function AuthContextComponent({children}) {
     email: null,
     id: null,
     username: null,
-    status: 'pending'
-  });
+    status: 'pending',
+  })
 
-    useEffect(() => {
-      const token = localStorage.getItem('token');
-      if(token) {
-        const decodedToken = jwt_decode(token);
+  useEffect(
+    () => {
+      const token = localStorage.getItem('token')
+      if (token) {
         async function getUserToken() {
           try {
-           const response = await axios.get(`http://localhost:3000/600/users/${decodedToken.sub}`, {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            }
-           });
-           toggleIsAuth({
-            isAuth: true,
-            username: response.data.user,
-            email: response.data.email,
-            id: response.data.id,
-            status: 'done',
-      });
-      setValueFieldRegisterEmail(response.data.email)
-           setValueFieldRegisterName(response.data.username)
-           console.log(' Gebruiker is ingelogged');
+            const response = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/user`, {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            toggleIsAuth({
+              isAuth: true,
+              username: response.data.user,
+              email: response.data.email,
+              id: response.data.id,
+              status: 'done',
+            })
+            setValueFieldRegisterEmail(response.data.email)
+            setValueFieldRegisterName(response.data.username)
+            console.log(' Gebruiker is ingelogged')
           } catch (e) {
-           console.error(e);
-           if (e.response.status === 500) {
-            console.log('De server deed het niet');
-          } else if (e.response.status === 404) {
-            console.log('De developer heeft iets doms gedaan in het request');
-          } else {
-            console.log('Het ging mis. Geen idee wat.');
+            console.error(e)
+            if (e.response.status === 500) {
+              console.log('De server deed het niet')
+            } else if (e.response.status === 404) {
+              console.log('De developer heeft iets doms gedaan in het request')
+            } else {
+              console.log('Het ging mis. Geen idee wat.')
+            }
           }
-          }
-          }
-          getUserToken();
+        }
+        getUserToken()
       } else {
         toggleIsAuth({
           ...auth,
           status: 'done',
-        });
+        })
       }
     },
     // eslint-disable-next-line
-    [])
+    []
+  )
 
   function signIn(jwtToken) {
-    localStorage.setItem('token', jwtToken);
-    const decodedToken = jwt_decode(jwtToken);
-    const id = decodedToken.sub;
+    localStorage.setItem('token', jwtToken)
     const token = jwtToken
 
     async function getUserData() {
       try {
-       const response = await axios.get(`http://localhost:3000/600/users/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        }
-       });
-    toggleIsAuth({
-      ...auth,
-      isAuth: true,
-      email: response.data.email,
-      username: response.data.username,
-      id: response.data.id,
-      jwtToken: token
-    });
+        const response = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/user`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        toggleIsAuth({
+          ...auth,
+          isAuth: true,
+          email: response.data.email,
+          username: response.data.username,
+          id: response.data.id,
+          jwtToken: token,
+        })
       } catch (error) {
-       console.error(error);
+        console.error(error)
       }
-      }
-      getUserData();
+    }
+    getUserData()
   }
 
   function signOut() {
-    localStorage.clear();
+    localStorage.clear()
     toggleIsAuth({
       ...auth,
       isAuth: false,
       email: null,
       username: null,
       id: null,
-    });
+    })
   }
 
   function authTrue() {
     return toggleIsAuth({
       ...auth,
       isAuth: true,
-    });
+    })
   }
 
   const data = {
@@ -131,7 +129,7 @@ function AuthContextComponent({children}) {
     <AuthContext.Provider value={data}>
       {auth.status === 'done' ? children : <p>Loading...</p>}
       {/* {children} */}
-      </AuthContext.Provider>
+    </AuthContext.Provider>
   )
 }
 

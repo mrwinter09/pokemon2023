@@ -17,10 +17,11 @@ function SignUp() {
   async function signUserUp() {
     try {
       // eslint-disable-next-line
-      const response = await axios.post('http://localhost:3000/users/register', {
+      const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup', {
+        username: valueName,
         email: valueEmail,
         password: valuePassword,
-        username: valueName,
+        role: ['user'],
       })
     } catch (error) {
       console.error(error)
@@ -42,7 +43,7 @@ function SignUp() {
           <label>
             Email:
             <input
-              type="text"
+              type="email"
               name="email"
               id="details-email"
               onChange={(e) => valueInputEmail(e.target.value)}
