@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import logo from '../../assets/Poké_Ball_icon.svg.png'
+import logo from '../../assets/Poke_Ball_icon.svg.png'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import './Navigation.css'
