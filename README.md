@@ -14,25 +14,11 @@ Bij deze applicatie kunnen gebruikers inloggen en registreren, hiervoor moet je 
 
 ### Beschrijving
 
-Om gebruik te maken van authenticatie kun je deze server gebruiken. De server draait apart van deze Pokemon project, zodat we de "database" via een API kunnen benaderen
+Om gebruik te maken van authenticatie maak je gebruik van de NOVI backend server.
 
 ### Gebruik
 
-Voor je de server kunt gebruiken zul je de de dependencies moeten installeren met het commando:
-
-```bash
-npm install
-```
-
-Er is een speciaal script aangemaakt om deze server te runnen. Het letterlijke script - mocht je nieuwsgierig zijn - kun je terugvinden in de `package.json`. Om de server te starten hoef je slechts het volgende commando in jouw terminal in te voeren:
-
-```bash
-npm run json:server
-```
-
-Deze server draait op [http://localhost:3000](http://localhost:3000), wanneer je dit in de browser opent zul je alle beschikbare endpoints zien verschijnen.
-
-_Let op_: omdat deze server op `localhost:3000` draait is het belangrijk deze server te starten voor je een React-project start. React zal dan automatisch vragen om dat project op een andere port te draaien.
+Hier hoef je niks voor te doen, de endpoints zijn als in de code verwerkt.
 
 ## NVM
 
