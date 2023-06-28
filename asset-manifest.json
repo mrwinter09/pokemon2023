@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/pokemon2023/static/css/main.b8b577d0.css",
+    "main.js": "/pokemon2023/static/js/main.567aea0d.js",
+    "static/media/Poke_Ball_icon.svg.png": "/pokemon2023/static/media/Poke_Ball_icon.svg.ea749ad74b04e2906b5b.png",
+    "static/media/pokemon.svg": "/pokemon2023/static/media/pokemon.2be644a62b02670dc30879513fb27a72.svg",
+    "static/media/psychic.png": "/pokemon2023/static/media/psychic.05ba41043a622fe607f5.png",
+    "index.html": "/pokemon2023/index.html",
+    "main.b8b577d0.css.map": "/pokemon2023/static/css/main.b8b577d0.css.map",
+    "main.567aea0d.js.map": "/pokemon2023/static/js/main.567aea0d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8b577d0.css",
+    "static/js/main.567aea0d.js"
+  ]
+}
