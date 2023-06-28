@@ -1,5 +1,6 @@
-h1, p{
-  &.signup-title{
+h1,
+p {
+  &.signup-title {
     font-family: Alfa Slab One;
     letter-spacing: -1px;
     margin-bottom: 1px;
@@ -10,43 +11,59 @@ h1, p{
     transform-origin: 0 0;
     transform: rotate(354deg);
     -webkit-text-stroke-width: 1px;
-    text-shadow: 5px 10px 2px #FF0000, 10px 15px 11px #2a75bb;
+    text-shadow: 5px 10px 2px #ff0000, 10px 15px 11px #2a75bb;
     -webkit-text-stroke-color: #2a75bb;
     color: #ffcb05;
   }
 }
 
-.signup-form{
+.signup-form {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 400px;
 }
 
-.signup-footer{
+.signup-footer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.signup-footer p{
+.signup-footer p {
   margin-top: 0px;
 }
 
-.submit-button{
+.submit-button {
   border-radius: 4px;
   border: none;
   padding: 8px 16px;
   font-weight: bold;
-  padding: 10px 0 10px 10px ;
-    background-color: #f5ab00;
-    color: white;
-    -webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	-o-border-radius: 7px;
-	border-radius: 7px;
-    box-shadow: 0 .2em gray; 
-    cursor: pointer;
+  padding: 10px 0 10px 10px;
+  background-color: #f5ab00;
+  color: white;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  box-shadow: 0 0.2em gray;
+  cursor: pointer;
+}
+
+.submit-button-disable {
+  border-radius: 4px;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  padding: 10px 0 10px 10px;
+  background-color: #8b8b89;
+  color: white;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  box-shadow: 0 0.2em gray;
+  cursor: pointer;
 }
 
 form {
@@ -69,14 +86,14 @@ form input {
   margin: 6px 0;
 }
 
-.submit-button:active{
+.submit-button:active {
   box-shadow: none;
   position: relative;
-  top: .2em;
+  top: 0.2em;
 }
 
 @media (max-width: 400px) {
- .footer p{
-  width: 280px;
- }
+  .footer p {
+    width: 280px;
+  }
 }

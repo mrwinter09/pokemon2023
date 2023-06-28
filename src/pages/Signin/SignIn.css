@@ -24,6 +24,23 @@
   box-shadow: 0 0.2em gray;
   cursor: pointer;
 }
+
+.submit-button-disable {
+  border-radius: 4px;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  padding: 10px 0 10px 10px;
+  background-color: #8b8b89;
+  color: white;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  box-shadow: 0 0.2em gray;
+  cursor: pointer;
+}
+
 .submit-button:active {
   box-shadow: none;
   position: relative;

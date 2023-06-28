@@ -8,14 +8,15 @@ import axios from 'axios'
 function SignIn() {
   const navigate = useHistory()
   const { setRegisterUserName, valueName, valuePassword, signInFunction } = useContext(AuthContext)
-  const [loginEmail, setLoginEmail] = useState('')
+  const [loginUserName, setLoginUserName] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
   // eslint-disable-next-line
   const [warning, setWarning] = useState(false)
+  const disabledButton = !loginUserName || loginPassword < 6
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (loginEmail === valueName && loginPassword === valuePassword) {
+    if (loginUserName === valueName && loginPassword === valuePassword) {
       signUserin()
       return navigate.push('/')
     } else {
@@ -47,7 +48,12 @@ function SignIn() {
           <form onSubmit={handleSubmit}>
             <label>
               Username:
-              <input type="text" name="name" id="details-name" onChange={(e) => setLoginEmail(e.target.value)}></input>
+              <input
+                type="text"
+                name="name"
+                id="details-name"
+                onChange={(e) => setLoginUserName(e.target.value)}
+              ></input>
             </label>
             <label>
               Password:
@@ -58,7 +64,11 @@ function SignIn() {
                 onChange={(e) => setLoginPassword(e.target.value)}
               ></input>
             </label>
-            <button type="submit" className="submit-button">
+            <button
+              disabled={disabledButton}
+              type="submit"
+              className={disabledButton ? 'submit-button-disable' : 'submit-button'}
+            >
               Log in
             </button>
           </form>

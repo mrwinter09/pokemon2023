@@ -9,6 +9,7 @@ function SignUp() {
   const { valueName, valueEmail, valuePassword, valueInputName, valueInputEmail, valueInputPassword } =
     useContext(AuthContext)
   const navigate = useHistory()
+  const disabledButton = !valueName || !valueEmail || valuePassword < 6
 
   function onSubmit() {
     navigate.push('/signin')
@@ -58,7 +59,12 @@ function SignUp() {
               onChange={(e) => valueInputPassword(e.target.value)}
             ></input>
           </label>
-          <button type="submit" className="submit-button" onClick={signUserUp}>
+          <button
+            disabled={disabledButton}
+            type="submit"
+            className={disabledButton ? 'submit-button-disable' : 'submit-button'}
+            onClick={signUserUp}
+          >
             Sign up
           </button>
         </form>
